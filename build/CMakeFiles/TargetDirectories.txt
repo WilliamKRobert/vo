@@ -1,0 +1,3 @@
+/home/audren/vo/build/CMakeFiles/edit_cache.dir
+/home/audren/vo/build/CMakeFiles/rebuild_cache.dir
+/home/audren/vo/build/CMakeFiles/vo.dir
