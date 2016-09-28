@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/audren/vo/src/bucket_features.cpp" "/home/audren/vo/build/CMakeFiles/vo.dir/src/bucket_features.cpp.o"
   "/home/audren/vo/src/cal_pose.cpp" "/home/audren/vo/build/CMakeFiles/vo.dir/src/cal_pose.cpp.o"
   "/home/audren/vo/src/main.cpp" "/home/audren/vo/build/CMakeFiles/vo.dir/src/main.cpp.o"
   "/home/audren/vo/src/stereo_matching.cpp" "/home/audren/vo/build/CMakeFiles/vo.dir/src/stereo_matching.cpp.o"

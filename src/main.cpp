@@ -14,11 +14,11 @@ int main()
     Mat img1_l, img1_r, img2_l, img2_r;
     //img1_l = imread("/home/audren/vo/test_img/tsukuba_l.png", CV_LOAD_IMAGE_GRAYSCALE);
     //img1_r = imread("/home/audren/vo/test_img/tsukuba_r.png", CV_LOAD_IMAGE_GRAYSCALE);
-    img1_l = imread("/home/audren/vo/test_img/img1_l.png", CV_LOAD_IMAGE_GRAYSCALE);
-    img1_r = imread("/home/audren/vo/test_img/img1_r.png", CV_LOAD_IMAGE_GRAYSCALE);
+    img1_l = imread("../test_img/img1_l.png", CV_LOAD_IMAGE_GRAYSCALE);
+    img1_r = imread("../test_img/img1_r.png", CV_LOAD_IMAGE_GRAYSCALE);
 
-    img2_l = imread("/home/audren/vo/test_img/img2_l.png", CV_LOAD_IMAGE_GRAYSCALE);
-    img2_r = imread("/home/audren/vo/test_img/img2_r.png", CV_LOAD_IMAGE_GRAYSCALE);
+    img2_l = imread("../test_img/img2_l.png", CV_LOAD_IMAGE_GRAYSCALE);
+    img2_r = imread("../test_img/img2_r.png", CV_LOAD_IMAGE_GRAYSCALE);
  
     if(! img1_l.data || ! img1_r.data || !img2_l.data || !img2_r.data)
     {
@@ -26,7 +26,15 @@ int main()
         return -1;
     }
     
-    cal_pose(img1_l, img1_r, img2_l, img2_r);
+    Eigen::MatrixXf P1(3, 4), P2(3, 4);
+    P1 << 718.8560,        0, 607.1928,         0,
+                 0, 718.8560, 185.2157,         0,
+                 0,        0,   1.0000,         0;
+    P2 << 718.8560,        0, 607.1928, -386.1448,
+                 0, 718.8560, 185.2157,         0,
+                 0,        0,   1.0000,         0;
+
+    cal_pose( img1_l, img1_r, img2_l, img2_r, P1, P2 );
 
     return 0;
 }

@@ -123,6 +123,33 @@ vo/fast:
 	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/build
 .PHONY : vo/fast
 
+src/bucket_features.o: src/bucket_features.cpp.o
+
+.PHONY : src/bucket_features.o
+
+# target to build an object file
+src/bucket_features.cpp.o:
+	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/bucket_features.cpp.o
+.PHONY : src/bucket_features.cpp.o
+
+src/bucket_features.i: src/bucket_features.cpp.i
+
+.PHONY : src/bucket_features.i
+
+# target to preprocess a source file
+src/bucket_features.cpp.i:
+	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/bucket_features.cpp.i
+.PHONY : src/bucket_features.cpp.i
+
+src/bucket_features.s: src/bucket_features.cpp.s
+
+.PHONY : src/bucket_features.s
+
+# target to generate assembly for a file
+src/bucket_features.cpp.s:
+	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/bucket_features.cpp.s
+.PHONY : src/bucket_features.cpp.s
+
 src/cal_pose.o: src/cal_pose.cpp.o
 
 .PHONY : src/cal_pose.o
@@ -213,6 +240,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... vo"
+	@echo "... src/bucket_features.o"
+	@echo "... src/bucket_features.i"
+	@echo "... src/bucket_features.s"
 	@echo "... src/cal_pose.o"
 	@echo "... src/cal_pose.i"
 	@echo "... src/cal_pose.s"
