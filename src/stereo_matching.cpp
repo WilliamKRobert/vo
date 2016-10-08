@@ -46,7 +46,7 @@ static void saveXYZ(const char* filename, const Mat& mat)
 
 //enum Alg { STEREO_BM=0, STEREO_SGBM=1, STEREO_HH=2, STEREO_VAR=3, STEREO_3WAY=4 };
 
-int stereo_matching(Mat &disp8, Mat img1, Mat img2, Alg alg, int numberOfDisparities, int SADWindowSize, float scale, bool no_display)
+int stereo_matching(Mat &disp, Mat img1, Mat img2, Alg alg, int numberOfDisparities, int SADWindowSize, float scale, bool no_display)
 {
     std::string intrinsic_filename = "";
     std::string extrinsic_filename = "";
@@ -206,7 +206,7 @@ int stereo_matching(Mat &disp8, Mat img1, Mat img2, Alg alg, int numberOfDispari
     else if(alg==STEREO_3WAY)
         sgbm->setMode(StereoSGBM::MODE_SGBM_3WAY);
 
-    Mat disp;//, disp8;
+    Mat disp8;//, disp;
     //Mat img1p, img2p, dispp;
     //copyMakeBorder(img1, img1p, 0, 0, numberOfDisparities, 0, IPL_BORDER_REPLICATE);
     //copyMakeBorder(img2, img2p, 0, 0, numberOfDisparities, 0, IPL_BORDER_REPLICATE);

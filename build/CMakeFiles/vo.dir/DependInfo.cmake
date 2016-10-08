@@ -4,17 +4,22 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/audren/vo/src/bucket_features.cpp" "/home/audren/vo/build/CMakeFiles/vo.dir/src/bucket_features.cpp.o"
-  "/home/audren/vo/src/cal_pose.cpp" "/home/audren/vo/build/CMakeFiles/vo.dir/src/cal_pose.cpp.o"
-  "/home/audren/vo/src/main.cpp" "/home/audren/vo/build/CMakeFiles/vo.dir/src/main.cpp.o"
-  "/home/audren/vo/src/stereo_matching.cpp" "/home/audren/vo/build/CMakeFiles/vo.dir/src/stereo_matching.cpp.o"
+  "/Users/Muyuan/Documents/vo/src/bucket_features.cpp" "/Users/Muyuan/Documents/vo/build/CMakeFiles/vo.dir/src/bucket_features.cpp.o"
+  "/Users/Muyuan/Documents/vo/src/cal_pose.cpp" "/Users/Muyuan/Documents/vo/build/CMakeFiles/vo.dir/src/cal_pose.cpp.o"
+  "/Users/Muyuan/Documents/vo/src/main.cpp" "/Users/Muyuan/Documents/vo/build/CMakeFiles/vo.dir/src/main.cpp.o"
+  "/Users/Muyuan/Documents/vo/src/stereo_matching.cpp" "/Users/Muyuan/Documents/vo/build/CMakeFiles/vo.dir/src/stereo_matching.cpp.o"
+  "/Users/Muyuan/Documents/vo/src/tool.cpp" "/Users/Muyuan/Documents/vo/build/CMakeFiles/vo.dir/src/tool.cpp.o"
+  "/Users/Muyuan/Documents/vo/src/triangulation.cpp" "/Users/Muyuan/Documents/vo/build/CMakeFiles/vo.dir/src/triangulation.cpp.o"
   )
-set(CMAKE_CXX_COMPILER_ID "GNU")
+set(CMAKE_CXX_COMPILER_ID "AppleClang")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "/opt/ros/kinetic/include/opencv-3.1.0-dev/opencv"
-  "/opt/ros/kinetic/include/opencv-3.1.0-dev"
+  "/usr/local/Cellar/opencv3/3.1.0_1/include/opencv"
+  "/usr/local/Cellar/opencv3/3.1.0_1/include"
+  "../include"
+  "/usr/local/include/opengv"
+  "/usr/local/include/eigen3"
   )
 
 # Targets to which this target links.

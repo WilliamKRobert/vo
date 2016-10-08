@@ -1,8 +1,10 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/vo.dir/src/cal_pose.cpp.o"
   "CMakeFiles/vo.dir/src/bucket_features.cpp.o"
-  "CMakeFiles/vo.dir/src/stereo_matching.cpp.o"
+  "CMakeFiles/vo.dir/src/cal_pose.cpp.o"
   "CMakeFiles/vo.dir/src/main.cpp.o"
+  "CMakeFiles/vo.dir/src/stereo_matching.cpp.o"
+  "CMakeFiles/vo.dir/src/tool.cpp.o"
+  "CMakeFiles/vo.dir/src/triangulation.cpp.o"
   "vo.pdb"
   "vo"
 )
