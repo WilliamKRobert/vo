@@ -2,10 +2,16 @@
 #include <cmath>
 
 #include <opencv2/calib3d/calib3d.hpp>
+
 #include <opengv/point_cloud/methods.hpp>
 #include <opengv/point_cloud/PointCloudAdapter.hpp>
 #include <opengv/sac/Ransac.hpp>
 #include <opengv/sac_problems/point_cloud/PointCloudSacProblem.hpp>
+
+#include <opengv/relative_pose/methods.hpp>
+#include <opengv/relative_pose/CentralRelativeAdapter.hpp>
+#include <opengv/sac_problems/relative_pose/CentralRelativePoseSacProblem.hpp>
+
 
 #include "cal_pose.h" 
 
@@ -14,7 +20,7 @@ using namespace opengv;
 #include <opencv2/core/eigen.hpp>
 
 
-int cal_pose(Mat img1_l, Mat img1_r, Mat img2_l, Mat img2_r, MatrixXf P1, MatrixXf P2)
+int cal_pose(Mat img1_l, Mat img1_r, Mat img2_l, Mat img2_r, MatrixXf P1, MatrixXf P2, Mat &R, Mat &t, int method)
 {
     // stereo map
     int numberOfDisparities = 128;
@@ -142,7 +148,6 @@ int cal_pose(Mat img1_l, Mat img1_r, Mat img2_l, Mat img2_r, MatrixXf P1, Matrix
 	removeColumn(point3D_1, 3);
 	removeColumn(point3D_2, 3);
 
-	cout <<point3D_1.rows() <<" " <<point3D_1.cols() <<endl;
 	for (int i=0; i<point3D_1.rows(); i++){
 		if ( (abs(point3D_1(i, 0)) >= 50 ) || ( abs(point3D_1(i, 1)) >= 50 ) || ( abs(point3D_1(i, 2)) >= 50 ) || ( abs(point3D_2(i, 0)) >= 50 ) || ( abs(point3D_2(i, 1)) >= 50 ) || ( abs(point3D_2(i, 2)) >= 50 ) ){
 			removeRow(point3D_1, i);
@@ -150,51 +155,70 @@ int cal_pose(Mat img1_l, Mat img1_r, Mat img2_l, Mat img2_r, MatrixXf P1, Matrix
 			i--;
 		}
 	}
-	cout <<point3D_1.rows() <<" " <<point3D_1.cols() <<endl;
 
-	ofstream output("pointCloud.txt");
-	for (int i=0; i<point3D_1.rows(); i++){
-		for (int j=0; j<point3D_1.cols(); j++){
-			output<<point3D_1(i, j) <<" ";
-		}
-		output<< endl;
-	}
+	// ofstream output("pointCloud.txt");
+	// for (int i=0; i<point3D_1.rows(); i++){
+	// 	for (int j=0; j<point3D_1.cols(); j++){
+	// 		output<<point3D_1(i, j) <<" ";
+	// 	}
+	// 	output<< endl;
+	// }
 	
     // absolute orientation problem
-	// 2d point -> Rotation and translation 
+	// 2d point -> eotation and translation 
 	double focal = P1(0,0);
-	Mat E, R, t, mask;
+	Mat E, mask;
 	Point2d pp(P1(0,2), P1(1, 2));
 	
-	E = findEssentialMat(features_next, features_prev, focal, pp, RANSAC, 0.999, 1.0, mask);
-	recoverPose(E, features_next, features_prev, R, t, focal, pp, mask);
-	cout <<R <<endl;
-	cout <<t <<endl;
-	return 0;	
-    // 3d point -> computation of R and t
-	points_t points1(point3D_1.rows()), points2(point3D_1.rows());
-	for (int i=0; i<point3D_1.rows(); i++){
-		point_t a(point3D_1(i, 0), point3D_1(i, 1), point3D_1(i, 2)), b(point3D_2(i, 0), point3D_2(i, 1), point3D_2(i, 2));
-		points1[i] = a;
-	   	points2[i] = b;	
-	}
+	switch( method ) {
+		case 0 :
+	    	E = findEssentialMat(features_prev, features_next, focal, pp, RANSAC, 0.999, 1.0, mask);
+	    	recoverPose(E, features_next, features_prev, R, t, focal, pp, mask);
+			break;
 
-	point_cloud::PointCloudAdapter adapter(points1, points2); 
-	// create a RANSAC object
-	sac::Ransac<sac_problems::point_cloud::PointCloudSacProblem> ransac;
-	// create the sample consensus problem
+    // 3d point -> computation of R and t
+		case 1 :
+			points_t points1(point3D_1.rows()), points2(point3D_1.rows());
+			for (int i=0; i<point3D_1.rows(); i++){
+				point_t a(point3D_1(i, 0), point3D_1(i, 1), point3D_1(i, 2)), b(point3D_2(i, 0), point3D_2(i, 1), point3D_2(i, 2));
+				points1[i] = a;
+			   	points2[i] = b;	
+			}
+
+			point_cloud::PointCloudAdapter adapter(points1, points2); 
+
+			transformation_t threept_transformation = 
+				point_cloud::threept_arun(adapter);
+
+			transformation_t nonlinear_transformation = 
+				point_cloud::optimize_nonlinear(adapter);
+			
+			for (int i=0; i<3; i++){
+				t.at<float>(i, 0) = nonlinear_transformation(i, 3);
+
+				for (int j=0; j<3; j++){
+					R.at<float>(i, j) = nonlinear_transformation(i, j);
+				}
+			}
+	}
+	//// create a RANSAC object
+	//sac::Ransac<sac_problems::point_cloud::PointCloudSacProblem> ransac;
+	//
+	//// create the sample consensus problem
 	//std::shared_ptr<sac_problems::point_cloud::PointCloudSacProblem>
 	//     relposeproblem_ptr(
 	//     new sac_problems::point_cloud::PointCloudSacProblem(adapter) );
+	//
 	//// run ransac
-	return 0;
-//	ransac.sac_model_ = relposeproblem_ptr;
-//	ransac.threshold_ = 0.1; //threshold;
-//	ransac.max_iterations_ = 50;//maxIterations;
-//	ransac.computeModel(0);
-//	// return the result
-//	transformation_t best_transformation =
-//		ransac.model_coefficients_;
-//
+	//ransac.sac_model_ = relposeproblem_ptr;
+	//ransac.threshold_ = 1; //threshold;
+	//ransac.max_iterations_ = 5000;//maxIterations;
+	//ransac.computeModel(0);
+	//
+	//// return the result
+	//transformation_t best_transformation =
+	//	ransac.model_coefficients_;
+	//cout << ransac.model_coefficients_ <<endl;
+
     return 0; 
 }

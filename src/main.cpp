@@ -12,8 +12,7 @@ using namespace cv;
 int main()
 {
     Mat img1_l, img1_r, img2_l, img2_r;
-    //img1_l = imread("/home/audren/vo/test_img/tsukuba_l.png", CV_LOAD_IMAGE_GRAYSCALE);
-    //img1_r = imread("/home/audren/vo/test_img/tsukuba_r.png", CV_LOAD_IMAGE_GRAYSCALE);
+
     img1_l = imread("../test_img/img1_l.png", CV_LOAD_IMAGE_GRAYSCALE);
     img1_r = imread("../test_img/img1_r.png", CV_LOAD_IMAGE_GRAYSCALE);
 
@@ -34,7 +33,16 @@ int main()
                  0, 718.8560, 185.2157,         0,
                  0,        0,   1.0000,         0;
 
-    cal_pose( img1_l, img1_r, img2_l, img2_r, P1, P2 );
+	Mat R = Mat(3, 3, CV_32F, cvScalar(0.));
+   	Mat t = Mat(3, 1, CV_32F, cvScalar(0.));
+	int method = 1;
+    cal_pose( img1_l, img1_r, img2_l, img2_r, P1, P2, R, t, method );
+	
+	cout <<endl;
+	cout <<"Rotation Matrix: " <<endl <<R <<endl;
+	cout <<endl;
+	cout <<"Translation vector: " <<endl <<t <<endl;
+	cout <<endl;
 
     return 0;
 }
