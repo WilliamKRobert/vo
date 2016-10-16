@@ -20,7 +20,11 @@ using namespace std;
 
 enum Alg{ STEREO_BM=0, STEREO_SGBM=1, STEREO_HH=2, STEREO_VAR=3, STEREO_3WAY=4 };
 
-int cal_pose(Mat img1_l, Mat img1_r, Mat img2_l, Mat img2_r, Eigen::MatrixXf P1, Eigen::MatrixXf P2, Mat &R, Mat &t, int method);
+vector<Point2f> stereo_pose(Mat img1_l, Mat img1_r, Mat img2_l, Mat img2_r, Eigen::MatrixXf P1, Eigen::MatrixXf P2, Mat &R, Mat &t);
+int stereo_pose(Mat img1_l, Mat img1_r, Mat img2_l, Mat img2_r, vector<Point2f> &features_prev, vector<Point2f> &features_next, Eigen::MatrixXf P1, Eigen::MatrixXf P2, Mat &R, Mat &t);
+
+vector<Point2f> monocular_pose(Mat img1, Mat img2, Eigen::MatrixXf P, Mat &R, Mat &t);
+int monocular_pose(Mat img1, Mat img2, vector<Point2f> &features_prev, vector<Point2f> &features_next, Eigen::MatrixXf P, Mat &R, Mat &t);
 
 int stereo_matching(Mat &disp8, Mat img1, Mat img2, Alg alg, int numberOfDisparities, int SADWindowSize, float scale, bool no_dispaly);
 
@@ -28,30 +32,6 @@ int bucket_features(Mat I, vector<KeyPoint> &keypoints, int h, int b, int h_brea
 
 Eigen::Vector4f triangulation(Point2i ptInLeftImg, Point2i ptInRightImg, Eigen::MatrixXf P1, Eigen::MatrixXf P2);
 
-void removeRow(Eigen::MatrixXf& matrix, unsigned int rowToRemove);
-
-void removeColumn(Eigen::MatrixXf& matrix, unsigned int colToRemove);
-
-/*
-template<typename _Tp, int _rows, int _cols, int _options, int _maxRows, int _maxCols>
-void eigen2cv(const Eigen::Matrix<_Tp, _rows, _cols, _options, _maxRows, _maxCols>& src, cv::Mat& dst);
-
-template<typename _Tp, int _rows, int _cols, int _options, int _maxRows, int _maxCols>
-void cv2eigen( const Mat& src,
-		               Eigen::Matrix<_Tp, _rows, _cols, _options, _maxRows, _maxCols>& dst );
-
-template<typename _Tp>
-void cv2eigen( const Mat& src,
-		               Eigen::Matrix<_Tp, Eigen::Dynamic, Eigen::Dynamic>& dst );
-
-template<typename _Tp>
-void cv2eigen( const Mat& src,
-		               Eigen::Matrix<_Tp, Eigen::Dynamic, 1>& dst );
-
-template<typename _Tp>
-void cv2eigen( const Mat& src,
-		               Eigen::Matrix<_Tp, 1, Eigen::Dynamic>& dst );
-*/
 #endif
 
 

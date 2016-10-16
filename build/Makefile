@@ -150,33 +150,6 @@ src/bucket_features.cpp.s:
 	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/bucket_features.cpp.s
 .PHONY : src/bucket_features.cpp.s
 
-src/cal_pose.o: src/cal_pose.cpp.o
-
-.PHONY : src/cal_pose.o
-
-# target to build an object file
-src/cal_pose.cpp.o:
-	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/cal_pose.cpp.o
-.PHONY : src/cal_pose.cpp.o
-
-src/cal_pose.i: src/cal_pose.cpp.i
-
-.PHONY : src/cal_pose.i
-
-# target to preprocess a source file
-src/cal_pose.cpp.i:
-	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/cal_pose.cpp.i
-.PHONY : src/cal_pose.cpp.i
-
-src/cal_pose.s: src/cal_pose.cpp.s
-
-.PHONY : src/cal_pose.s
-
-# target to generate assembly for a file
-src/cal_pose.cpp.s:
-	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/cal_pose.cpp.s
-.PHONY : src/cal_pose.cpp.s
-
 src/main.o: src/main.cpp.o
 
 .PHONY : src/main.o
@@ -204,6 +177,33 @@ src/main.cpp.s:
 	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/monocular_pose.o: src/monocular_pose.cpp.o
+
+.PHONY : src/monocular_pose.o
+
+# target to build an object file
+src/monocular_pose.cpp.o:
+	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/monocular_pose.cpp.o
+.PHONY : src/monocular_pose.cpp.o
+
+src/monocular_pose.i: src/monocular_pose.cpp.i
+
+.PHONY : src/monocular_pose.i
+
+# target to preprocess a source file
+src/monocular_pose.cpp.i:
+	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/monocular_pose.cpp.i
+.PHONY : src/monocular_pose.cpp.i
+
+src/monocular_pose.s: src/monocular_pose.cpp.s
+
+.PHONY : src/monocular_pose.s
+
+# target to generate assembly for a file
+src/monocular_pose.cpp.s:
+	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/monocular_pose.cpp.s
+.PHONY : src/monocular_pose.cpp.s
+
 src/stereo_matching.o: src/stereo_matching.cpp.o
 
 .PHONY : src/stereo_matching.o
@@ -230,6 +230,33 @@ src/stereo_matching.s: src/stereo_matching.cpp.s
 src/stereo_matching.cpp.s:
 	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/stereo_matching.cpp.s
 .PHONY : src/stereo_matching.cpp.s
+
+src/stereo_pose.o: src/stereo_pose.cpp.o
+
+.PHONY : src/stereo_pose.o
+
+# target to build an object file
+src/stereo_pose.cpp.o:
+	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/stereo_pose.cpp.o
+.PHONY : src/stereo_pose.cpp.o
+
+src/stereo_pose.i: src/stereo_pose.cpp.i
+
+.PHONY : src/stereo_pose.i
+
+# target to preprocess a source file
+src/stereo_pose.cpp.i:
+	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/stereo_pose.cpp.i
+.PHONY : src/stereo_pose.cpp.i
+
+src/stereo_pose.s: src/stereo_pose.cpp.s
+
+.PHONY : src/stereo_pose.s
+
+# target to generate assembly for a file
+src/stereo_pose.cpp.s:
+	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/stereo_pose.cpp.s
+.PHONY : src/stereo_pose.cpp.s
 
 src/tool.o: src/tool.cpp.o
 
@@ -297,15 +324,18 @@ help:
 	@echo "... src/bucket_features.o"
 	@echo "... src/bucket_features.i"
 	@echo "... src/bucket_features.s"
-	@echo "... src/cal_pose.o"
-	@echo "... src/cal_pose.i"
-	@echo "... src/cal_pose.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/monocular_pose.o"
+	@echo "... src/monocular_pose.i"
+	@echo "... src/monocular_pose.s"
 	@echo "... src/stereo_matching.o"
 	@echo "... src/stereo_matching.i"
 	@echo "... src/stereo_matching.s"
+	@echo "... src/stereo_pose.o"
+	@echo "... src/stereo_pose.i"
+	@echo "... src/stereo_pose.s"
 	@echo "... src/tool.o"
 	@echo "... src/tool.i"
 	@echo "... src/tool.s"

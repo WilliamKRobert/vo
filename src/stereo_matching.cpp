@@ -217,7 +217,7 @@ int stereo_matching(Mat &disp, Mat img1, Mat img2, Alg alg, int numberOfDisparit
     else if( alg == STEREO_SGBM || alg == STEREO_HH || alg == STEREO_3WAY )
         sgbm->compute(img1, img2, disp);
     t = getTickCount() - t;
-    printf("Time elapsed: %fms\n", t*1000/getTickFrequency());
+    // printf("Time elapsed: %fms\n", t*1000/getTickFrequency());
 
     //disp = dispp.colRange(numberOfDisparities, img1p.cols);
     if( alg != STEREO_VAR )
