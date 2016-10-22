@@ -2,10 +2,14 @@
 #include <stdio.h>
 #include <fstream>
 
+#include </usr/local/Cellar/eigen/3.2.8/include/eigen3/Eigen/Dense>
+#include </usr/local/Cellar/eigen/3.2.8/include/eigen3/Eigen/Eigen>
+
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/features2d/features2d.hpp>
 #include "opencv2/xfeatures2d.hpp"
+#include "opencv2/core/eigen.hpp"
 
 #include "cal_pose.h"
 #include "tool.h"
@@ -121,6 +125,7 @@ int test_monocular()
     
 }
 
+
 int test_stereo()
 {
     Mat img1_l, img1_r, img2_l, img2_r;
@@ -153,19 +158,19 @@ int test_stereo()
     P2 << 718.8560,        0, 607.1928, -386.1448,
                  0, 718.8560, 185.2157,         0,
                  0,        0,   1.0000,         0;
+	
     // ======================================================= 
+	// Initialization
+	// =======================================================
 
-	vector<Point2f> features_prev, features_next;
+	//vector<Point2f> features_prev, features_next;
+	Eigen::MatrixXf point3D_1, point3D_2;
 
     Mat R = Mat(3, 3, CV_32F, cvScalar(0.));
     Mat t = Mat(3, 1, CV_32F, cvScalar(0.));
 
-    int64 time = getTickCount();
-    features_prev = stereo_pose( img1_l, img1_r, img2_l, img2_r, P1, P2, R, t );
+    stereo_pose( img1_l, img1_r, img2_l, img2_r, point3D_1, point3D_2, P1, P2, R, t );
 
-    time = getTickCount() - time;
-    //printf( "Time elapsed: %fms\n", time*1000/getTickFrequency() );
-    
     R_res = R.clone();
     t_res = t.clone();	
     Mat previousImg_l = img2_l.clone();
@@ -178,14 +183,17 @@ int test_stereo()
     
 	showRes showTraj(traj);
 	
+	// ======================================================= 
+	// Loop 
+	// =======================================================
+
    	for (int iframe=2; iframe<MAX_FRAME; iframe++){
    		sprintf(filename_l, "/Users/Muyuan/Downloads/dataset/sequences/00/image_0/%06d.png", iframe);
    		sprintf(filename_r, "/Users/Muyuan/Downloads/dataset/sequences/00/image_1/%06d.png", iframe);
    		currentImg_l = imread( filename_l, CV_LOAD_IMAGE_GRAYSCALE);
    		currentImg_r = imread( filename_r, CV_LOAD_IMAGE_GRAYSCALE);
    
-		stereo_pose( previousImg_l, previousImg_r, currentImg_l, currentImg_r, features_prev, features_next, P1, P2, R, t);
-		   
+		stereo_pose( currentImg_l, currentImg_r, point3D_1, point3D_2, P1, P2, R, t);
 
 		//cout <<R << " " <<t <<endl;
 		//cout <<R_res << " "<< t_res << endl;
@@ -194,32 +202,85 @@ int test_stereo()
     		R_res = R * R_res;
 		}
     
-		if ( features_prev.size() < MIN_NUM_FEAT ){
-			vector<uchar> status;
-			featureDetection(previousImg_l, features_prev);
-			featureTracking( previousImg_l, currentImg_l, features_prev, features_next, status);
-		}
+		//if ( features_prev.size() < MIN_NUM_FEAT ){
+		//	vector<uchar> status;
+		//	featureDetection(previousImg_l, features_prev);
+		//	featureTracking( previousImg_l, currentImg_l, features_prev, features_next, status);
+		//}
 		
 		imshow("Camera", currentImg_l);
 		showTraj.updateTraj(t_res);
 
 		previousImg_l = currentImg_l.clone();
     	previousImg_r = currentImg_r.clone();
-		features_prev = features_next;
-    
+    	Eigen::MatrixXf pc;
+		point3D_1 = point3D_2;
+		point3D_2 = pc;
+
     }
     
     return 0;
 
 }
 
+
 int main()
 {
 	int testType = 1;
-	switch (testType){
-		case 0:
-		    test_monocular();
-			break;
-		case 1:	
-		    test_stereo();
-	}}
+	//switch (testType){
+	//	case 0:
+	//	    test_monocular();
+	//		break;
+	//	case 1:	
+	//	    test_stereo();
+	//}
+
+	//return 0;
+
+	
+	Mat img1_l, img1_r, img2_l, img2_r;
+    Mat R_res, t_res;
+    
+	// =======================================================
+	// Preprocessing
+	// =======================================================
+    char filename1_l[200], filename1_r[200], filename2_l[200], filename2_r[200];
+    sprintf( filename1_l, "/Users/Muyuan/Downloads/dataset/sequences/00/image_0/%06d.png", 0);
+    sprintf( filename1_r, "/Users/Muyuan/Downloads/dataset/sequences/00/image_1/%06d.png", 0);
+    sprintf( filename2_l, "/Users/Muyuan/Downloads/dataset/sequences/00/image_0/%06d.png", 1);
+    sprintf( filename2_r, "/Users/Muyuan/Downloads/dataset/sequences/00/image_1/%06d.png", 1);
+    
+   	img1_l = imread( filename1_l, CV_LOAD_IMAGE_GRAYSCALE );
+   	img1_r = imread( filename1_r, CV_LOAD_IMAGE_GRAYSCALE );
+   	img2_l = imread( filename2_l, CV_LOAD_IMAGE_GRAYSCALE );
+   	img2_r = imread( filename2_r, CV_LOAD_IMAGE_GRAYSCALE );
+    
+    if(! img1_l.data || ! img1_r.data || !img2_l.data || !img2_r.data)
+    {
+    	cout <<" Could not open or find the image" << endl;
+        return -1;
+    }
+
+	vector<Point2f> f1_l, f1_r, f2_l, f2_r;
+	featureMatching(img1_l, img1_r, f1_l, f1_r);
+	
+	//featureDetection(img1_l, f1_l);
+	//featureDetection(img2_l, f2_l);
+	//
+	//featureTracking(img1_l, img1_r, img2_l, img2_r, f1_l, f1_r, f2_l, f2_r);
+    //
+    //// visualize the results of optical flow tracking
+    //for (int i=0; i<f1_l.size(); i++){
+    //	line(img1_l, f1_l[i], f1_r[i], Scalar(255,0,0));
+    //	circle(img1_l, f1_l[i], 1, Scalar(0,0,0), -1);
+	//	line(img2_l, f2_l[i], f2_r[i], Scalar(255,0,0));
+    //	circle(img2_l, f2_l[i], 1, Scalar(0,0,0), -1);
+
+    //}
+    //imshow("Optical Flow 1", img1_l);
+	//imshow("Optical Flow 2", img2_l);
+
+    //waitKey(0);
+	return 0;	
+}
+

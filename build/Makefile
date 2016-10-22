@@ -78,6 +78,17 @@ rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
 
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/local/Cellar/cmake/3.6.2/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
+
 # The main all target
 all: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/Muyuan/Documents/vo/build/CMakeFiles /Users/Muyuan/Documents/vo/build/CMakeFiles/progress.marks
@@ -109,6 +120,19 @@ preinstall/fast:
 depend:
 	$(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
+
+#=============================================================================
+# Target rules for targets named test_triangulation
+
+# Build rule for target.
+test_triangulation: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_triangulation
+.PHONY : test_triangulation
+
+# fast build rule for target.
+test_triangulation/fast:
+	$(MAKE) -f CMakeFiles/test_triangulation.dir/build.make CMakeFiles/test_triangulation.dir/build
+.PHONY : test_triangulation/fast
 
 #=============================================================================
 # Target rules for targets named vo
@@ -258,6 +282,33 @@ src/stereo_pose.cpp.s:
 	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/stereo_pose.cpp.s
 .PHONY : src/stereo_pose.cpp.s
 
+src/stereo_sparse_matching.o: src/stereo_sparse_matching.cpp.o
+
+.PHONY : src/stereo_sparse_matching.o
+
+# target to build an object file
+src/stereo_sparse_matching.cpp.o:
+	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/stereo_sparse_matching.cpp.o
+.PHONY : src/stereo_sparse_matching.cpp.o
+
+src/stereo_sparse_matching.i: src/stereo_sparse_matching.cpp.i
+
+.PHONY : src/stereo_sparse_matching.i
+
+# target to preprocess a source file
+src/stereo_sparse_matching.cpp.i:
+	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/stereo_sparse_matching.cpp.i
+.PHONY : src/stereo_sparse_matching.cpp.i
+
+src/stereo_sparse_matching.s: src/stereo_sparse_matching.cpp.s
+
+.PHONY : src/stereo_sparse_matching.s
+
+# target to generate assembly for a file
+src/stereo_sparse_matching.cpp.s:
+	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/stereo_sparse_matching.cpp.s
+.PHONY : src/stereo_sparse_matching.cpp.s
+
 src/tool.o: src/tool.cpp.o
 
 .PHONY : src/tool.o
@@ -291,6 +342,7 @@ src/triangulation.o: src/triangulation.cpp.o
 
 # target to build an object file
 src/triangulation.cpp.o:
+	$(MAKE) -f CMakeFiles/test_triangulation.dir/build.make CMakeFiles/test_triangulation.dir/src/triangulation.cpp.o
 	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/triangulation.cpp.o
 .PHONY : src/triangulation.cpp.o
 
@@ -300,6 +352,7 @@ src/triangulation.i: src/triangulation.cpp.i
 
 # target to preprocess a source file
 src/triangulation.cpp.i:
+	$(MAKE) -f CMakeFiles/test_triangulation.dir/build.make CMakeFiles/test_triangulation.dir/src/triangulation.cpp.i
 	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/triangulation.cpp.i
 .PHONY : src/triangulation.cpp.i
 
@@ -309,8 +362,36 @@ src/triangulation.s: src/triangulation.cpp.s
 
 # target to generate assembly for a file
 src/triangulation.cpp.s:
+	$(MAKE) -f CMakeFiles/test_triangulation.dir/build.make CMakeFiles/test_triangulation.dir/src/triangulation.cpp.s
 	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/triangulation.cpp.s
 .PHONY : src/triangulation.cpp.s
+
+test/test_triangulation.o: test/test_triangulation.cpp.o
+
+.PHONY : test/test_triangulation.o
+
+# target to build an object file
+test/test_triangulation.cpp.o:
+	$(MAKE) -f CMakeFiles/test_triangulation.dir/build.make CMakeFiles/test_triangulation.dir/test/test_triangulation.cpp.o
+.PHONY : test/test_triangulation.cpp.o
+
+test/test_triangulation.i: test/test_triangulation.cpp.i
+
+.PHONY : test/test_triangulation.i
+
+# target to preprocess a source file
+test/test_triangulation.cpp.i:
+	$(MAKE) -f CMakeFiles/test_triangulation.dir/build.make CMakeFiles/test_triangulation.dir/test/test_triangulation.cpp.i
+.PHONY : test/test_triangulation.cpp.i
+
+test/test_triangulation.s: test/test_triangulation.cpp.s
+
+.PHONY : test/test_triangulation.s
+
+# target to generate assembly for a file
+test/test_triangulation.cpp.s:
+	$(MAKE) -f CMakeFiles/test_triangulation.dir/build.make CMakeFiles/test_triangulation.dir/test/test_triangulation.cpp.s
+.PHONY : test/test_triangulation.cpp.s
 
 # Help Target
 help:
@@ -320,6 +401,8 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... test"
+	@echo "... test_triangulation"
 	@echo "... vo"
 	@echo "... src/bucket_features.o"
 	@echo "... src/bucket_features.i"
@@ -336,12 +419,18 @@ help:
 	@echo "... src/stereo_pose.o"
 	@echo "... src/stereo_pose.i"
 	@echo "... src/stereo_pose.s"
+	@echo "... src/stereo_sparse_matching.o"
+	@echo "... src/stereo_sparse_matching.i"
+	@echo "... src/stereo_sparse_matching.s"
 	@echo "... src/tool.o"
 	@echo "... src/tool.i"
 	@echo "... src/tool.s"
 	@echo "... src/triangulation.o"
 	@echo "... src/triangulation.i"
 	@echo "... src/triangulation.s"
+	@echo "... test/test_triangulation.o"
+	@echo "... test/test_triangulation.i"
+	@echo "... test/test_triangulation.s"
 .PHONY : help
 
 

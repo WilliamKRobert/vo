@@ -4,10 +4,11 @@ file(REMOVE_RECURSE
   "CMakeFiles/vo.dir/src/monocular_pose.cpp.o"
   "CMakeFiles/vo.dir/src/stereo_matching.cpp.o"
   "CMakeFiles/vo.dir/src/stereo_pose.cpp.o"
+  "CMakeFiles/vo.dir/src/stereo_sparse_matching.cpp.o"
   "CMakeFiles/vo.dir/src/tool.cpp.o"
   "CMakeFiles/vo.dir/src/triangulation.cpp.o"
-  "vo.pdb"
-  "vo"
+  "bin/vo.pdb"
+  "bin/vo"
 )
 
 # Per-language clean rules from dependency scanning.

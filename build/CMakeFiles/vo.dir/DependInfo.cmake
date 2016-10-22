@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/Muyuan/Documents/vo/src/monocular_pose.cpp" "/Users/Muyuan/Documents/vo/build/CMakeFiles/vo.dir/src/monocular_pose.cpp.o"
   "/Users/Muyuan/Documents/vo/src/stereo_matching.cpp" "/Users/Muyuan/Documents/vo/build/CMakeFiles/vo.dir/src/stereo_matching.cpp.o"
   "/Users/Muyuan/Documents/vo/src/stereo_pose.cpp" "/Users/Muyuan/Documents/vo/build/CMakeFiles/vo.dir/src/stereo_pose.cpp.o"
+  "/Users/Muyuan/Documents/vo/src/stereo_sparse_matching.cpp" "/Users/Muyuan/Documents/vo/build/CMakeFiles/vo.dir/src/stereo_sparse_matching.cpp.o"
   "/Users/Muyuan/Documents/vo/src/tool.cpp" "/Users/Muyuan/Documents/vo/build/CMakeFiles/vo.dir/src/tool.cpp.o"
   "/Users/Muyuan/Documents/vo/src/triangulation.cpp" "/Users/Muyuan/Documents/vo/build/CMakeFiles/vo.dir/src/triangulation.cpp.o"
   )

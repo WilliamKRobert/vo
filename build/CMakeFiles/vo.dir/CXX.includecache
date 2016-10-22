@@ -63,6 +63,10 @@ stdio.h
 -
 fstream
 -
+/usr/local/Cellar/eigen/3.2.8/include/eigen3/Eigen/Dense
+-
+/usr/local/Cellar/eigen/3.2.8/include/eigen3/Eigen/Eigen
+-
 opencv2/core/core.hpp
 -
 opencv2/highgui/highgui.hpp
@@ -71,6 +75,8 @@ opencv2/features2d/features2d.hpp
 -
 opencv2/xfeatures2d.hpp
 /Users/Muyuan/Documents/vo/src/opencv2/xfeatures2d.hpp
+opencv2/core/eigen.hpp
+/Users/Muyuan/Documents/vo/src/opencv2/core/eigen.hpp
 cal_pose.h
 /Users/Muyuan/Documents/vo/src/cal_pose.h
 tool.h
@@ -135,6 +141,18 @@ tool.h
 /Users/Muyuan/Documents/vo/src/tool.h
 opencv2/core/eigen.hpp
 -
+
+/Users/Muyuan/Documents/vo/src/stereo_sparse_matching.cpp
+cal_pose.h
+/Users/Muyuan/Documents/vo/src/cal_pose.h
+tool.h
+/Users/Muyuan/Documents/vo/src/tool.h
+time.h
+-
+opencv2/xfeatures2d.hpp
+/Users/Muyuan/Documents/vo/src/opencv2/xfeatures2d.hpp
+opencv2/features2d/features2d.hpp
+/Users/Muyuan/Documents/vo/src/opencv2/features2d/features2d.hpp
 
 /Users/Muyuan/Documents/vo/src/tool.cpp
 tool.h

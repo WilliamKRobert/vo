@@ -60,13 +60,50 @@ CMAKE_SOURCE_DIR = /Users/Muyuan/Documents/vo
 CMAKE_BINARY_DIR = /Users/Muyuan/Documents/vo/build
 
 #=============================================================================
+# Target rules for target CMakeFiles/test_triangulation.dir
+
+# All Build rule for target.
+CMakeFiles/test_triangulation.dir/all:
+	$(MAKE) -f CMakeFiles/test_triangulation.dir/build.make CMakeFiles/test_triangulation.dir/depend
+	$(MAKE) -f CMakeFiles/test_triangulation.dir/build.make CMakeFiles/test_triangulation.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/Muyuan/Documents/vo/build/CMakeFiles --progress-num=1,2,3 "Built target test_triangulation"
+.PHONY : CMakeFiles/test_triangulation.dir/all
+
+# Include target in all.
+all: CMakeFiles/test_triangulation.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/test_triangulation.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/Muyuan/Documents/vo/build/CMakeFiles 3
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/test_triangulation.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/Muyuan/Documents/vo/build/CMakeFiles 0
+.PHONY : CMakeFiles/test_triangulation.dir/rule
+
+# Convenience name for target.
+test_triangulation: CMakeFiles/test_triangulation.dir/rule
+
+.PHONY : test_triangulation
+
+# clean rule for target.
+CMakeFiles/test_triangulation.dir/clean:
+	$(MAKE) -f CMakeFiles/test_triangulation.dir/build.make CMakeFiles/test_triangulation.dir/clean
+.PHONY : CMakeFiles/test_triangulation.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/test_triangulation.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/vo.dir
 
 # All Build rule for target.
 CMakeFiles/vo.dir/all:
 	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/depend
 	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/Muyuan/Documents/vo/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Built target vo"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/Muyuan/Documents/vo/build/CMakeFiles --progress-num=4,5,6,7,8,9,10,11,12 "Built target vo"
 .PHONY : CMakeFiles/vo.dir/all
 
 # Include target in all.
@@ -76,7 +113,7 @@ all: CMakeFiles/vo.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/vo.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/Muyuan/Documents/vo/build/CMakeFiles 8
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/Muyuan/Documents/vo/build/CMakeFiles 9
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/vo.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/Muyuan/Documents/vo/build/CMakeFiles 0
 .PHONY : CMakeFiles/vo.dir/rule

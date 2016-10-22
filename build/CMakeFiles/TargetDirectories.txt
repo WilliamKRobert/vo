@@ -1,3 +1,5 @@
 /Users/Muyuan/Documents/vo/build/CMakeFiles/edit_cache.dir
 /Users/Muyuan/Documents/vo/build/CMakeFiles/rebuild_cache.dir
+/Users/Muyuan/Documents/vo/build/CMakeFiles/test.dir
+/Users/Muyuan/Documents/vo/build/CMakeFiles/test_triangulation.dir
 /Users/Muyuan/Documents/vo/build/CMakeFiles/vo.dir

@@ -20,13 +20,16 @@ using namespace std;
 
 enum Alg{ STEREO_BM=0, STEREO_SGBM=1, STEREO_HH=2, STEREO_VAR=3, STEREO_3WAY=4 };
 
-vector<Point2f> stereo_pose(Mat img1_l, Mat img1_r, Mat img2_l, Mat img2_r, Eigen::MatrixXf P1, Eigen::MatrixXf P2, Mat &R, Mat &t);
-int stereo_pose(Mat img1_l, Mat img1_r, Mat img2_l, Mat img2_r, vector<Point2f> &features_prev, vector<Point2f> &features_next, Eigen::MatrixXf P1, Eigen::MatrixXf P2, Mat &R, Mat &t);
+void stereo_pose(Mat img1_l, Mat img1_r, Mat img2_l, Mat img2_r, Eigen::MatrixXf &pointCloud_1, Eigen::MatrixXf &pointCloud_2, Eigen::MatrixXf P1, Eigen::MatrixXf P2, Mat &R, Mat &t);
+void stereo_pose(Mat img_l, Mat img_r, Eigen::MatrixXf &pointCloud_1, Eigen::MatrixXf &pointCloud_2, Eigen::MatrixXf P1, Eigen::MatrixXf P2, Mat &R, Mat &t);
 
 vector<Point2f> monocular_pose(Mat img1, Mat img2, Eigen::MatrixXf P, Mat &R, Mat &t);
 int monocular_pose(Mat img1, Mat img2, vector<Point2f> &features_prev, vector<Point2f> &features_next, Eigen::MatrixXf P, Mat &R, Mat &t);
 
+void featureMatching(Mat leftImageGrey, Mat rightImageGrey, vector<Point2f> &k1, vector<Point2f> &k2);
+
 int stereo_matching(Mat &disp8, Mat img1, Mat img2, Alg alg, int numberOfDisparities, int SADWindowSize, float scale, bool no_dispaly);
+int stereo_sparse_matching(Mat img1_l, Mat img1_r, Mat img2_l, Mat img2_r, vector<Point2f> &keypoints1_l, vector<Point2f> &keypoints1_r, vector<Point2f> &keypoints2_l, vector<Point2f> &keypoints2_r);
 
 int bucket_features(Mat I, vector<KeyPoint> &keypoints, int h, int b, int h_break, int b_break, int numCorners);
 
