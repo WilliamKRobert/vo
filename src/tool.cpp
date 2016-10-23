@@ -27,6 +27,49 @@ void removeColumn(Eigen::MatrixXf& matrix, unsigned int colToRemove)
     matrix.conservativeResize(numRows,numCols);
 }
 
+void featureTracking(Mat img1_l, Mat img1_r, Mat img2_l, vector<Point2f>& points1_l, vector<Point2f>& points1_r, vector<Point2f>& points2_l, vector<uchar>& status)	{
+    
+    //this function automatically gets rid of points for which tracking fails
+    
+    vector<float> err;
+    Size winSize=Size(21,21);
+    TermCriteria termcrit=TermCriteria(TermCriteria::COUNT+TermCriteria::EPS, 30, 0.01);
+    
+    calcOpticalFlowPyrLK(img1_l, img1_r, points1_l, points1_r, status, err, winSize, 3, termcrit, 0, 0.001);
+    
+    //getting rid of points for which the KLT tracking failed or those who have gone outside the frame
+    int indexCorrection = 0;
+    for( int i=0; i<status.size(); i++)
+    {  Point2f pt = points1_r.at(i- indexCorrection);
+        if ((status.at(i) == 0)||(pt.x<0)||(pt.y<0))	{
+            if((pt.x<0)||(pt.y<0))	{
+                status.at(i) = 0;
+            }
+            points1_l.erase (points1_l.begin() + (i - indexCorrection));
+            points1_r.erase (points1_r.begin() + (i - indexCorrection));
+            indexCorrection++;
+        }
+        
+    }
+    
+    vector<uchar> status2;
+    calcOpticalFlowPyrLK(img1_l, img2_l, points1_l, points2_l, status2, err, winSize, 3, termcrit, 0, 0.001);
+    
+    indexCorrection = 0;
+    for( int i=0; i<status2.size(); i++)
+    {
+        if ( status2.at(i) == 0 )	{
+            points1_l.erase (points1_l.begin() + (i - indexCorrection));
+            points1_r.erase (points1_r.begin() + (i - indexCorrection));
+            points2_l.erase (points2_l.begin() + (i - indexCorrection));
+            indexCorrection++;
+        }
+        
+    }
+
+    
+}
+
 void featureTracking(Mat img_1, Mat img_2, vector<Point2f>& points1, vector<Point2f>& points2, vector<uchar>& status)	{
     
     //this function automatically gets rid of points for which tracking fails

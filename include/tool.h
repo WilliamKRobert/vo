@@ -21,6 +21,8 @@ void removeRow(Eigen::MatrixXf& matrix, unsigned int rowToRemove);
 
 void removeColumn(Eigen::MatrixXf& matrix, unsigned int colToRemove);
 
+void featureTracking(Mat img1_l, Mat img1_r, Mat img2_l, vector<Point2f>& points1_l, vector<Point2f>& points1_r, vector<Point2f>& points2_l, vector<uchar>& status);
+
 void featureTracking(Mat img_1, Mat img_2, vector<Point2f>& points1, vector<Point2f>& points2, vector<uchar>& status);
 void featureTracking(Mat img1_l, Mat img1_r, Mat img2_l, Mat img2_r, vector<Point2f>& points1_l, vector<Point2f>& points1_r, vector<Point2f>& points2_l, vector<Point2f> &points2_r);
 

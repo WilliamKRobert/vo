@@ -56,6 +56,32 @@ IF (BUILD_TESTS)
 		WORKING_DIRECTORY ${EXECUTALBE_OUTPUT_PATH}
 		COMMAND test_triangulation)
 
+	add_executable( test_monocular test/test_monocular.cpp src/monocular_pose.cpp src/tool.cpp src/bucket_features.cpp)
+	target_link_libraries( test_monocular ${OpenCV_LIBS} )
+	target_link_libraries( test_monocular ${OpenGV_LINK_LIBS} )
+	add_test(NAME test_monocular
+		WORKING_DIRECTORY ${EXECUTALBE_OUTPUT_PATH}
+		COMMAND test_monocular)
+
+	add_executable( test_stereo test/test_stereo.cpp src/stereo_pose.cpp src/tool.cpp src/bucket_features.cpp src/triangulation.cpp src/stereo_sparse_matching.cpp )
+	target_link_libraries( test_stereo ${OpenCV_LIBS} )
+	target_link_libraries( test_stereo ${OpenGV_LINK_LIBS} )
+	add_test(NAME test_stereo
+		WORKING_DIRECTORY ${EXECUTALBE_OUTPUT_PATH}
+		COMMAND test_stereo)
+		
+	add_executable( test_flann test/test_flann.cpp ) 
+	target_link_libraries( test_flann ${OpenCV_LIBS} )
+	add_test(NAME test_flann
+		WORKING_DIRECTORY ${EXECUTALBE_OUTPUT_PATH}
+		COMMAND test_flann)
+
+	add_executable( test_opticalFlow test/test_opticalFlow.cpp src/tool.cpp ) 
+	target_link_libraries( test_opticalFlow ${OpenCV_LIBS} )
+	add_test(NAME test_opticalFlow
+		WORKING_DIRECTORY ${EXECUTALBE_OUTPUT_PATH}
+		COMMAND test_opticalFlow)
+
 ENDIF()
 
 #target_link_libraries(vo ${OpenGV_})

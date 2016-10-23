@@ -49,6 +49,10 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
+  "CMakeFiles/test_flann.dir/DependInfo.cmake"
+  "CMakeFiles/test_stereo.dir/DependInfo.cmake"
+  "CMakeFiles/test_monocular.dir/DependInfo.cmake"
   "CMakeFiles/test_triangulation.dir/DependInfo.cmake"
+  "CMakeFiles/test_opticalFlow.dir/DependInfo.cmake"
   "CMakeFiles/vo.dir/DependInfo.cmake"
   )

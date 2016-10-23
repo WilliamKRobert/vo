@@ -56,6 +56,17 @@ CMAKE_BINARY_DIR = /Users/Muyuan/Documents/vo/build
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/local/Cellar/cmake/3.6.2/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
+
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
@@ -77,17 +88,6 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
-
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/local/Cellar/cmake/3.6.2/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-
-.PHONY : test/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -122,6 +122,45 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named test_flann
+
+# Build rule for target.
+test_flann: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_flann
+.PHONY : test_flann
+
+# fast build rule for target.
+test_flann/fast:
+	$(MAKE) -f CMakeFiles/test_flann.dir/build.make CMakeFiles/test_flann.dir/build
+.PHONY : test_flann/fast
+
+#=============================================================================
+# Target rules for targets named test_stereo
+
+# Build rule for target.
+test_stereo: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_stereo
+.PHONY : test_stereo
+
+# fast build rule for target.
+test_stereo/fast:
+	$(MAKE) -f CMakeFiles/test_stereo.dir/build.make CMakeFiles/test_stereo.dir/build
+.PHONY : test_stereo/fast
+
+#=============================================================================
+# Target rules for targets named test_monocular
+
+# Build rule for target.
+test_monocular: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_monocular
+.PHONY : test_monocular
+
+# fast build rule for target.
+test_monocular/fast:
+	$(MAKE) -f CMakeFiles/test_monocular.dir/build.make CMakeFiles/test_monocular.dir/build
+.PHONY : test_monocular/fast
+
+#=============================================================================
 # Target rules for targets named test_triangulation
 
 # Build rule for target.
@@ -133,6 +172,19 @@ test_triangulation: cmake_check_build_system
 test_triangulation/fast:
 	$(MAKE) -f CMakeFiles/test_triangulation.dir/build.make CMakeFiles/test_triangulation.dir/build
 .PHONY : test_triangulation/fast
+
+#=============================================================================
+# Target rules for targets named test_opticalFlow
+
+# Build rule for target.
+test_opticalFlow: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_opticalFlow
+.PHONY : test_opticalFlow
+
+# fast build rule for target.
+test_opticalFlow/fast:
+	$(MAKE) -f CMakeFiles/test_opticalFlow.dir/build.make CMakeFiles/test_opticalFlow.dir/build
+.PHONY : test_opticalFlow/fast
 
 #=============================================================================
 # Target rules for targets named vo
@@ -153,6 +205,8 @@ src/bucket_features.o: src/bucket_features.cpp.o
 
 # target to build an object file
 src/bucket_features.cpp.o:
+	$(MAKE) -f CMakeFiles/test_stereo.dir/build.make CMakeFiles/test_stereo.dir/src/bucket_features.cpp.o
+	$(MAKE) -f CMakeFiles/test_monocular.dir/build.make CMakeFiles/test_monocular.dir/src/bucket_features.cpp.o
 	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/bucket_features.cpp.o
 .PHONY : src/bucket_features.cpp.o
 
@@ -162,6 +216,8 @@ src/bucket_features.i: src/bucket_features.cpp.i
 
 # target to preprocess a source file
 src/bucket_features.cpp.i:
+	$(MAKE) -f CMakeFiles/test_stereo.dir/build.make CMakeFiles/test_stereo.dir/src/bucket_features.cpp.i
+	$(MAKE) -f CMakeFiles/test_monocular.dir/build.make CMakeFiles/test_monocular.dir/src/bucket_features.cpp.i
 	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/bucket_features.cpp.i
 .PHONY : src/bucket_features.cpp.i
 
@@ -171,8 +227,37 @@ src/bucket_features.s: src/bucket_features.cpp.s
 
 # target to generate assembly for a file
 src/bucket_features.cpp.s:
+	$(MAKE) -f CMakeFiles/test_stereo.dir/build.make CMakeFiles/test_stereo.dir/src/bucket_features.cpp.s
+	$(MAKE) -f CMakeFiles/test_monocular.dir/build.make CMakeFiles/test_monocular.dir/src/bucket_features.cpp.s
 	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/bucket_features.cpp.s
 .PHONY : src/bucket_features.cpp.s
+
+src/disparity_map.o: src/disparity_map.cpp.o
+
+.PHONY : src/disparity_map.o
+
+# target to build an object file
+src/disparity_map.cpp.o:
+	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/disparity_map.cpp.o
+.PHONY : src/disparity_map.cpp.o
+
+src/disparity_map.i: src/disparity_map.cpp.i
+
+.PHONY : src/disparity_map.i
+
+# target to preprocess a source file
+src/disparity_map.cpp.i:
+	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/disparity_map.cpp.i
+.PHONY : src/disparity_map.cpp.i
+
+src/disparity_map.s: src/disparity_map.cpp.s
+
+.PHONY : src/disparity_map.s
+
+# target to generate assembly for a file
+src/disparity_map.cpp.s:
+	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/disparity_map.cpp.s
+.PHONY : src/disparity_map.cpp.s
 
 src/main.o: src/main.cpp.o
 
@@ -207,6 +292,7 @@ src/monocular_pose.o: src/monocular_pose.cpp.o
 
 # target to build an object file
 src/monocular_pose.cpp.o:
+	$(MAKE) -f CMakeFiles/test_monocular.dir/build.make CMakeFiles/test_monocular.dir/src/monocular_pose.cpp.o
 	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/monocular_pose.cpp.o
 .PHONY : src/monocular_pose.cpp.o
 
@@ -216,6 +302,7 @@ src/monocular_pose.i: src/monocular_pose.cpp.i
 
 # target to preprocess a source file
 src/monocular_pose.cpp.i:
+	$(MAKE) -f CMakeFiles/test_monocular.dir/build.make CMakeFiles/test_monocular.dir/src/monocular_pose.cpp.i
 	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/monocular_pose.cpp.i
 .PHONY : src/monocular_pose.cpp.i
 
@@ -225,35 +312,9 @@ src/monocular_pose.s: src/monocular_pose.cpp.s
 
 # target to generate assembly for a file
 src/monocular_pose.cpp.s:
+	$(MAKE) -f CMakeFiles/test_monocular.dir/build.make CMakeFiles/test_monocular.dir/src/monocular_pose.cpp.s
 	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/monocular_pose.cpp.s
 .PHONY : src/monocular_pose.cpp.s
-
-src/stereo_matching.o: src/stereo_matching.cpp.o
-
-.PHONY : src/stereo_matching.o
-
-# target to build an object file
-src/stereo_matching.cpp.o:
-	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/stereo_matching.cpp.o
-.PHONY : src/stereo_matching.cpp.o
-
-src/stereo_matching.i: src/stereo_matching.cpp.i
-
-.PHONY : src/stereo_matching.i
-
-# target to preprocess a source file
-src/stereo_matching.cpp.i:
-	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/stereo_matching.cpp.i
-.PHONY : src/stereo_matching.cpp.i
-
-src/stereo_matching.s: src/stereo_matching.cpp.s
-
-.PHONY : src/stereo_matching.s
-
-# target to generate assembly for a file
-src/stereo_matching.cpp.s:
-	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/stereo_matching.cpp.s
-.PHONY : src/stereo_matching.cpp.s
 
 src/stereo_pose.o: src/stereo_pose.cpp.o
 
@@ -261,6 +322,7 @@ src/stereo_pose.o: src/stereo_pose.cpp.o
 
 # target to build an object file
 src/stereo_pose.cpp.o:
+	$(MAKE) -f CMakeFiles/test_stereo.dir/build.make CMakeFiles/test_stereo.dir/src/stereo_pose.cpp.o
 	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/stereo_pose.cpp.o
 .PHONY : src/stereo_pose.cpp.o
 
@@ -270,6 +332,7 @@ src/stereo_pose.i: src/stereo_pose.cpp.i
 
 # target to preprocess a source file
 src/stereo_pose.cpp.i:
+	$(MAKE) -f CMakeFiles/test_stereo.dir/build.make CMakeFiles/test_stereo.dir/src/stereo_pose.cpp.i
 	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/stereo_pose.cpp.i
 .PHONY : src/stereo_pose.cpp.i
 
@@ -279,6 +342,7 @@ src/stereo_pose.s: src/stereo_pose.cpp.s
 
 # target to generate assembly for a file
 src/stereo_pose.cpp.s:
+	$(MAKE) -f CMakeFiles/test_stereo.dir/build.make CMakeFiles/test_stereo.dir/src/stereo_pose.cpp.s
 	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/stereo_pose.cpp.s
 .PHONY : src/stereo_pose.cpp.s
 
@@ -288,6 +352,7 @@ src/stereo_sparse_matching.o: src/stereo_sparse_matching.cpp.o
 
 # target to build an object file
 src/stereo_sparse_matching.cpp.o:
+	$(MAKE) -f CMakeFiles/test_stereo.dir/build.make CMakeFiles/test_stereo.dir/src/stereo_sparse_matching.cpp.o
 	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/stereo_sparse_matching.cpp.o
 .PHONY : src/stereo_sparse_matching.cpp.o
 
@@ -297,6 +362,7 @@ src/stereo_sparse_matching.i: src/stereo_sparse_matching.cpp.i
 
 # target to preprocess a source file
 src/stereo_sparse_matching.cpp.i:
+	$(MAKE) -f CMakeFiles/test_stereo.dir/build.make CMakeFiles/test_stereo.dir/src/stereo_sparse_matching.cpp.i
 	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/stereo_sparse_matching.cpp.i
 .PHONY : src/stereo_sparse_matching.cpp.i
 
@@ -306,6 +372,7 @@ src/stereo_sparse_matching.s: src/stereo_sparse_matching.cpp.s
 
 # target to generate assembly for a file
 src/stereo_sparse_matching.cpp.s:
+	$(MAKE) -f CMakeFiles/test_stereo.dir/build.make CMakeFiles/test_stereo.dir/src/stereo_sparse_matching.cpp.s
 	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/stereo_sparse_matching.cpp.s
 .PHONY : src/stereo_sparse_matching.cpp.s
 
@@ -315,6 +382,9 @@ src/tool.o: src/tool.cpp.o
 
 # target to build an object file
 src/tool.cpp.o:
+	$(MAKE) -f CMakeFiles/test_stereo.dir/build.make CMakeFiles/test_stereo.dir/src/tool.cpp.o
+	$(MAKE) -f CMakeFiles/test_monocular.dir/build.make CMakeFiles/test_monocular.dir/src/tool.cpp.o
+	$(MAKE) -f CMakeFiles/test_opticalFlow.dir/build.make CMakeFiles/test_opticalFlow.dir/src/tool.cpp.o
 	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/tool.cpp.o
 .PHONY : src/tool.cpp.o
 
@@ -324,6 +394,9 @@ src/tool.i: src/tool.cpp.i
 
 # target to preprocess a source file
 src/tool.cpp.i:
+	$(MAKE) -f CMakeFiles/test_stereo.dir/build.make CMakeFiles/test_stereo.dir/src/tool.cpp.i
+	$(MAKE) -f CMakeFiles/test_monocular.dir/build.make CMakeFiles/test_monocular.dir/src/tool.cpp.i
+	$(MAKE) -f CMakeFiles/test_opticalFlow.dir/build.make CMakeFiles/test_opticalFlow.dir/src/tool.cpp.i
 	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/tool.cpp.i
 .PHONY : src/tool.cpp.i
 
@@ -333,6 +406,9 @@ src/tool.s: src/tool.cpp.s
 
 # target to generate assembly for a file
 src/tool.cpp.s:
+	$(MAKE) -f CMakeFiles/test_stereo.dir/build.make CMakeFiles/test_stereo.dir/src/tool.cpp.s
+	$(MAKE) -f CMakeFiles/test_monocular.dir/build.make CMakeFiles/test_monocular.dir/src/tool.cpp.s
+	$(MAKE) -f CMakeFiles/test_opticalFlow.dir/build.make CMakeFiles/test_opticalFlow.dir/src/tool.cpp.s
 	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/tool.cpp.s
 .PHONY : src/tool.cpp.s
 
@@ -342,6 +418,7 @@ src/triangulation.o: src/triangulation.cpp.o
 
 # target to build an object file
 src/triangulation.cpp.o:
+	$(MAKE) -f CMakeFiles/test_stereo.dir/build.make CMakeFiles/test_stereo.dir/src/triangulation.cpp.o
 	$(MAKE) -f CMakeFiles/test_triangulation.dir/build.make CMakeFiles/test_triangulation.dir/src/triangulation.cpp.o
 	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/triangulation.cpp.o
 .PHONY : src/triangulation.cpp.o
@@ -352,6 +429,7 @@ src/triangulation.i: src/triangulation.cpp.i
 
 # target to preprocess a source file
 src/triangulation.cpp.i:
+	$(MAKE) -f CMakeFiles/test_stereo.dir/build.make CMakeFiles/test_stereo.dir/src/triangulation.cpp.i
 	$(MAKE) -f CMakeFiles/test_triangulation.dir/build.make CMakeFiles/test_triangulation.dir/src/triangulation.cpp.i
 	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/triangulation.cpp.i
 .PHONY : src/triangulation.cpp.i
@@ -362,9 +440,118 @@ src/triangulation.s: src/triangulation.cpp.s
 
 # target to generate assembly for a file
 src/triangulation.cpp.s:
+	$(MAKE) -f CMakeFiles/test_stereo.dir/build.make CMakeFiles/test_stereo.dir/src/triangulation.cpp.s
 	$(MAKE) -f CMakeFiles/test_triangulation.dir/build.make CMakeFiles/test_triangulation.dir/src/triangulation.cpp.s
 	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/triangulation.cpp.s
 .PHONY : src/triangulation.cpp.s
+
+test/test_flann.o: test/test_flann.cpp.o
+
+.PHONY : test/test_flann.o
+
+# target to build an object file
+test/test_flann.cpp.o:
+	$(MAKE) -f CMakeFiles/test_flann.dir/build.make CMakeFiles/test_flann.dir/test/test_flann.cpp.o
+.PHONY : test/test_flann.cpp.o
+
+test/test_flann.i: test/test_flann.cpp.i
+
+.PHONY : test/test_flann.i
+
+# target to preprocess a source file
+test/test_flann.cpp.i:
+	$(MAKE) -f CMakeFiles/test_flann.dir/build.make CMakeFiles/test_flann.dir/test/test_flann.cpp.i
+.PHONY : test/test_flann.cpp.i
+
+test/test_flann.s: test/test_flann.cpp.s
+
+.PHONY : test/test_flann.s
+
+# target to generate assembly for a file
+test/test_flann.cpp.s:
+	$(MAKE) -f CMakeFiles/test_flann.dir/build.make CMakeFiles/test_flann.dir/test/test_flann.cpp.s
+.PHONY : test/test_flann.cpp.s
+
+test/test_monocular.o: test/test_monocular.cpp.o
+
+.PHONY : test/test_monocular.o
+
+# target to build an object file
+test/test_monocular.cpp.o:
+	$(MAKE) -f CMakeFiles/test_monocular.dir/build.make CMakeFiles/test_monocular.dir/test/test_monocular.cpp.o
+.PHONY : test/test_monocular.cpp.o
+
+test/test_monocular.i: test/test_monocular.cpp.i
+
+.PHONY : test/test_monocular.i
+
+# target to preprocess a source file
+test/test_monocular.cpp.i:
+	$(MAKE) -f CMakeFiles/test_monocular.dir/build.make CMakeFiles/test_monocular.dir/test/test_monocular.cpp.i
+.PHONY : test/test_monocular.cpp.i
+
+test/test_monocular.s: test/test_monocular.cpp.s
+
+.PHONY : test/test_monocular.s
+
+# target to generate assembly for a file
+test/test_monocular.cpp.s:
+	$(MAKE) -f CMakeFiles/test_monocular.dir/build.make CMakeFiles/test_monocular.dir/test/test_monocular.cpp.s
+.PHONY : test/test_monocular.cpp.s
+
+test/test_opticalFlow.o: test/test_opticalFlow.cpp.o
+
+.PHONY : test/test_opticalFlow.o
+
+# target to build an object file
+test/test_opticalFlow.cpp.o:
+	$(MAKE) -f CMakeFiles/test_opticalFlow.dir/build.make CMakeFiles/test_opticalFlow.dir/test/test_opticalFlow.cpp.o
+.PHONY : test/test_opticalFlow.cpp.o
+
+test/test_opticalFlow.i: test/test_opticalFlow.cpp.i
+
+.PHONY : test/test_opticalFlow.i
+
+# target to preprocess a source file
+test/test_opticalFlow.cpp.i:
+	$(MAKE) -f CMakeFiles/test_opticalFlow.dir/build.make CMakeFiles/test_opticalFlow.dir/test/test_opticalFlow.cpp.i
+.PHONY : test/test_opticalFlow.cpp.i
+
+test/test_opticalFlow.s: test/test_opticalFlow.cpp.s
+
+.PHONY : test/test_opticalFlow.s
+
+# target to generate assembly for a file
+test/test_opticalFlow.cpp.s:
+	$(MAKE) -f CMakeFiles/test_opticalFlow.dir/build.make CMakeFiles/test_opticalFlow.dir/test/test_opticalFlow.cpp.s
+.PHONY : test/test_opticalFlow.cpp.s
+
+test/test_stereo.o: test/test_stereo.cpp.o
+
+.PHONY : test/test_stereo.o
+
+# target to build an object file
+test/test_stereo.cpp.o:
+	$(MAKE) -f CMakeFiles/test_stereo.dir/build.make CMakeFiles/test_stereo.dir/test/test_stereo.cpp.o
+.PHONY : test/test_stereo.cpp.o
+
+test/test_stereo.i: test/test_stereo.cpp.i
+
+.PHONY : test/test_stereo.i
+
+# target to preprocess a source file
+test/test_stereo.cpp.i:
+	$(MAKE) -f CMakeFiles/test_stereo.dir/build.make CMakeFiles/test_stereo.dir/test/test_stereo.cpp.i
+.PHONY : test/test_stereo.cpp.i
+
+test/test_stereo.s: test/test_stereo.cpp.s
+
+.PHONY : test/test_stereo.s
+
+# target to generate assembly for a file
+test/test_stereo.cpp.s:
+	$(MAKE) -f CMakeFiles/test_stereo.dir/build.make CMakeFiles/test_stereo.dir/test/test_stereo.cpp.s
+.PHONY : test/test_stereo.cpp.s
 
 test/test_triangulation.o: test/test_triangulation.cpp.o
 
@@ -399,23 +586,27 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
+	@echo "... test"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... test"
+	@echo "... test_flann"
+	@echo "... test_stereo"
+	@echo "... test_monocular"
 	@echo "... test_triangulation"
+	@echo "... test_opticalFlow"
 	@echo "... vo"
 	@echo "... src/bucket_features.o"
 	@echo "... src/bucket_features.i"
 	@echo "... src/bucket_features.s"
+	@echo "... src/disparity_map.o"
+	@echo "... src/disparity_map.i"
+	@echo "... src/disparity_map.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
 	@echo "... src/monocular_pose.o"
 	@echo "... src/monocular_pose.i"
 	@echo "... src/monocular_pose.s"
-	@echo "... src/stereo_matching.o"
-	@echo "... src/stereo_matching.i"
-	@echo "... src/stereo_matching.s"
 	@echo "... src/stereo_pose.o"
 	@echo "... src/stereo_pose.i"
 	@echo "... src/stereo_pose.s"
@@ -428,6 +619,18 @@ help:
 	@echo "... src/triangulation.o"
 	@echo "... src/triangulation.i"
 	@echo "... src/triangulation.s"
+	@echo "... test/test_flann.o"
+	@echo "... test/test_flann.i"
+	@echo "... test/test_flann.s"
+	@echo "... test/test_monocular.o"
+	@echo "... test/test_monocular.i"
+	@echo "... test/test_monocular.s"
+	@echo "... test/test_opticalFlow.o"
+	@echo "... test/test_opticalFlow.i"
+	@echo "... test/test_opticalFlow.s"
+	@echo "... test/test_stereo.o"
+	@echo "... test/test_stereo.i"
+	@echo "... test/test_stereo.s"
 	@echo "... test/test_triangulation.o"
 	@echo "... test/test_triangulation.i"
 	@echo "... test/test_triangulation.s"

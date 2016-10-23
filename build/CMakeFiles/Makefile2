@@ -60,13 +60,124 @@ CMAKE_SOURCE_DIR = /Users/Muyuan/Documents/vo
 CMAKE_BINARY_DIR = /Users/Muyuan/Documents/vo/build
 
 #=============================================================================
+# Target rules for target CMakeFiles/test_flann.dir
+
+# All Build rule for target.
+CMakeFiles/test_flann.dir/all:
+	$(MAKE) -f CMakeFiles/test_flann.dir/build.make CMakeFiles/test_flann.dir/depend
+	$(MAKE) -f CMakeFiles/test_flann.dir/build.make CMakeFiles/test_flann.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/Muyuan/Documents/vo/build/CMakeFiles --progress-num=1,2 "Built target test_flann"
+.PHONY : CMakeFiles/test_flann.dir/all
+
+# Include target in all.
+all: CMakeFiles/test_flann.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/test_flann.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/Muyuan/Documents/vo/build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/test_flann.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/Muyuan/Documents/vo/build/CMakeFiles 0
+.PHONY : CMakeFiles/test_flann.dir/rule
+
+# Convenience name for target.
+test_flann: CMakeFiles/test_flann.dir/rule
+
+.PHONY : test_flann
+
+# clean rule for target.
+CMakeFiles/test_flann.dir/clean:
+	$(MAKE) -f CMakeFiles/test_flann.dir/build.make CMakeFiles/test_flann.dir/clean
+.PHONY : CMakeFiles/test_flann.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/test_flann.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/test_stereo.dir
+
+# All Build rule for target.
+CMakeFiles/test_stereo.dir/all:
+	$(MAKE) -f CMakeFiles/test_stereo.dir/build.make CMakeFiles/test_stereo.dir/depend
+	$(MAKE) -f CMakeFiles/test_stereo.dir/build.make CMakeFiles/test_stereo.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/Muyuan/Documents/vo/build/CMakeFiles --progress-num=11,12,13,14,15,16,17 "Built target test_stereo"
+.PHONY : CMakeFiles/test_stereo.dir/all
+
+# Include target in all.
+all: CMakeFiles/test_stereo.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/test_stereo.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/Muyuan/Documents/vo/build/CMakeFiles 7
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/test_stereo.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/Muyuan/Documents/vo/build/CMakeFiles 0
+.PHONY : CMakeFiles/test_stereo.dir/rule
+
+# Convenience name for target.
+test_stereo: CMakeFiles/test_stereo.dir/rule
+
+.PHONY : test_stereo
+
+# clean rule for target.
+CMakeFiles/test_stereo.dir/clean:
+	$(MAKE) -f CMakeFiles/test_stereo.dir/build.make CMakeFiles/test_stereo.dir/clean
+.PHONY : CMakeFiles/test_stereo.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/test_stereo.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/test_monocular.dir
+
+# All Build rule for target.
+CMakeFiles/test_monocular.dir/all:
+	$(MAKE) -f CMakeFiles/test_monocular.dir/build.make CMakeFiles/test_monocular.dir/depend
+	$(MAKE) -f CMakeFiles/test_monocular.dir/build.make CMakeFiles/test_monocular.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/Muyuan/Documents/vo/build/CMakeFiles --progress-num=3,4,5,6,7 "Built target test_monocular"
+.PHONY : CMakeFiles/test_monocular.dir/all
+
+# Include target in all.
+all: CMakeFiles/test_monocular.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/test_monocular.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/Muyuan/Documents/vo/build/CMakeFiles 5
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/test_monocular.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/Muyuan/Documents/vo/build/CMakeFiles 0
+.PHONY : CMakeFiles/test_monocular.dir/rule
+
+# Convenience name for target.
+test_monocular: CMakeFiles/test_monocular.dir/rule
+
+.PHONY : test_monocular
+
+# clean rule for target.
+CMakeFiles/test_monocular.dir/clean:
+	$(MAKE) -f CMakeFiles/test_monocular.dir/build.make CMakeFiles/test_monocular.dir/clean
+.PHONY : CMakeFiles/test_monocular.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/test_monocular.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/test_triangulation.dir
 
 # All Build rule for target.
 CMakeFiles/test_triangulation.dir/all:
 	$(MAKE) -f CMakeFiles/test_triangulation.dir/build.make CMakeFiles/test_triangulation.dir/depend
 	$(MAKE) -f CMakeFiles/test_triangulation.dir/build.make CMakeFiles/test_triangulation.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/Muyuan/Documents/vo/build/CMakeFiles --progress-num=1,2,3 "Built target test_triangulation"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/Muyuan/Documents/vo/build/CMakeFiles --progress-num=18,19,20 "Built target test_triangulation"
 .PHONY : CMakeFiles/test_triangulation.dir/all
 
 # Include target in all.
@@ -97,13 +208,50 @@ clean: CMakeFiles/test_triangulation.dir/clean
 .PHONY : clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/test_opticalFlow.dir
+
+# All Build rule for target.
+CMakeFiles/test_opticalFlow.dir/all:
+	$(MAKE) -f CMakeFiles/test_opticalFlow.dir/build.make CMakeFiles/test_opticalFlow.dir/depend
+	$(MAKE) -f CMakeFiles/test_opticalFlow.dir/build.make CMakeFiles/test_opticalFlow.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/Muyuan/Documents/vo/build/CMakeFiles --progress-num=8,9,10 "Built target test_opticalFlow"
+.PHONY : CMakeFiles/test_opticalFlow.dir/all
+
+# Include target in all.
+all: CMakeFiles/test_opticalFlow.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/test_opticalFlow.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/Muyuan/Documents/vo/build/CMakeFiles 3
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/test_opticalFlow.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/Muyuan/Documents/vo/build/CMakeFiles 0
+.PHONY : CMakeFiles/test_opticalFlow.dir/rule
+
+# Convenience name for target.
+test_opticalFlow: CMakeFiles/test_opticalFlow.dir/rule
+
+.PHONY : test_opticalFlow
+
+# clean rule for target.
+CMakeFiles/test_opticalFlow.dir/clean:
+	$(MAKE) -f CMakeFiles/test_opticalFlow.dir/build.make CMakeFiles/test_opticalFlow.dir/clean
+.PHONY : CMakeFiles/test_opticalFlow.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/test_opticalFlow.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/vo.dir
 
 # All Build rule for target.
 CMakeFiles/vo.dir/all:
 	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/depend
 	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/Muyuan/Documents/vo/build/CMakeFiles --progress-num=4,5,6,7,8,9,10,11,12 "Built target vo"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/Muyuan/Documents/vo/build/CMakeFiles --progress-num=21,22,23,24,25,26,27,28,29 "Built target vo"
 .PHONY : CMakeFiles/vo.dir/all
 
 # Include target in all.
