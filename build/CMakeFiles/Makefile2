@@ -103,7 +103,7 @@ clean: CMakeFiles/test_flann.dir/clean
 CMakeFiles/test_stereo.dir/all:
 	$(MAKE) -f CMakeFiles/test_stereo.dir/build.make CMakeFiles/test_stereo.dir/depend
 	$(MAKE) -f CMakeFiles/test_stereo.dir/build.make CMakeFiles/test_stereo.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/Muyuan/Documents/vo/build/CMakeFiles --progress-num=13,14,15,16,17,18,19 "Built target test_stereo"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/Muyuan/Documents/vo/build/CMakeFiles --progress-num=14,15,16,17,18,19,20 "Built target test_stereo"
 .PHONY : CMakeFiles/test_stereo.dir/all
 
 # Include target in all.
@@ -177,7 +177,7 @@ clean: CMakeFiles/test_monocular.dir/clean
 CMakeFiles/test_triangulation.dir/all:
 	$(MAKE) -f CMakeFiles/test_triangulation.dir/build.make CMakeFiles/test_triangulation.dir/depend
 	$(MAKE) -f CMakeFiles/test_triangulation.dir/build.make CMakeFiles/test_triangulation.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/Muyuan/Documents/vo/build/CMakeFiles --progress-num=20,21,22 "Built target test_triangulation"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/Muyuan/Documents/vo/build/CMakeFiles --progress-num=21,22,23 "Built target test_triangulation"
 .PHONY : CMakeFiles/test_triangulation.dir/all
 
 # Include target in all.
@@ -214,7 +214,7 @@ clean: CMakeFiles/test_triangulation.dir/clean
 CMakeFiles/test_opticalFlow.dir/all:
 	$(MAKE) -f CMakeFiles/test_opticalFlow.dir/build.make CMakeFiles/test_opticalFlow.dir/depend
 	$(MAKE) -f CMakeFiles/test_opticalFlow.dir/build.make CMakeFiles/test_opticalFlow.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/Muyuan/Documents/vo/build/CMakeFiles --progress-num=9,10,11,12 "Built target test_opticalFlow"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/Muyuan/Documents/vo/build/CMakeFiles --progress-num=9,10,11,12,13 "Built target test_opticalFlow"
 .PHONY : CMakeFiles/test_opticalFlow.dir/all
 
 # Include target in all.
@@ -224,7 +224,7 @@ all: CMakeFiles/test_opticalFlow.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/test_opticalFlow.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/Muyuan/Documents/vo/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/Muyuan/Documents/vo/build/CMakeFiles 5
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/test_opticalFlow.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/Muyuan/Documents/vo/build/CMakeFiles 0
 .PHONY : CMakeFiles/test_opticalFlow.dir/rule
@@ -251,7 +251,7 @@ clean: CMakeFiles/test_opticalFlow.dir/clean
 CMakeFiles/vo.dir/all:
 	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/depend
 	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/Muyuan/Documents/vo/build/CMakeFiles --progress-num=23,24,25,26,27,28,29,30,31,32 "Built target vo"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/Muyuan/Documents/vo/build/CMakeFiles --progress-num=24,25,26,27,28,29,30,31,32,33,34 "Built target vo"
 .PHONY : CMakeFiles/vo.dir/all
 
 # Include target in all.
@@ -261,7 +261,7 @@ all: CMakeFiles/vo.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/vo.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/Muyuan/Documents/vo/build/CMakeFiles 10
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/Muyuan/Documents/vo/build/CMakeFiles 11
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/vo.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/Muyuan/Documents/vo/build/CMakeFiles 0
 .PHONY : CMakeFiles/vo.dir/rule

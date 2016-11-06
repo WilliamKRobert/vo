@@ -15,7 +15,7 @@
 
 #include <stdio.h>
 
-#include "cal_pose.h"
+#include "disparity_map.h"
 
 using namespace std;
 using namespace cv;

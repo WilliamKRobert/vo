@@ -81,28 +81,28 @@ CMakeFiles/test_opticalFlow.dir/test/test_opticalFlow.cpp.o.provides: CMakeFiles
 CMakeFiles/test_opticalFlow.dir/test/test_opticalFlow.cpp.o.provides.build: CMakeFiles/test_opticalFlow.dir/test/test_opticalFlow.cpp.o
 
 
-CMakeFiles/test_opticalFlow.dir/src/tool.cpp.o: CMakeFiles/test_opticalFlow.dir/flags.make
-CMakeFiles/test_opticalFlow.dir/src/tool.cpp.o: ../src/tool.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Muyuan/Documents/vo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/test_opticalFlow.dir/src/tool.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/test_opticalFlow.dir/src/tool.cpp.o -c /Users/Muyuan/Documents/vo/src/tool.cpp
+CMakeFiles/test_opticalFlow.dir/src/triangulation.cpp.o: CMakeFiles/test_opticalFlow.dir/flags.make
+CMakeFiles/test_opticalFlow.dir/src/triangulation.cpp.o: ../src/triangulation.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Muyuan/Documents/vo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/test_opticalFlow.dir/src/triangulation.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/test_opticalFlow.dir/src/triangulation.cpp.o -c /Users/Muyuan/Documents/vo/src/triangulation.cpp
 
-CMakeFiles/test_opticalFlow.dir/src/tool.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test_opticalFlow.dir/src/tool.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Muyuan/Documents/vo/src/tool.cpp > CMakeFiles/test_opticalFlow.dir/src/tool.cpp.i
+CMakeFiles/test_opticalFlow.dir/src/triangulation.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test_opticalFlow.dir/src/triangulation.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Muyuan/Documents/vo/src/triangulation.cpp > CMakeFiles/test_opticalFlow.dir/src/triangulation.cpp.i
 
-CMakeFiles/test_opticalFlow.dir/src/tool.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test_opticalFlow.dir/src/tool.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Muyuan/Documents/vo/src/tool.cpp -o CMakeFiles/test_opticalFlow.dir/src/tool.cpp.s
+CMakeFiles/test_opticalFlow.dir/src/triangulation.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test_opticalFlow.dir/src/triangulation.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Muyuan/Documents/vo/src/triangulation.cpp -o CMakeFiles/test_opticalFlow.dir/src/triangulation.cpp.s
 
-CMakeFiles/test_opticalFlow.dir/src/tool.cpp.o.requires:
+CMakeFiles/test_opticalFlow.dir/src/triangulation.cpp.o.requires:
 
-.PHONY : CMakeFiles/test_opticalFlow.dir/src/tool.cpp.o.requires
+.PHONY : CMakeFiles/test_opticalFlow.dir/src/triangulation.cpp.o.requires
 
-CMakeFiles/test_opticalFlow.dir/src/tool.cpp.o.provides: CMakeFiles/test_opticalFlow.dir/src/tool.cpp.o.requires
-	$(MAKE) -f CMakeFiles/test_opticalFlow.dir/build.make CMakeFiles/test_opticalFlow.dir/src/tool.cpp.o.provides.build
-.PHONY : CMakeFiles/test_opticalFlow.dir/src/tool.cpp.o.provides
+CMakeFiles/test_opticalFlow.dir/src/triangulation.cpp.o.provides: CMakeFiles/test_opticalFlow.dir/src/triangulation.cpp.o.requires
+	$(MAKE) -f CMakeFiles/test_opticalFlow.dir/build.make CMakeFiles/test_opticalFlow.dir/src/triangulation.cpp.o.provides.build
+.PHONY : CMakeFiles/test_opticalFlow.dir/src/triangulation.cpp.o.provides
 
-CMakeFiles/test_opticalFlow.dir/src/tool.cpp.o.provides.build: CMakeFiles/test_opticalFlow.dir/src/tool.cpp.o
+CMakeFiles/test_opticalFlow.dir/src/triangulation.cpp.o.provides.build: CMakeFiles/test_opticalFlow.dir/src/triangulation.cpp.o
 
 
 CMakeFiles/test_opticalFlow.dir/src/feature_detector.cpp.o: CMakeFiles/test_opticalFlow.dir/flags.make
@@ -129,18 +129,44 @@ CMakeFiles/test_opticalFlow.dir/src/feature_detector.cpp.o.provides: CMakeFiles/
 CMakeFiles/test_opticalFlow.dir/src/feature_detector.cpp.o.provides.build: CMakeFiles/test_opticalFlow.dir/src/feature_detector.cpp.o
 
 
+CMakeFiles/test_opticalFlow.dir/src/feature_tracking.cpp.o: CMakeFiles/test_opticalFlow.dir/flags.make
+CMakeFiles/test_opticalFlow.dir/src/feature_tracking.cpp.o: ../src/feature_tracking.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Muyuan/Documents/vo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/test_opticalFlow.dir/src/feature_tracking.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/test_opticalFlow.dir/src/feature_tracking.cpp.o -c /Users/Muyuan/Documents/vo/src/feature_tracking.cpp
+
+CMakeFiles/test_opticalFlow.dir/src/feature_tracking.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test_opticalFlow.dir/src/feature_tracking.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Muyuan/Documents/vo/src/feature_tracking.cpp > CMakeFiles/test_opticalFlow.dir/src/feature_tracking.cpp.i
+
+CMakeFiles/test_opticalFlow.dir/src/feature_tracking.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test_opticalFlow.dir/src/feature_tracking.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Muyuan/Documents/vo/src/feature_tracking.cpp -o CMakeFiles/test_opticalFlow.dir/src/feature_tracking.cpp.s
+
+CMakeFiles/test_opticalFlow.dir/src/feature_tracking.cpp.o.requires:
+
+.PHONY : CMakeFiles/test_opticalFlow.dir/src/feature_tracking.cpp.o.requires
+
+CMakeFiles/test_opticalFlow.dir/src/feature_tracking.cpp.o.provides: CMakeFiles/test_opticalFlow.dir/src/feature_tracking.cpp.o.requires
+	$(MAKE) -f CMakeFiles/test_opticalFlow.dir/build.make CMakeFiles/test_opticalFlow.dir/src/feature_tracking.cpp.o.provides.build
+.PHONY : CMakeFiles/test_opticalFlow.dir/src/feature_tracking.cpp.o.provides
+
+CMakeFiles/test_opticalFlow.dir/src/feature_tracking.cpp.o.provides.build: CMakeFiles/test_opticalFlow.dir/src/feature_tracking.cpp.o
+
+
 # Object files for target test_opticalFlow
 test_opticalFlow_OBJECTS = \
 "CMakeFiles/test_opticalFlow.dir/test/test_opticalFlow.cpp.o" \
-"CMakeFiles/test_opticalFlow.dir/src/tool.cpp.o" \
-"CMakeFiles/test_opticalFlow.dir/src/feature_detector.cpp.o"
+"CMakeFiles/test_opticalFlow.dir/src/triangulation.cpp.o" \
+"CMakeFiles/test_opticalFlow.dir/src/feature_detector.cpp.o" \
+"CMakeFiles/test_opticalFlow.dir/src/feature_tracking.cpp.o"
 
 # External object files for target test_opticalFlow
 test_opticalFlow_EXTERNAL_OBJECTS =
 
 bin/test_opticalFlow: CMakeFiles/test_opticalFlow.dir/test/test_opticalFlow.cpp.o
-bin/test_opticalFlow: CMakeFiles/test_opticalFlow.dir/src/tool.cpp.o
+bin/test_opticalFlow: CMakeFiles/test_opticalFlow.dir/src/triangulation.cpp.o
 bin/test_opticalFlow: CMakeFiles/test_opticalFlow.dir/src/feature_detector.cpp.o
+bin/test_opticalFlow: CMakeFiles/test_opticalFlow.dir/src/feature_tracking.cpp.o
 bin/test_opticalFlow: CMakeFiles/test_opticalFlow.dir/build.make
 bin/test_opticalFlow: /usr/local/lib/libopencv_xphoto.3.1.0.dylib
 bin/test_opticalFlow: /usr/local/lib/libopencv_xobjdetect.3.1.0.dylib
@@ -184,7 +210,7 @@ bin/test_opticalFlow: /usr/local/lib/libopencv_imgproc.3.1.0.dylib
 bin/test_opticalFlow: /usr/local/lib/libopencv_flann.3.1.0.dylib
 bin/test_opticalFlow: /usr/local/lib/libopencv_core.3.1.0.dylib
 bin/test_opticalFlow: CMakeFiles/test_opticalFlow.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/Muyuan/Documents/vo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable bin/test_opticalFlow"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/Muyuan/Documents/vo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable bin/test_opticalFlow"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/test_opticalFlow.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -193,8 +219,9 @@ CMakeFiles/test_opticalFlow.dir/build: bin/test_opticalFlow
 .PHONY : CMakeFiles/test_opticalFlow.dir/build
 
 CMakeFiles/test_opticalFlow.dir/requires: CMakeFiles/test_opticalFlow.dir/test/test_opticalFlow.cpp.o.requires
-CMakeFiles/test_opticalFlow.dir/requires: CMakeFiles/test_opticalFlow.dir/src/tool.cpp.o.requires
+CMakeFiles/test_opticalFlow.dir/requires: CMakeFiles/test_opticalFlow.dir/src/triangulation.cpp.o.requires
 CMakeFiles/test_opticalFlow.dir/requires: CMakeFiles/test_opticalFlow.dir/src/feature_detector.cpp.o.requires
+CMakeFiles/test_opticalFlow.dir/requires: CMakeFiles/test_opticalFlow.dir/src/feature_tracking.cpp.o.requires
 
 .PHONY : CMakeFiles/test_opticalFlow.dir/requires
 

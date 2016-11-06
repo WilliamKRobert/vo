@@ -3,14 +3,7 @@
 #include </usr/local/Cellar/eigen/3.2.8/include/eigen3/Eigen/Dense>
 #include </usr/local/Cellar/eigen/3.2.8/include/eigen3/Eigen/Eigen>
 
-#include <opencv2/core/core.hpp>
-#include <opencv2/highgui/highgui.hpp>
-#include <opencv2/features2d/features2d.hpp>
-#include "opencv2/xfeatures2d.hpp"
-#include "opencv2/core/eigen.hpp"
-
-#include "cal_pose.h"
-#include "tool.h"
+#include "triangulation.h"
 
 using namespace std;
 using namespace cv;

@@ -14,6 +14,12 @@ opencv2/core/core.hpp
 opencv2/xfeatures2d.hpp
 -
 
+../include/feature_tracking.h
+iostream
+-
+opencv2/core/core.hpp
+-
+
 ../include/tool.h
 iostream
 -
@@ -30,15 +36,43 @@ opencv2/video/video.hpp
 /usr/local/Cellar/eigen/3.2.8/include/eigen3/Eigen/Eigen
 -
 
+../include/triangulation.h
+opencv2/core/core.hpp
+-
+/usr/local/Cellar/eigen/3.2.8/include/eigen3/Eigen/Dense
+-
+/usr/local/Cellar/eigen/3.2.8/include/eigen3/Eigen/Eigen
+-
+
 /Users/Muyuan/Documents/vo/src/feature_detector.cpp
 feature_detector.h
 /Users/Muyuan/Documents/vo/src/feature_detector.h
+iostream
+-
+opencv2/core/core.hpp
+-
+/usr/local/Cellar/eigen/3.2.8/include/eigen3/Eigen/Dense
+-
+/usr/local/Cellar/eigen/3.2.8/include/eigen3/Eigen/Eigen
+-
 
-/Users/Muyuan/Documents/vo/src/tool.cpp
-tool.h
-/Users/Muyuan/Documents/vo/src/tool.h
+/Users/Muyuan/Documents/vo/src/feature_tracking.cpp
+feature_tracking.h
+/Users/Muyuan/Documents/vo/src/feature_tracking.h
 fstream
 -
+opencv2/core/core.hpp
+-
+opencv2/highgui/highgui.hpp
+-
+opencv2/xfeatures2d.hpp
+-
+opencv2/video/video.hpp
+-
+
+/Users/Muyuan/Documents/vo/src/triangulation.cpp
+triangulation.h
+/Users/Muyuan/Documents/vo/src/triangulation.h
 
 /Users/Muyuan/Documents/vo/test/test_opticalFlow.cpp
 stdio.h
@@ -63,6 +97,8 @@ tool.h
 /Users/Muyuan/Documents/vo/test/tool.h
 feature_detector.h
 /Users/Muyuan/Documents/vo/test/feature_detector.h
+feature_tracking.h
+/Users/Muyuan/Documents/vo/test/feature_tracking.h
 
 /usr/local/Cellar/eigen/3.2.8/include/eigen3/Eigen/Cholesky
 Core

@@ -199,39 +199,6 @@ vo/fast:
 	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/build
 .PHONY : vo/fast
 
-src/bucket_features.o: src/bucket_features.cpp.o
-
-.PHONY : src/bucket_features.o
-
-# target to build an object file
-src/bucket_features.cpp.o:
-	$(MAKE) -f CMakeFiles/test_stereo.dir/build.make CMakeFiles/test_stereo.dir/src/bucket_features.cpp.o
-	$(MAKE) -f CMakeFiles/test_monocular.dir/build.make CMakeFiles/test_monocular.dir/src/bucket_features.cpp.o
-	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/bucket_features.cpp.o
-.PHONY : src/bucket_features.cpp.o
-
-src/bucket_features.i: src/bucket_features.cpp.i
-
-.PHONY : src/bucket_features.i
-
-# target to preprocess a source file
-src/bucket_features.cpp.i:
-	$(MAKE) -f CMakeFiles/test_stereo.dir/build.make CMakeFiles/test_stereo.dir/src/bucket_features.cpp.i
-	$(MAKE) -f CMakeFiles/test_monocular.dir/build.make CMakeFiles/test_monocular.dir/src/bucket_features.cpp.i
-	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/bucket_features.cpp.i
-.PHONY : src/bucket_features.cpp.i
-
-src/bucket_features.s: src/bucket_features.cpp.s
-
-.PHONY : src/bucket_features.s
-
-# target to generate assembly for a file
-src/bucket_features.cpp.s:
-	$(MAKE) -f CMakeFiles/test_stereo.dir/build.make CMakeFiles/test_stereo.dir/src/bucket_features.cpp.s
-	$(MAKE) -f CMakeFiles/test_monocular.dir/build.make CMakeFiles/test_monocular.dir/src/bucket_features.cpp.s
-	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/bucket_features.cpp.s
-.PHONY : src/bucket_features.cpp.s
-
 src/disparity_map.o: src/disparity_map.cpp.o
 
 .PHONY : src/disparity_map.o
@@ -322,6 +289,42 @@ src/feature_matching.cpp.s:
 	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/feature_matching.cpp.s
 .PHONY : src/feature_matching.cpp.s
 
+src/feature_tracking.o: src/feature_tracking.cpp.o
+
+.PHONY : src/feature_tracking.o
+
+# target to build an object file
+src/feature_tracking.cpp.o:
+	$(MAKE) -f CMakeFiles/test_stereo.dir/build.make CMakeFiles/test_stereo.dir/src/feature_tracking.cpp.o
+	$(MAKE) -f CMakeFiles/test_monocular.dir/build.make CMakeFiles/test_monocular.dir/src/feature_tracking.cpp.o
+	$(MAKE) -f CMakeFiles/test_opticalFlow.dir/build.make CMakeFiles/test_opticalFlow.dir/src/feature_tracking.cpp.o
+	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/feature_tracking.cpp.o
+.PHONY : src/feature_tracking.cpp.o
+
+src/feature_tracking.i: src/feature_tracking.cpp.i
+
+.PHONY : src/feature_tracking.i
+
+# target to preprocess a source file
+src/feature_tracking.cpp.i:
+	$(MAKE) -f CMakeFiles/test_stereo.dir/build.make CMakeFiles/test_stereo.dir/src/feature_tracking.cpp.i
+	$(MAKE) -f CMakeFiles/test_monocular.dir/build.make CMakeFiles/test_monocular.dir/src/feature_tracking.cpp.i
+	$(MAKE) -f CMakeFiles/test_opticalFlow.dir/build.make CMakeFiles/test_opticalFlow.dir/src/feature_tracking.cpp.i
+	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/feature_tracking.cpp.i
+.PHONY : src/feature_tracking.cpp.i
+
+src/feature_tracking.s: src/feature_tracking.cpp.s
+
+.PHONY : src/feature_tracking.s
+
+# target to generate assembly for a file
+src/feature_tracking.cpp.s:
+	$(MAKE) -f CMakeFiles/test_stereo.dir/build.make CMakeFiles/test_stereo.dir/src/feature_tracking.cpp.s
+	$(MAKE) -f CMakeFiles/test_monocular.dir/build.make CMakeFiles/test_monocular.dir/src/feature_tracking.cpp.s
+	$(MAKE) -f CMakeFiles/test_opticalFlow.dir/build.make CMakeFiles/test_opticalFlow.dir/src/feature_tracking.cpp.s
+	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/feature_tracking.cpp.s
+.PHONY : src/feature_tracking.cpp.s
+
 src/main.o: src/main.cpp.o
 
 .PHONY : src/main.o
@@ -379,6 +382,33 @@ src/monocular_pose.cpp.s:
 	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/monocular_pose.cpp.s
 .PHONY : src/monocular_pose.cpp.s
 
+src/point_cloud_alignment.o: src/point_cloud_alignment.cpp.o
+
+.PHONY : src/point_cloud_alignment.o
+
+# target to build an object file
+src/point_cloud_alignment.cpp.o:
+	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/point_cloud_alignment.cpp.o
+.PHONY : src/point_cloud_alignment.cpp.o
+
+src/point_cloud_alignment.i: src/point_cloud_alignment.cpp.i
+
+.PHONY : src/point_cloud_alignment.i
+
+# target to preprocess a source file
+src/point_cloud_alignment.cpp.i:
+	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/point_cloud_alignment.cpp.i
+.PHONY : src/point_cloud_alignment.cpp.i
+
+src/point_cloud_alignment.s: src/point_cloud_alignment.cpp.s
+
+.PHONY : src/point_cloud_alignment.s
+
+# target to generate assembly for a file
+src/point_cloud_alignment.cpp.s:
+	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/point_cloud_alignment.cpp.s
+.PHONY : src/point_cloud_alignment.cpp.s
+
 src/stereo_pose.o: src/stereo_pose.cpp.o
 
 .PHONY : src/stereo_pose.o
@@ -417,7 +447,6 @@ src/tool.o: src/tool.cpp.o
 src/tool.cpp.o:
 	$(MAKE) -f CMakeFiles/test_stereo.dir/build.make CMakeFiles/test_stereo.dir/src/tool.cpp.o
 	$(MAKE) -f CMakeFiles/test_monocular.dir/build.make CMakeFiles/test_monocular.dir/src/tool.cpp.o
-	$(MAKE) -f CMakeFiles/test_opticalFlow.dir/build.make CMakeFiles/test_opticalFlow.dir/src/tool.cpp.o
 	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/tool.cpp.o
 .PHONY : src/tool.cpp.o
 
@@ -429,7 +458,6 @@ src/tool.i: src/tool.cpp.i
 src/tool.cpp.i:
 	$(MAKE) -f CMakeFiles/test_stereo.dir/build.make CMakeFiles/test_stereo.dir/src/tool.cpp.i
 	$(MAKE) -f CMakeFiles/test_monocular.dir/build.make CMakeFiles/test_monocular.dir/src/tool.cpp.i
-	$(MAKE) -f CMakeFiles/test_opticalFlow.dir/build.make CMakeFiles/test_opticalFlow.dir/src/tool.cpp.i
 	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/tool.cpp.i
 .PHONY : src/tool.cpp.i
 
@@ -441,7 +469,6 @@ src/tool.s: src/tool.cpp.s
 src/tool.cpp.s:
 	$(MAKE) -f CMakeFiles/test_stereo.dir/build.make CMakeFiles/test_stereo.dir/src/tool.cpp.s
 	$(MAKE) -f CMakeFiles/test_monocular.dir/build.make CMakeFiles/test_monocular.dir/src/tool.cpp.s
-	$(MAKE) -f CMakeFiles/test_opticalFlow.dir/build.make CMakeFiles/test_opticalFlow.dir/src/tool.cpp.s
 	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/tool.cpp.s
 .PHONY : src/tool.cpp.s
 
@@ -453,6 +480,7 @@ src/triangulation.o: src/triangulation.cpp.o
 src/triangulation.cpp.o:
 	$(MAKE) -f CMakeFiles/test_stereo.dir/build.make CMakeFiles/test_stereo.dir/src/triangulation.cpp.o
 	$(MAKE) -f CMakeFiles/test_triangulation.dir/build.make CMakeFiles/test_triangulation.dir/src/triangulation.cpp.o
+	$(MAKE) -f CMakeFiles/test_opticalFlow.dir/build.make CMakeFiles/test_opticalFlow.dir/src/triangulation.cpp.o
 	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/triangulation.cpp.o
 .PHONY : src/triangulation.cpp.o
 
@@ -464,6 +492,7 @@ src/triangulation.i: src/triangulation.cpp.i
 src/triangulation.cpp.i:
 	$(MAKE) -f CMakeFiles/test_stereo.dir/build.make CMakeFiles/test_stereo.dir/src/triangulation.cpp.i
 	$(MAKE) -f CMakeFiles/test_triangulation.dir/build.make CMakeFiles/test_triangulation.dir/src/triangulation.cpp.i
+	$(MAKE) -f CMakeFiles/test_opticalFlow.dir/build.make CMakeFiles/test_opticalFlow.dir/src/triangulation.cpp.i
 	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/triangulation.cpp.i
 .PHONY : src/triangulation.cpp.i
 
@@ -475,6 +504,7 @@ src/triangulation.s: src/triangulation.cpp.s
 src/triangulation.cpp.s:
 	$(MAKE) -f CMakeFiles/test_stereo.dir/build.make CMakeFiles/test_stereo.dir/src/triangulation.cpp.s
 	$(MAKE) -f CMakeFiles/test_triangulation.dir/build.make CMakeFiles/test_triangulation.dir/src/triangulation.cpp.s
+	$(MAKE) -f CMakeFiles/test_opticalFlow.dir/build.make CMakeFiles/test_opticalFlow.dir/src/triangulation.cpp.s
 	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/triangulation.cpp.s
 .PHONY : src/triangulation.cpp.s
 
@@ -628,9 +658,6 @@ help:
 	@echo "... test_triangulation"
 	@echo "... test_opticalFlow"
 	@echo "... vo"
-	@echo "... src/bucket_features.o"
-	@echo "... src/bucket_features.i"
-	@echo "... src/bucket_features.s"
 	@echo "... src/disparity_map.o"
 	@echo "... src/disparity_map.i"
 	@echo "... src/disparity_map.s"
@@ -640,12 +667,18 @@ help:
 	@echo "... src/feature_matching.o"
 	@echo "... src/feature_matching.i"
 	@echo "... src/feature_matching.s"
+	@echo "... src/feature_tracking.o"
+	@echo "... src/feature_tracking.i"
+	@echo "... src/feature_tracking.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
 	@echo "... src/monocular_pose.o"
 	@echo "... src/monocular_pose.i"
 	@echo "... src/monocular_pose.s"
+	@echo "... src/point_cloud_alignment.o"
+	@echo "... src/point_cloud_alignment.i"
+	@echo "... src/point_cloud_alignment.s"
 	@echo "... src/stereo_pose.o"
 	@echo "... src/stereo_pose.i"
 	@echo "... src/stereo_pose.s"

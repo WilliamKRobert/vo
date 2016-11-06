@@ -1,6 +1,7 @@
-#include "cal_pose.h"
+#include "triangulation.h"
 
 using namespace Eigen;
+using namespace cv;
 
 Vector4f triangulation(Point2i ptInLeftImg, Point2i ptInRightImg, MatrixXf P1, MatrixXf P2)
 {

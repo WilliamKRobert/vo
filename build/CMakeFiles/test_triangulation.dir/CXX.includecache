@@ -6,34 +6,8 @@
 
 #IncludeRegexTransform: 
 
-../include/cal_pose.h
+../include/triangulation.h
 opencv2/core/core.hpp
--
-opencv2/highgui/highgui.hpp
--
-opencv2/xfeatures2d.hpp
--
-opencv2/video/video.hpp
--
-/usr/local/Cellar/eigen/3.2.8/include/eigen3/Eigen/Dense
--
-/usr/local/Cellar/eigen/3.2.8/include/eigen3/Eigen/Eigen
--
-iostream
--
-vector
--
-
-../include/tool.h
-iostream
--
-opencv2/core/core.hpp
--
-opencv2/highgui/highgui.hpp
--
-opencv2/xfeatures2d.hpp
--
-opencv2/video/video.hpp
 -
 /usr/local/Cellar/eigen/3.2.8/include/eigen3/Eigen/Dense
 -
@@ -41,8 +15,8 @@ opencv2/video/video.hpp
 -
 
 /Users/Muyuan/Documents/vo/src/triangulation.cpp
-cal_pose.h
-/Users/Muyuan/Documents/vo/src/cal_pose.h
+triangulation.h
+/Users/Muyuan/Documents/vo/src/triangulation.h
 
 /Users/Muyuan/Documents/vo/test/test_triangulation.cpp
 iostream
@@ -51,20 +25,8 @@ iostream
 -
 /usr/local/Cellar/eigen/3.2.8/include/eigen3/Eigen/Eigen
 -
-opencv2/core/core.hpp
--
-opencv2/highgui/highgui.hpp
--
-opencv2/features2d/features2d.hpp
--
-opencv2/xfeatures2d.hpp
-/Users/Muyuan/Documents/vo/test/opencv2/xfeatures2d.hpp
-opencv2/core/eigen.hpp
-/Users/Muyuan/Documents/vo/test/opencv2/core/eigen.hpp
-cal_pose.h
-/Users/Muyuan/Documents/vo/test/cal_pose.h
-tool.h
-/Users/Muyuan/Documents/vo/test/tool.h
+triangulation.h
+/Users/Muyuan/Documents/vo/test/triangulation.h
 
 /usr/local/Cellar/eigen/3.2.8/include/eigen3/Eigen/Cholesky
 Core
@@ -1228,10 +1190,6 @@ complex
 ostream
 -
 
-/usr/local/include/opencv2/core/eigen.hpp
-opencv2/core.hpp
-/usr/local/include/opencv2/core/opencv2/core.hpp
-
 /usr/local/include/opencv2/core/fast_math.hpp
 opencv2/core/cvdef.h
 /usr/local/include/opencv2/core/opencv2/core/cvdef.h
@@ -1358,10 +1316,6 @@ opencv2/core.hpp
 opencv2/flann/miniflann.hpp
 /usr/local/include/opencv2/opencv2/flann/miniflann.hpp
 
-/usr/local/include/opencv2/features2d/features2d.hpp
-opencv2/features2d.hpp
-/usr/local/include/opencv2/features2d/opencv2/features2d.hpp
-
 /usr/local/include/opencv2/flann/config.h
 
 /usr/local/include/opencv2/flann/defines.h
@@ -1383,10 +1337,6 @@ opencv2/videoio.hpp
 /usr/local/include/opencv2/opencv2/videoio.hpp
 opencv2/highgui/highgui_c.h
 /usr/local/include/opencv2/opencv2/highgui/highgui_c.h
-
-/usr/local/include/opencv2/highgui/highgui.hpp
-opencv2/highgui.hpp
-/usr/local/include/opencv2/highgui/opencv2/highgui.hpp
 
 /usr/local/include/opencv2/highgui/highgui_c.h
 opencv2/core/core_c.h
@@ -1537,10 +1487,6 @@ opencv2/imgproc.hpp
 /usr/local/include/opencv2/video/tracking_c.h
 opencv2/imgproc/types_c.h
 /usr/local/include/opencv2/video/opencv2/imgproc/types_c.h
-
-/usr/local/include/opencv2/video/video.hpp
-opencv2/video.hpp
-/usr/local/include/opencv2/video/opencv2/video.hpp
 
 /usr/local/include/opencv2/videoio.hpp
 opencv2/core.hpp

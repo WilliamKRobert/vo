@@ -1,7 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/test_opticalFlow.dir/test/test_opticalFlow.cpp.o"
-  "CMakeFiles/test_opticalFlow.dir/src/tool.cpp.o"
+  "CMakeFiles/test_opticalFlow.dir/src/triangulation.cpp.o"
   "CMakeFiles/test_opticalFlow.dir/src/feature_detector.cpp.o"
+  "CMakeFiles/test_opticalFlow.dir/src/feature_tracking.cpp.o"
   "bin/test_opticalFlow.pdb"
   "bin/test_opticalFlow"
 )

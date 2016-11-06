@@ -15,12 +15,14 @@
 #include "tool.h"
 #include "show_res.h"
 #include "feature_detector.h"
+#include "feature_tracking.h"
 
 using namespace std;
 using namespace cv;
 
 #define MAX_FRAME 4540 
 #define MIN_NUM_FEATURES 2000
+const int FAST_THRESHOLD = 3;
 
 
 int test_monocular()
@@ -92,7 +94,7 @@ int test_monocular()
         
         if ( features_prev.size() < MIN_NUM_FEATURES ){
             vector<uchar> status;
-            featureDetection(previousImg, features_prev);
+            featureDetection(previousImg, features_prev, FAST_THRESHOLD);
             featureTracking( previousImg, currentImg, features_prev, features_next, status);
         }
         

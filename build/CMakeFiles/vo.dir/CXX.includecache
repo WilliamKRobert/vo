@@ -24,12 +24,36 @@ iostream
 vector
 -
 
+../include/disparity_map.h
+opencv2/core/core.hpp
+-
+
 ../include/feature_detector.h
 iostream
 -
 opencv2/core/core.hpp
 -
 opencv2/xfeatures2d.hpp
+-
+
+../include/feature_matching.h
+iostream
+-
+opencv2/core/core.hpp
+-
+
+../include/feature_tracking.h
+iostream
+-
+opencv2/core/core.hpp
+-
+
+../include/point_cloud_alignment.h
+/usr/local/Cellar/eigen/3.2.8/include/eigen3/Eigen/Dense
+-
+/usr/local/Cellar/eigen/3.2.8/include/eigen3/Eigen/Eigen
+-
+opencv2/core/eigen.hpp
 -
 
 ../include/show_res.h
@@ -60,9 +84,13 @@ opencv2/video/video.hpp
 /usr/local/Cellar/eigen/3.2.8/include/eigen3/Eigen/Eigen
 -
 
-/Users/Muyuan/Documents/vo/src/bucket_features.cpp
-cal_pose.h
-/Users/Muyuan/Documents/vo/src/cal_pose.h
+../include/triangulation.h
+opencv2/core/core.hpp
+-
+/usr/local/Cellar/eigen/3.2.8/include/eigen3/Eigen/Dense
+-
+/usr/local/Cellar/eigen/3.2.8/include/eigen3/Eigen/Eigen
+-
 
 /Users/Muyuan/Documents/vo/src/disparity_map.cpp
 opencv2/calib3d/calib3d.hpp
@@ -77,16 +105,24 @@ opencv2/core/utility.hpp
 /Users/Muyuan/Documents/vo/src/opencv2/core/utility.hpp
 stdio.h
 -
-cal_pose.h
-/Users/Muyuan/Documents/vo/src/cal_pose.h
+disparity_map.h
+/Users/Muyuan/Documents/vo/src/disparity_map.h
 
 /Users/Muyuan/Documents/vo/src/feature_detector.cpp
 feature_detector.h
 /Users/Muyuan/Documents/vo/src/feature_detector.h
+iostream
+-
+opencv2/core/core.hpp
+-
+/usr/local/Cellar/eigen/3.2.8/include/eigen3/Eigen/Dense
+-
+/usr/local/Cellar/eigen/3.2.8/include/eigen3/Eigen/Eigen
+-
 
 /Users/Muyuan/Documents/vo/src/feature_matching.cpp
-cal_pose.h
-/Users/Muyuan/Documents/vo/src/cal_pose.h
+feature_matching.h
+/Users/Muyuan/Documents/vo/src/feature_matching.h
 tool.h
 /Users/Muyuan/Documents/vo/src/tool.h
 time.h
@@ -95,6 +131,20 @@ opencv2/xfeatures2d.hpp
 /Users/Muyuan/Documents/vo/src/opencv2/xfeatures2d.hpp
 opencv2/features2d/features2d.hpp
 /Users/Muyuan/Documents/vo/src/opencv2/features2d/features2d.hpp
+
+/Users/Muyuan/Documents/vo/src/feature_tracking.cpp
+feature_tracking.h
+/Users/Muyuan/Documents/vo/src/feature_tracking.h
+fstream
+-
+opencv2/core/core.hpp
+-
+opencv2/highgui/highgui.hpp
+-
+opencv2/xfeatures2d.hpp
+-
+opencv2/video/video.hpp
+-
 
 /Users/Muyuan/Documents/vo/src/main.cpp
 iostream
@@ -125,6 +175,8 @@ show_res.h
 /Users/Muyuan/Documents/vo/src/show_res.h
 feature_detector.h
 /Users/Muyuan/Documents/vo/src/feature_detector.h
+feature_tracking.h
+/Users/Muyuan/Documents/vo/src/feature_tracking.h
 
 /Users/Muyuan/Documents/vo/src/monocular_pose.cpp
 fstream
@@ -142,12 +194,12 @@ feature_detector.h
 opencv2/core/eigen.hpp
 -
 
-/Users/Muyuan/Documents/vo/src/stereo_pose.cpp
-fstream
+/Users/Muyuan/Documents/vo/src/point_cloud_alignment.cpp
+opencv2/core/core.hpp
 -
-cmath
+/usr/local/Cellar/eigen/3.2.8/include/eigen3/Eigen/Dense
 -
-opencv2/calib3d/calib3d.hpp
+/usr/local/Cellar/eigen/3.2.8/include/eigen3/Eigen/Eigen
 -
 opengv/point_cloud/methods.hpp
 -
@@ -163,10 +215,24 @@ opengv/relative_pose/CentralRelativeAdapter.hpp
 -
 opengv/sac_problems/relative_pose/CentralRelativePoseSacProblem.hpp
 -
+opencv2/core/eigen.hpp
+-
+point_cloud_alignment.h
+/Users/Muyuan/Documents/vo/src/point_cloud_alignment.h
+
+/Users/Muyuan/Documents/vo/src/stereo_pose.cpp
+opencv2/calib3d/calib3d.hpp
+-
 cal_pose.h
 /Users/Muyuan/Documents/vo/src/cal_pose.h
 tool.h
 /Users/Muyuan/Documents/vo/src/tool.h
+feature_tracking.h
+/Users/Muyuan/Documents/vo/src/feature_tracking.h
+triangulation.h
+/Users/Muyuan/Documents/vo/src/triangulation.h
+point_cloud_alignment.h
+/Users/Muyuan/Documents/vo/src/point_cloud_alignment.h
 opencv2/core/eigen.hpp
 -
 
@@ -177,8 +243,8 @@ fstream
 -
 
 /Users/Muyuan/Documents/vo/src/triangulation.cpp
-cal_pose.h
-/Users/Muyuan/Documents/vo/src/cal_pose.h
+triangulation.h
+/Users/Muyuan/Documents/vo/src/triangulation.h
 
 /usr/local/Cellar/eigen/3.2.8/include/eigen3/Eigen/Cholesky
 Core

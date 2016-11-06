@@ -15,6 +15,7 @@
 
 #include "tool.h"
 #include "feature_detector.h"
+#include "feature_tracking.h"
 
 using namespace std;
 using namespace cv;
