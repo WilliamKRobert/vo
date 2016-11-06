@@ -6,6 +6,14 @@
 
 #IncludeRegexTransform: 
 
+../include/feature_detector.h
+iostream
+-
+opencv2/core/core.hpp
+-
+opencv2/xfeatures2d.hpp
+-
+
 ../include/tool.h
 iostream
 -
@@ -21,6 +29,10 @@ opencv2/video/video.hpp
 -
 /usr/local/Cellar/eigen/3.2.8/include/eigen3/Eigen/Eigen
 -
+
+/Users/Muyuan/Documents/vo/src/feature_detector.cpp
+feature_detector.h
+/Users/Muyuan/Documents/vo/src/feature_detector.h
 
 /Users/Muyuan/Documents/vo/src/tool.cpp
 tool.h
@@ -49,6 +61,8 @@ opencv2/xfeatures2d.hpp
 /Users/Muyuan/Documents/vo/test/opencv2/xfeatures2d.hpp
 tool.h
 /Users/Muyuan/Documents/vo/test/tool.h
+feature_detector.h
+/Users/Muyuan/Documents/vo/test/feature_detector.h
 
 /usr/local/Cellar/eigen/3.2.8/include/eigen3/Eigen/Cholesky
 Core

@@ -177,28 +177,28 @@ CMakeFiles/test_stereo.dir/src/triangulation.cpp.o.provides: CMakeFiles/test_ste
 CMakeFiles/test_stereo.dir/src/triangulation.cpp.o.provides.build: CMakeFiles/test_stereo.dir/src/triangulation.cpp.o
 
 
-CMakeFiles/test_stereo.dir/src/stereo_sparse_matching.cpp.o: CMakeFiles/test_stereo.dir/flags.make
-CMakeFiles/test_stereo.dir/src/stereo_sparse_matching.cpp.o: ../src/stereo_sparse_matching.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Muyuan/Documents/vo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/test_stereo.dir/src/stereo_sparse_matching.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/test_stereo.dir/src/stereo_sparse_matching.cpp.o -c /Users/Muyuan/Documents/vo/src/stereo_sparse_matching.cpp
+CMakeFiles/test_stereo.dir/src/feature_detector.cpp.o: CMakeFiles/test_stereo.dir/flags.make
+CMakeFiles/test_stereo.dir/src/feature_detector.cpp.o: ../src/feature_detector.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Muyuan/Documents/vo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/test_stereo.dir/src/feature_detector.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/test_stereo.dir/src/feature_detector.cpp.o -c /Users/Muyuan/Documents/vo/src/feature_detector.cpp
 
-CMakeFiles/test_stereo.dir/src/stereo_sparse_matching.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test_stereo.dir/src/stereo_sparse_matching.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Muyuan/Documents/vo/src/stereo_sparse_matching.cpp > CMakeFiles/test_stereo.dir/src/stereo_sparse_matching.cpp.i
+CMakeFiles/test_stereo.dir/src/feature_detector.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test_stereo.dir/src/feature_detector.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Muyuan/Documents/vo/src/feature_detector.cpp > CMakeFiles/test_stereo.dir/src/feature_detector.cpp.i
 
-CMakeFiles/test_stereo.dir/src/stereo_sparse_matching.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test_stereo.dir/src/stereo_sparse_matching.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Muyuan/Documents/vo/src/stereo_sparse_matching.cpp -o CMakeFiles/test_stereo.dir/src/stereo_sparse_matching.cpp.s
+CMakeFiles/test_stereo.dir/src/feature_detector.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test_stereo.dir/src/feature_detector.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Muyuan/Documents/vo/src/feature_detector.cpp -o CMakeFiles/test_stereo.dir/src/feature_detector.cpp.s
 
-CMakeFiles/test_stereo.dir/src/stereo_sparse_matching.cpp.o.requires:
+CMakeFiles/test_stereo.dir/src/feature_detector.cpp.o.requires:
 
-.PHONY : CMakeFiles/test_stereo.dir/src/stereo_sparse_matching.cpp.o.requires
+.PHONY : CMakeFiles/test_stereo.dir/src/feature_detector.cpp.o.requires
 
-CMakeFiles/test_stereo.dir/src/stereo_sparse_matching.cpp.o.provides: CMakeFiles/test_stereo.dir/src/stereo_sparse_matching.cpp.o.requires
-	$(MAKE) -f CMakeFiles/test_stereo.dir/build.make CMakeFiles/test_stereo.dir/src/stereo_sparse_matching.cpp.o.provides.build
-.PHONY : CMakeFiles/test_stereo.dir/src/stereo_sparse_matching.cpp.o.provides
+CMakeFiles/test_stereo.dir/src/feature_detector.cpp.o.provides: CMakeFiles/test_stereo.dir/src/feature_detector.cpp.o.requires
+	$(MAKE) -f CMakeFiles/test_stereo.dir/build.make CMakeFiles/test_stereo.dir/src/feature_detector.cpp.o.provides.build
+.PHONY : CMakeFiles/test_stereo.dir/src/feature_detector.cpp.o.provides
 
-CMakeFiles/test_stereo.dir/src/stereo_sparse_matching.cpp.o.provides.build: CMakeFiles/test_stereo.dir/src/stereo_sparse_matching.cpp.o
+CMakeFiles/test_stereo.dir/src/feature_detector.cpp.o.provides.build: CMakeFiles/test_stereo.dir/src/feature_detector.cpp.o
 
 
 # Object files for target test_stereo
@@ -208,7 +208,7 @@ test_stereo_OBJECTS = \
 "CMakeFiles/test_stereo.dir/src/tool.cpp.o" \
 "CMakeFiles/test_stereo.dir/src/bucket_features.cpp.o" \
 "CMakeFiles/test_stereo.dir/src/triangulation.cpp.o" \
-"CMakeFiles/test_stereo.dir/src/stereo_sparse_matching.cpp.o"
+"CMakeFiles/test_stereo.dir/src/feature_detector.cpp.o"
 
 # External object files for target test_stereo
 test_stereo_EXTERNAL_OBJECTS =
@@ -218,7 +218,7 @@ bin/test_stereo: CMakeFiles/test_stereo.dir/src/stereo_pose.cpp.o
 bin/test_stereo: CMakeFiles/test_stereo.dir/src/tool.cpp.o
 bin/test_stereo: CMakeFiles/test_stereo.dir/src/bucket_features.cpp.o
 bin/test_stereo: CMakeFiles/test_stereo.dir/src/triangulation.cpp.o
-bin/test_stereo: CMakeFiles/test_stereo.dir/src/stereo_sparse_matching.cpp.o
+bin/test_stereo: CMakeFiles/test_stereo.dir/src/feature_detector.cpp.o
 bin/test_stereo: CMakeFiles/test_stereo.dir/build.make
 bin/test_stereo: /usr/local/lib/libopencv_xphoto.3.1.0.dylib
 bin/test_stereo: /usr/local/lib/libopencv_xobjdetect.3.1.0.dylib
@@ -276,7 +276,7 @@ CMakeFiles/test_stereo.dir/requires: CMakeFiles/test_stereo.dir/src/stereo_pose.
 CMakeFiles/test_stereo.dir/requires: CMakeFiles/test_stereo.dir/src/tool.cpp.o.requires
 CMakeFiles/test_stereo.dir/requires: CMakeFiles/test_stereo.dir/src/bucket_features.cpp.o.requires
 CMakeFiles/test_stereo.dir/requires: CMakeFiles/test_stereo.dir/src/triangulation.cpp.o.requires
-CMakeFiles/test_stereo.dir/requires: CMakeFiles/test_stereo.dir/src/stereo_sparse_matching.cpp.o.requires
+CMakeFiles/test_stereo.dir/requires: CMakeFiles/test_stereo.dir/src/feature_detector.cpp.o.requires
 
 .PHONY : CMakeFiles/test_stereo.dir/requires
 

@@ -14,12 +14,13 @@
 #include "cal_pose.h"
 #include "tool.h"
 #include "show_res.h"
+#include "feature_detector.h"
 
 using namespace std;
 using namespace cv;
 
-#define MAX_FRAME 1000
-#define MIN_NUM_FEAT 2000
+#define MAX_FRAME 4540 
+#define MIN_NUM_FEATURES 2000
 
 
 int test_monocular()
@@ -27,10 +28,14 @@ int test_monocular()
     Mat img1, img2;
     Mat R_res, t_res;
     
+	clock_t begin = clock();
+	clock_t end;
+	double elapsed_secs;
+
     // Code for test sequences
     char filename1[200], filename2[200];
-    sprintf( filename1, "/Users/Muyuan/Downloads/dataset/sequences/00/image_0/%06d.png", 0);
-    sprintf( filename2, "/Users/Muyuan/Downloads/dataset/sequences/00/image_0/%06d.png", 1);
+    sprintf( filename1, "%simage_0/%06d.png", DATASET_PATH, 0);
+    sprintf( filename2, "%simage_0/%06d.png", DATASET_PATH, 1);
     
     img1 = imread( filename1, CV_LOAD_IMAGE_GRAYSCALE);
     img2 = imread( filename2, CV_LOAD_IMAGE_GRAYSCALE);
@@ -73,7 +78,7 @@ int test_monocular()
     showRes showTraj(traj);
     
     for (int iframe=2; iframe<MAX_FRAME; iframe++){
-        sprintf(filename, "/Users/Muyuan/Downloads/dataset/sequences/00/image_0/%06d.png", iframe);
+        sprintf(filename, "%simage_0/%06d.png", DATASET_PATH, iframe);
         currentImg = imread( filename, CV_LOAD_IMAGE_GRAYSCALE);
         
         monocular_pose( previousImg, currentImg, features_prev, features_next, P, R, t);
@@ -85,41 +90,33 @@ int test_monocular()
             R_res = R * R_res;
         }
         
-        if ( features_prev.size() < MIN_NUM_FEAT ){
+        if ( features_prev.size() < MIN_NUM_FEATURES ){
             vector<uchar> status;
             featureDetection(previousImg, features_prev);
             featureTracking( previousImg, currentImg, features_prev, features_next, status);
         }
         
-        // ===================================================
-        // Display
-        // ===================================================
         imshow("Camera", currentImg);
         showTraj.updateTraj(t_res);
-        //int x = int(t_res.at<double>(0)) + 300;
-        //int y = int(t_res.at<double>(2)) + 100;
-        //
-        //circle(traj, Point(x, y) ,1, CV_RGB(255,0,0), 2);
-        //
-        //rectangle( traj, Point(10, 30), Point(550, 50), CV_RGB(0,0,0), CV_FILLED);
-        //sprintf(text, "Coordinates: x = %02fm y = %02fm z = %02fm", t_res.at<double>(0), t_res.at<double>(1), t_res.at<double>(2));
-        //putText(traj, text, textOrg, fontFace, fontScale, Scalar::all(255), thickness, 8);
-        //
-        //imshow( "Trajectory", traj );
-        //waitKey(1);
-        // ===================================================
         
         previousImg = currentImg.clone();
         features_prev = features_next;
     }
     
+	end = clock();
+	elapsed_secs = double( end - begin ) / CLOCKS_PER_SEC;
+	cout <<"Total duration for " <<MAX_FRAME << " frames: " <<elapsed_secs <<" s" <<endl;
+	cout << "Frame rate: " <<MAX_FRAME / elapsed_secs <<" fps" <<endl;
+
     cout <<endl;
     cout <<endl;
     cout <<"Rotation Matrix: " <<endl <<R_res <<endl;
     cout <<endl;
     cout <<"Translation vector: " <<endl <<t_res <<endl;
     cout <<endl;
-    
+
+   	waitKey(0);
+
     return 0;
     
     

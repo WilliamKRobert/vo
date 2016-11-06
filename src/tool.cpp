@@ -132,13 +132,6 @@ void featureTracking(Mat img1_l, Mat img1_r, Mat img2_l, Mat img2_r, vector<Poin
     
 }
 
-void featureDetection(Mat img_1, vector<Point2f>& points1)	{   //uses FAST as of now, modify parameters as necessary
-    vector<KeyPoint> keypoints_1;
-    int fast_threshold = 20;
-    bool nonmaxSuppression = true;
-    FAST(img_1, keypoints_1, fast_threshold, nonmaxSuppression);
-    KeyPoint::convert(keypoints_1, points1, vector<int>());
-}
 
 double getAbsoluteScale(int frame_id, int sequence_id, double z_cal)	{
     

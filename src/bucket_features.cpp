@@ -4,6 +4,7 @@
 #include "cal_pose.h"
 
 using namespace Eigen;
+using namespace std;
 
 struct ResponseComparator
 {

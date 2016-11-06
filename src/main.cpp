@@ -14,6 +14,7 @@
 #include "cal_pose.h"
 #include "tool.h"
 #include "show_res.h"
+#include "feature_detector.h"
 
 using namespace std;
 using namespace cv;
@@ -59,20 +60,24 @@ int main()
     0, 718.8560, 185.2157,         0,
     0,        0,   1.0000,         0;
     
-    stereo_pose(img1_l, img1_r, img2_l, f1_l, f2_l, P1, P2, R, t);
+	Mat P = (Mat_<double>(3, 3) <<718.8560, 0, 607.1928, 0, 718.8560, 185.2157, 0, 0, 1);
 
+    //stereo_pose(img1_l, img1_r, img2_l, f1_l, f2_l, P1, P2, P, R, t);
+	vector<uchar> status;
+	featureDetection(img1_l, f1_l);
+	featureTracking(img1_l, img1_r, f1_l, f1_r, status);
 	
     // visualize the results of optical flow tracking
-//    for (int i=0; i<f1_l.size(); i++){
-//    	line(img1_l, f1_l[i], f1_r[i], Scalar(255,0,0));
-//    	circle(img1_l, f1_l[i], 1, Scalar(0,0,0), -1);
-//		line(img1_l, f1_l[i], f2_l[i], Scalar(255,0,0));
-//    	circle(img1_l, f1_l[i], 1, Scalar(0,0,0), -1);
-//
-//    }
-//    imshow("Optical Flow 1", img1_l);
-//
-//    waitKey(0);
+    for (int i=0; i<f1_l.size(); i++){
+    	line(img1_l, f1_l[i], f1_r[i], Scalar(255,0,0));
+    	circle(img1_l, f1_l[i], 1, Scalar(0,0,0), -1);
+		//line(img1_l, f1_l[i], f2_l[i], Scalar(255,0,0));
+    	//circle(img1_l, f1_l[i], 1, Scalar(0,0,0), -1);
+
+    }
+    imshow("Optical Flow 1", img1_l);
+
+    waitKey(0);
 	return 0;
 }
 

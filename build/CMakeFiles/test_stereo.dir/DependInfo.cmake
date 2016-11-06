@@ -5,8 +5,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/Muyuan/Documents/vo/src/bucket_features.cpp" "/Users/Muyuan/Documents/vo/build/CMakeFiles/test_stereo.dir/src/bucket_features.cpp.o"
+  "/Users/Muyuan/Documents/vo/src/feature_detector.cpp" "/Users/Muyuan/Documents/vo/build/CMakeFiles/test_stereo.dir/src/feature_detector.cpp.o"
   "/Users/Muyuan/Documents/vo/src/stereo_pose.cpp" "/Users/Muyuan/Documents/vo/build/CMakeFiles/test_stereo.dir/src/stereo_pose.cpp.o"
-  "/Users/Muyuan/Documents/vo/src/stereo_sparse_matching.cpp" "/Users/Muyuan/Documents/vo/build/CMakeFiles/test_stereo.dir/src/stereo_sparse_matching.cpp.o"
   "/Users/Muyuan/Documents/vo/src/tool.cpp" "/Users/Muyuan/Documents/vo/build/CMakeFiles/test_stereo.dir/src/tool.cpp.o"
   "/Users/Muyuan/Documents/vo/src/triangulation.cpp" "/Users/Muyuan/Documents/vo/build/CMakeFiles/test_stereo.dir/src/triangulation.cpp.o"
   "/Users/Muyuan/Documents/vo/test/test_stereo.cpp" "/Users/Muyuan/Documents/vo/build/CMakeFiles/test_stereo.dir/test/test_stereo.cpp.o"

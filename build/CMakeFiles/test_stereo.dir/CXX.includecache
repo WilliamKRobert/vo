@@ -24,6 +24,14 @@ iostream
 vector
 -
 
+../include/feature_detector.h
+iostream
+-
+opencv2/core/core.hpp
+-
+opencv2/xfeatures2d.hpp
+-
+
 ../include/show_res.h
 iostream
 -
@@ -56,6 +64,10 @@ opencv2/video/video.hpp
 cal_pose.h
 /Users/Muyuan/Documents/vo/src/cal_pose.h
 
+/Users/Muyuan/Documents/vo/src/feature_detector.cpp
+feature_detector.h
+/Users/Muyuan/Documents/vo/src/feature_detector.h
+
 /Users/Muyuan/Documents/vo/src/stereo_pose.cpp
 fstream
 -
@@ -83,18 +95,6 @@ tool.h
 /Users/Muyuan/Documents/vo/src/tool.h
 opencv2/core/eigen.hpp
 -
-
-/Users/Muyuan/Documents/vo/src/stereo_sparse_matching.cpp
-cal_pose.h
-/Users/Muyuan/Documents/vo/src/cal_pose.h
-tool.h
-/Users/Muyuan/Documents/vo/src/tool.h
-time.h
--
-opencv2/xfeatures2d.hpp
-/Users/Muyuan/Documents/vo/src/opencv2/xfeatures2d.hpp
-opencv2/features2d/features2d.hpp
-/Users/Muyuan/Documents/vo/src/opencv2/features2d/features2d.hpp
 
 /Users/Muyuan/Documents/vo/src/tool.cpp
 tool.h
@@ -135,6 +135,8 @@ tool.h
 /Users/Muyuan/Documents/vo/test/tool.h
 show_res.h
 /Users/Muyuan/Documents/vo/test/show_res.h
+feature_detector.h
+/Users/Muyuan/Documents/vo/test/feature_detector.h
 
 /usr/local/Cellar/eigen/3.2.8/include/eigen3/Eigen/Cholesky
 Core

@@ -5,6 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/Muyuan/Documents/vo/src/bucket_features.cpp" "/Users/Muyuan/Documents/vo/build/CMakeFiles/test_monocular.dir/src/bucket_features.cpp.o"
+  "/Users/Muyuan/Documents/vo/src/feature_detector.cpp" "/Users/Muyuan/Documents/vo/build/CMakeFiles/test_monocular.dir/src/feature_detector.cpp.o"
   "/Users/Muyuan/Documents/vo/src/monocular_pose.cpp" "/Users/Muyuan/Documents/vo/build/CMakeFiles/test_monocular.dir/src/monocular_pose.cpp.o"
   "/Users/Muyuan/Documents/vo/src/tool.cpp" "/Users/Muyuan/Documents/vo/build/CMakeFiles/test_monocular.dir/src/tool.cpp.o"
   "/Users/Muyuan/Documents/vo/test/test_monocular.cpp" "/Users/Muyuan/Documents/vo/build/CMakeFiles/test_monocular.dir/test/test_monocular.cpp.o"

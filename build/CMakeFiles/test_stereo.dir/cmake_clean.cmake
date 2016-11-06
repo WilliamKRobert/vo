@@ -4,7 +4,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/test_stereo.dir/src/tool.cpp.o"
   "CMakeFiles/test_stereo.dir/src/bucket_features.cpp.o"
   "CMakeFiles/test_stereo.dir/src/triangulation.cpp.o"
-  "CMakeFiles/test_stereo.dir/src/stereo_sparse_matching.cpp.o"
+  "CMakeFiles/test_stereo.dir/src/feature_detector.cpp.o"
   "bin/test_stereo.pdb"
   "bin/test_stereo"
 )

@@ -259,6 +259,69 @@ src/disparity_map.cpp.s:
 	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/disparity_map.cpp.s
 .PHONY : src/disparity_map.cpp.s
 
+src/feature_detector.o: src/feature_detector.cpp.o
+
+.PHONY : src/feature_detector.o
+
+# target to build an object file
+src/feature_detector.cpp.o:
+	$(MAKE) -f CMakeFiles/test_stereo.dir/build.make CMakeFiles/test_stereo.dir/src/feature_detector.cpp.o
+	$(MAKE) -f CMakeFiles/test_monocular.dir/build.make CMakeFiles/test_monocular.dir/src/feature_detector.cpp.o
+	$(MAKE) -f CMakeFiles/test_opticalFlow.dir/build.make CMakeFiles/test_opticalFlow.dir/src/feature_detector.cpp.o
+	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/feature_detector.cpp.o
+.PHONY : src/feature_detector.cpp.o
+
+src/feature_detector.i: src/feature_detector.cpp.i
+
+.PHONY : src/feature_detector.i
+
+# target to preprocess a source file
+src/feature_detector.cpp.i:
+	$(MAKE) -f CMakeFiles/test_stereo.dir/build.make CMakeFiles/test_stereo.dir/src/feature_detector.cpp.i
+	$(MAKE) -f CMakeFiles/test_monocular.dir/build.make CMakeFiles/test_monocular.dir/src/feature_detector.cpp.i
+	$(MAKE) -f CMakeFiles/test_opticalFlow.dir/build.make CMakeFiles/test_opticalFlow.dir/src/feature_detector.cpp.i
+	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/feature_detector.cpp.i
+.PHONY : src/feature_detector.cpp.i
+
+src/feature_detector.s: src/feature_detector.cpp.s
+
+.PHONY : src/feature_detector.s
+
+# target to generate assembly for a file
+src/feature_detector.cpp.s:
+	$(MAKE) -f CMakeFiles/test_stereo.dir/build.make CMakeFiles/test_stereo.dir/src/feature_detector.cpp.s
+	$(MAKE) -f CMakeFiles/test_monocular.dir/build.make CMakeFiles/test_monocular.dir/src/feature_detector.cpp.s
+	$(MAKE) -f CMakeFiles/test_opticalFlow.dir/build.make CMakeFiles/test_opticalFlow.dir/src/feature_detector.cpp.s
+	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/feature_detector.cpp.s
+.PHONY : src/feature_detector.cpp.s
+
+src/feature_matching.o: src/feature_matching.cpp.o
+
+.PHONY : src/feature_matching.o
+
+# target to build an object file
+src/feature_matching.cpp.o:
+	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/feature_matching.cpp.o
+.PHONY : src/feature_matching.cpp.o
+
+src/feature_matching.i: src/feature_matching.cpp.i
+
+.PHONY : src/feature_matching.i
+
+# target to preprocess a source file
+src/feature_matching.cpp.i:
+	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/feature_matching.cpp.i
+.PHONY : src/feature_matching.cpp.i
+
+src/feature_matching.s: src/feature_matching.cpp.s
+
+.PHONY : src/feature_matching.s
+
+# target to generate assembly for a file
+src/feature_matching.cpp.s:
+	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/feature_matching.cpp.s
+.PHONY : src/feature_matching.cpp.s
+
 src/main.o: src/main.cpp.o
 
 .PHONY : src/main.o
@@ -345,36 +408,6 @@ src/stereo_pose.cpp.s:
 	$(MAKE) -f CMakeFiles/test_stereo.dir/build.make CMakeFiles/test_stereo.dir/src/stereo_pose.cpp.s
 	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/stereo_pose.cpp.s
 .PHONY : src/stereo_pose.cpp.s
-
-src/stereo_sparse_matching.o: src/stereo_sparse_matching.cpp.o
-
-.PHONY : src/stereo_sparse_matching.o
-
-# target to build an object file
-src/stereo_sparse_matching.cpp.o:
-	$(MAKE) -f CMakeFiles/test_stereo.dir/build.make CMakeFiles/test_stereo.dir/src/stereo_sparse_matching.cpp.o
-	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/stereo_sparse_matching.cpp.o
-.PHONY : src/stereo_sparse_matching.cpp.o
-
-src/stereo_sparse_matching.i: src/stereo_sparse_matching.cpp.i
-
-.PHONY : src/stereo_sparse_matching.i
-
-# target to preprocess a source file
-src/stereo_sparse_matching.cpp.i:
-	$(MAKE) -f CMakeFiles/test_stereo.dir/build.make CMakeFiles/test_stereo.dir/src/stereo_sparse_matching.cpp.i
-	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/stereo_sparse_matching.cpp.i
-.PHONY : src/stereo_sparse_matching.cpp.i
-
-src/stereo_sparse_matching.s: src/stereo_sparse_matching.cpp.s
-
-.PHONY : src/stereo_sparse_matching.s
-
-# target to generate assembly for a file
-src/stereo_sparse_matching.cpp.s:
-	$(MAKE) -f CMakeFiles/test_stereo.dir/build.make CMakeFiles/test_stereo.dir/src/stereo_sparse_matching.cpp.s
-	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/stereo_sparse_matching.cpp.s
-.PHONY : src/stereo_sparse_matching.cpp.s
 
 src/tool.o: src/tool.cpp.o
 
@@ -601,6 +634,12 @@ help:
 	@echo "... src/disparity_map.o"
 	@echo "... src/disparity_map.i"
 	@echo "... src/disparity_map.s"
+	@echo "... src/feature_detector.o"
+	@echo "... src/feature_detector.i"
+	@echo "... src/feature_detector.s"
+	@echo "... src/feature_matching.o"
+	@echo "... src/feature_matching.i"
+	@echo "... src/feature_matching.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
@@ -610,9 +649,6 @@ help:
 	@echo "... src/stereo_pose.o"
 	@echo "... src/stereo_pose.i"
 	@echo "... src/stereo_pose.s"
-	@echo "... src/stereo_sparse_matching.o"
-	@echo "... src/stereo_sparse_matching.i"
-	@echo "... src/stereo_sparse_matching.s"
 	@echo "... src/tool.o"
 	@echo "... src/tool.i"
 	@echo "... src/tool.s"

@@ -14,6 +14,7 @@
 #include "opencv2/xfeatures2d.hpp"
 
 #include "tool.h"
+#include "feature_detector.h"
 
 using namespace std;
 using namespace cv;

@@ -105,9 +105,57 @@ CMakeFiles/vo.dir/src/disparity_map.cpp.o.provides: CMakeFiles/vo.dir/src/dispar
 CMakeFiles/vo.dir/src/disparity_map.cpp.o.provides.build: CMakeFiles/vo.dir/src/disparity_map.cpp.o
 
 
+CMakeFiles/vo.dir/src/feature_detector.cpp.o: CMakeFiles/vo.dir/flags.make
+CMakeFiles/vo.dir/src/feature_detector.cpp.o: ../src/feature_detector.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Muyuan/Documents/vo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/vo.dir/src/feature_detector.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/vo.dir/src/feature_detector.cpp.o -c /Users/Muyuan/Documents/vo/src/feature_detector.cpp
+
+CMakeFiles/vo.dir/src/feature_detector.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/vo.dir/src/feature_detector.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Muyuan/Documents/vo/src/feature_detector.cpp > CMakeFiles/vo.dir/src/feature_detector.cpp.i
+
+CMakeFiles/vo.dir/src/feature_detector.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/vo.dir/src/feature_detector.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Muyuan/Documents/vo/src/feature_detector.cpp -o CMakeFiles/vo.dir/src/feature_detector.cpp.s
+
+CMakeFiles/vo.dir/src/feature_detector.cpp.o.requires:
+
+.PHONY : CMakeFiles/vo.dir/src/feature_detector.cpp.o.requires
+
+CMakeFiles/vo.dir/src/feature_detector.cpp.o.provides: CMakeFiles/vo.dir/src/feature_detector.cpp.o.requires
+	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/feature_detector.cpp.o.provides.build
+.PHONY : CMakeFiles/vo.dir/src/feature_detector.cpp.o.provides
+
+CMakeFiles/vo.dir/src/feature_detector.cpp.o.provides.build: CMakeFiles/vo.dir/src/feature_detector.cpp.o
+
+
+CMakeFiles/vo.dir/src/feature_matching.cpp.o: CMakeFiles/vo.dir/flags.make
+CMakeFiles/vo.dir/src/feature_matching.cpp.o: ../src/feature_matching.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Muyuan/Documents/vo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/vo.dir/src/feature_matching.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/vo.dir/src/feature_matching.cpp.o -c /Users/Muyuan/Documents/vo/src/feature_matching.cpp
+
+CMakeFiles/vo.dir/src/feature_matching.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/vo.dir/src/feature_matching.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Muyuan/Documents/vo/src/feature_matching.cpp > CMakeFiles/vo.dir/src/feature_matching.cpp.i
+
+CMakeFiles/vo.dir/src/feature_matching.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/vo.dir/src/feature_matching.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Muyuan/Documents/vo/src/feature_matching.cpp -o CMakeFiles/vo.dir/src/feature_matching.cpp.s
+
+CMakeFiles/vo.dir/src/feature_matching.cpp.o.requires:
+
+.PHONY : CMakeFiles/vo.dir/src/feature_matching.cpp.o.requires
+
+CMakeFiles/vo.dir/src/feature_matching.cpp.o.provides: CMakeFiles/vo.dir/src/feature_matching.cpp.o.requires
+	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/feature_matching.cpp.o.provides.build
+.PHONY : CMakeFiles/vo.dir/src/feature_matching.cpp.o.provides
+
+CMakeFiles/vo.dir/src/feature_matching.cpp.o.provides.build: CMakeFiles/vo.dir/src/feature_matching.cpp.o
+
+
 CMakeFiles/vo.dir/src/main.cpp.o: CMakeFiles/vo.dir/flags.make
 CMakeFiles/vo.dir/src/main.cpp.o: ../src/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Muyuan/Documents/vo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/vo.dir/src/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Muyuan/Documents/vo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/vo.dir/src/main.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/vo.dir/src/main.cpp.o -c /Users/Muyuan/Documents/vo/src/main.cpp
 
 CMakeFiles/vo.dir/src/main.cpp.i: cmake_force
@@ -131,7 +179,7 @@ CMakeFiles/vo.dir/src/main.cpp.o.provides.build: CMakeFiles/vo.dir/src/main.cpp.
 
 CMakeFiles/vo.dir/src/monocular_pose.cpp.o: CMakeFiles/vo.dir/flags.make
 CMakeFiles/vo.dir/src/monocular_pose.cpp.o: ../src/monocular_pose.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Muyuan/Documents/vo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/vo.dir/src/monocular_pose.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Muyuan/Documents/vo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/vo.dir/src/monocular_pose.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/vo.dir/src/monocular_pose.cpp.o -c /Users/Muyuan/Documents/vo/src/monocular_pose.cpp
 
 CMakeFiles/vo.dir/src/monocular_pose.cpp.i: cmake_force
@@ -155,7 +203,7 @@ CMakeFiles/vo.dir/src/monocular_pose.cpp.o.provides.build: CMakeFiles/vo.dir/src
 
 CMakeFiles/vo.dir/src/stereo_pose.cpp.o: CMakeFiles/vo.dir/flags.make
 CMakeFiles/vo.dir/src/stereo_pose.cpp.o: ../src/stereo_pose.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Muyuan/Documents/vo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/vo.dir/src/stereo_pose.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Muyuan/Documents/vo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/vo.dir/src/stereo_pose.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/vo.dir/src/stereo_pose.cpp.o -c /Users/Muyuan/Documents/vo/src/stereo_pose.cpp
 
 CMakeFiles/vo.dir/src/stereo_pose.cpp.i: cmake_force
@@ -177,33 +225,9 @@ CMakeFiles/vo.dir/src/stereo_pose.cpp.o.provides: CMakeFiles/vo.dir/src/stereo_p
 CMakeFiles/vo.dir/src/stereo_pose.cpp.o.provides.build: CMakeFiles/vo.dir/src/stereo_pose.cpp.o
 
 
-CMakeFiles/vo.dir/src/stereo_sparse_matching.cpp.o: CMakeFiles/vo.dir/flags.make
-CMakeFiles/vo.dir/src/stereo_sparse_matching.cpp.o: ../src/stereo_sparse_matching.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Muyuan/Documents/vo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/vo.dir/src/stereo_sparse_matching.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/vo.dir/src/stereo_sparse_matching.cpp.o -c /Users/Muyuan/Documents/vo/src/stereo_sparse_matching.cpp
-
-CMakeFiles/vo.dir/src/stereo_sparse_matching.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/vo.dir/src/stereo_sparse_matching.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Muyuan/Documents/vo/src/stereo_sparse_matching.cpp > CMakeFiles/vo.dir/src/stereo_sparse_matching.cpp.i
-
-CMakeFiles/vo.dir/src/stereo_sparse_matching.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/vo.dir/src/stereo_sparse_matching.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Muyuan/Documents/vo/src/stereo_sparse_matching.cpp -o CMakeFiles/vo.dir/src/stereo_sparse_matching.cpp.s
-
-CMakeFiles/vo.dir/src/stereo_sparse_matching.cpp.o.requires:
-
-.PHONY : CMakeFiles/vo.dir/src/stereo_sparse_matching.cpp.o.requires
-
-CMakeFiles/vo.dir/src/stereo_sparse_matching.cpp.o.provides: CMakeFiles/vo.dir/src/stereo_sparse_matching.cpp.o.requires
-	$(MAKE) -f CMakeFiles/vo.dir/build.make CMakeFiles/vo.dir/src/stereo_sparse_matching.cpp.o.provides.build
-.PHONY : CMakeFiles/vo.dir/src/stereo_sparse_matching.cpp.o.provides
-
-CMakeFiles/vo.dir/src/stereo_sparse_matching.cpp.o.provides.build: CMakeFiles/vo.dir/src/stereo_sparse_matching.cpp.o
-
-
 CMakeFiles/vo.dir/src/tool.cpp.o: CMakeFiles/vo.dir/flags.make
 CMakeFiles/vo.dir/src/tool.cpp.o: ../src/tool.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Muyuan/Documents/vo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/vo.dir/src/tool.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Muyuan/Documents/vo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/vo.dir/src/tool.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/vo.dir/src/tool.cpp.o -c /Users/Muyuan/Documents/vo/src/tool.cpp
 
 CMakeFiles/vo.dir/src/tool.cpp.i: cmake_force
@@ -227,7 +251,7 @@ CMakeFiles/vo.dir/src/tool.cpp.o.provides.build: CMakeFiles/vo.dir/src/tool.cpp.
 
 CMakeFiles/vo.dir/src/triangulation.cpp.o: CMakeFiles/vo.dir/flags.make
 CMakeFiles/vo.dir/src/triangulation.cpp.o: ../src/triangulation.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Muyuan/Documents/vo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/vo.dir/src/triangulation.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Muyuan/Documents/vo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/vo.dir/src/triangulation.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/vo.dir/src/triangulation.cpp.o -c /Users/Muyuan/Documents/vo/src/triangulation.cpp
 
 CMakeFiles/vo.dir/src/triangulation.cpp.i: cmake_force
@@ -253,10 +277,11 @@ CMakeFiles/vo.dir/src/triangulation.cpp.o.provides.build: CMakeFiles/vo.dir/src/
 vo_OBJECTS = \
 "CMakeFiles/vo.dir/src/bucket_features.cpp.o" \
 "CMakeFiles/vo.dir/src/disparity_map.cpp.o" \
+"CMakeFiles/vo.dir/src/feature_detector.cpp.o" \
+"CMakeFiles/vo.dir/src/feature_matching.cpp.o" \
 "CMakeFiles/vo.dir/src/main.cpp.o" \
 "CMakeFiles/vo.dir/src/monocular_pose.cpp.o" \
 "CMakeFiles/vo.dir/src/stereo_pose.cpp.o" \
-"CMakeFiles/vo.dir/src/stereo_sparse_matching.cpp.o" \
 "CMakeFiles/vo.dir/src/tool.cpp.o" \
 "CMakeFiles/vo.dir/src/triangulation.cpp.o"
 
@@ -265,10 +290,11 @@ vo_EXTERNAL_OBJECTS =
 
 bin/vo: CMakeFiles/vo.dir/src/bucket_features.cpp.o
 bin/vo: CMakeFiles/vo.dir/src/disparity_map.cpp.o
+bin/vo: CMakeFiles/vo.dir/src/feature_detector.cpp.o
+bin/vo: CMakeFiles/vo.dir/src/feature_matching.cpp.o
 bin/vo: CMakeFiles/vo.dir/src/main.cpp.o
 bin/vo: CMakeFiles/vo.dir/src/monocular_pose.cpp.o
 bin/vo: CMakeFiles/vo.dir/src/stereo_pose.cpp.o
-bin/vo: CMakeFiles/vo.dir/src/stereo_sparse_matching.cpp.o
 bin/vo: CMakeFiles/vo.dir/src/tool.cpp.o
 bin/vo: CMakeFiles/vo.dir/src/triangulation.cpp.o
 bin/vo: CMakeFiles/vo.dir/build.make
@@ -315,7 +341,7 @@ bin/vo: /usr/local/lib/libopencv_imgproc.3.1.0.dylib
 bin/vo: /usr/local/lib/libopencv_flann.3.1.0.dylib
 bin/vo: /usr/local/lib/libopencv_core.3.1.0.dylib
 bin/vo: CMakeFiles/vo.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/Muyuan/Documents/vo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable bin/vo"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/Muyuan/Documents/vo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable bin/vo"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/vo.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -325,10 +351,11 @@ CMakeFiles/vo.dir/build: bin/vo
 
 CMakeFiles/vo.dir/requires: CMakeFiles/vo.dir/src/bucket_features.cpp.o.requires
 CMakeFiles/vo.dir/requires: CMakeFiles/vo.dir/src/disparity_map.cpp.o.requires
+CMakeFiles/vo.dir/requires: CMakeFiles/vo.dir/src/feature_detector.cpp.o.requires
+CMakeFiles/vo.dir/requires: CMakeFiles/vo.dir/src/feature_matching.cpp.o.requires
 CMakeFiles/vo.dir/requires: CMakeFiles/vo.dir/src/main.cpp.o.requires
 CMakeFiles/vo.dir/requires: CMakeFiles/vo.dir/src/monocular_pose.cpp.o.requires
 CMakeFiles/vo.dir/requires: CMakeFiles/vo.dir/src/stereo_pose.cpp.o.requires
-CMakeFiles/vo.dir/requires: CMakeFiles/vo.dir/src/stereo_sparse_matching.cpp.o.requires
 CMakeFiles/vo.dir/requires: CMakeFiles/vo.dir/src/tool.cpp.o.requires
 CMakeFiles/vo.dir/requires: CMakeFiles/vo.dir/src/triangulation.cpp.o.requires
 

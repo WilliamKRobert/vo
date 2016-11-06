@@ -5,6 +5,7 @@
 
 #include "cal_pose.h"
 #include "tool.h"
+#include "feature_detector.h"
 
 using namespace Eigen;
 #include <opencv2/core/eigen.hpp>
