@@ -5,5 +5,5 @@
 build/*
 
 # KITTI dataset
-/evaluation/**/kitti/
+/evaluation/kitti/*
 
