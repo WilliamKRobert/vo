@@ -1,1 +1,5 @@
-./evaluation/kitti
+# OS junk files
+*.DS_Store
+
+# KITTI dataset
+./evaluation/kitti/
