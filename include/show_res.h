@@ -2,6 +2,7 @@
 #define SHOW_RES_H
 
 #include <iostream>
+#include <fstream>
 
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
@@ -23,8 +24,22 @@ public:
     cv::Point textOrg;
     
     Mat plot;
+	char *resFile;
+	ofstream file;
     
-    showRes( Mat &_plot, double _fontFace=FONT_HERSHEY_PLAIN, double _fontScale=1, int _thickness=1, cv::Point _textOrg=Point(10, 50)): plot(_plot), fontFace(_fontFace), fontScale(_fontScale), thickness(_thickness), textOrg(_textOrg) {}
+	showRes( Mat &_plot, char *_resFile=NULL, double _fontFace=FONT_HERSHEY_PLAIN, double _fontScale=1, int _thickness=1, cv::Point _textOrg=Point(10, 50)): resFile(_resFile), plot(_plot), fontFace(_fontFace), fontScale(_fontScale), thickness(_thickness), textOrg(_textOrg) 
+	{
+		file.open(resFile);
+		if (!file.is_open()){
+			cerr<< "Could not open result file." <<endl;
+		}
+	}
+
+	~showRes()
+	{
+		if (resFile != NULL)
+			file.close();
+	}
     
     void updateTraj(Mat translation)
     {
@@ -61,6 +76,43 @@ public:
         imshow( "Trajectory", plot );
         waitKey(1);
     }
+
+	void writeRes(Mat rotation, Mat translation)
+	{
+		if ( translation.type() == CV_32F ){ 
+			file << rotation.at<float>(0,0) << " " << 
+					rotation.at<float>(0,1) << " " << 
+					rotation.at<float>(0,2) << " " << 
+					translation.at<float>(0) << " ";
+			file << rotation.at<float>(1,0) << " " << 
+					rotation.at<float>(1,1) << " " << 
+					rotation.at<float>(1,2) << " " << 
+					translation.at<float>(1) << " ";
+			file << rotation.at<float>(2,0) << " " << 
+					rotation.at<float>(2,1) << " " << 
+					rotation.at<float>(2,2) << " " << 
+					translation.at<float>(2) << " ";
+			file << "\n";
+		}
+		else if( translation.type() == CV_64F ){
+			file << rotation.at<double>(0,0) << " " << 
+					rotation.at<double>(0,1) << " " << 
+					rotation.at<double>(0,2) << " " << 
+					translation.at<double>(0) << " ";
+			file << rotation.at<double>(1,0) << " " << 
+					rotation.at<double>(1,1) << " " << 
+					rotation.at<double>(1,2) << " " << 
+					translation.at<double>(1) << " ";
+			file << rotation.at<double>(2,0) << " " << 
+					rotation.at<double>(2,1) << " " << 
+					rotation.at<double>(2,2) << " " << 
+					translation.at<double>(2) << " ";
+			file << "\n";
+
+		}
+		else 
+			cerr << "Unknown result data type." <<endl;
+	}
     
 };
 

@@ -20,7 +20,7 @@ using namespace cv::xfeatures2d;
 /*------------------------------------------------------
  * odometry paramters
  * ----------------------------------------------------*/
-const char DATASET_PATH[] = "/Users/Muyuan/Downloads/dataset/sequences/00/";
+const char DATASET_PATH[] = "../evaluation/kitti/data/sequences/00/";
 
 void stereo_pose(Mat img1_l, Mat img1_r, Mat img2_l, std::vector<Point2f> &keypoints1_l, std::vector<Point2f> &keypoints2_l, Eigen::MatrixXf P1, Eigen::MatrixXf P2, Mat P, Mat &R, Mat &t);
 

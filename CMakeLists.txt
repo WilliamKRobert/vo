@@ -22,6 +22,7 @@ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
 OPTION(BUILD_TESTS "Build tests" ON)
 
 include_directories( include )
+include_directories( evaluation )
 include_directories( ${OpenCV_INCLUDE_DIRS} )
 	
 # ==========================================================

@@ -1,7 +1,8 @@
-#include <iostream>
+
 #include <stdio.h>
 #include <fstream>
 #include <math.h>
+#include <unistd.h>
 
 #include </usr/local/Cellar/eigen/3.2.8/include/eigen3/Eigen/Dense>
 #include </usr/local/Cellar/eigen/3.2.8/include/eigen3/Eigen/Eigen>
@@ -20,12 +21,12 @@
 using namespace std;
 using namespace cv;
 
-#define MAX_FRAME 4540 
+#define MAX_FRAME 100//4540 
 #define MIN_NUM_FEATURES 2000
 #define CHAR_SIZE 200
 
 
-int test_stereo(char *dataset_dir, char *res_file)
+int test_stereo(char *dataset_dir, char *resFile)
 {
     Mat img1_l, img1_r, img2_l, img2_r;
     Mat R_res, t_res;
@@ -40,10 +41,10 @@ int test_stereo(char *dataset_dir, char *res_file)
     // =======================================================
     char filename1_l[CHAR_SIZE], filename1_r[CHAR_SIZE], filename2_l[CHAR_SIZE], filename2_r[CHAR_SIZE];
 
-	sprintf(filename1_l, "%simage_0/%06d.png", DATASET_PATH, 0);
-	sprintf(filename1_r, "%simage_1/%06d.png", DATASET_PATH, 0 );
-	sprintf(filename2_l, "%simage_0/%06d.png", DATASET_PATH, 1 );
-	sprintf(filename2_r, "%simage_1/%06d.png", DATASET_PATH, 1);
+	sprintf(filename1_l, "%simage_0/%06d.png", dataset_dir, 0);
+	sprintf(filename1_r, "%simage_1/%06d.png", dataset_dir, 0 );
+	sprintf(filename2_l, "%simage_0/%06d.png", dataset_dir, 1 );
+	sprintf(filename2_r, "%simage_1/%06d.png", dataset_dir, 1);
 
    	img1_l = imread( filename1_l, CV_LOAD_IMAGE_GRAYSCALE );
    	img1_r = imread( filename1_r, CV_LOAD_IMAGE_GRAYSCALE );
@@ -104,7 +105,8 @@ int test_stereo(char *dataset_dir, char *res_file)
     
     char filename_l[100], filename_r[100];
     
-    showRes showTraj(traj);
+    showRes showTraj(traj, resFile);
+	showTraj.writeRes(R_res, t_res);
     
     // =======================================================
     // Loop
@@ -142,6 +144,7 @@ int test_stereo(char *dataset_dir, char *res_file)
         
         imshow("Camera", currentImg_l);
         showTraj.updateTraj(t_res);
+		showTraj.writeRes(R_res, t_res);
         
         previousImg_l = currentImg_l.clone();
         previousImg_r = currentImg_r.clone();
@@ -165,16 +168,17 @@ int main(int argc, char *argv[])
 		cerr << "Usage: ./test_stereo test_sequence_no" << endl;
 		return -1;
 	}	
-	char dataset_dir[CHAR_SIZE] = "/Users/Muyuan/Downloads/dataset/sequences/";
+
+	//char dataset_dir[CHAR_SIZE] = "/Users/Muyuan/Documents/vo/evaluation/kitti/data/sequences/";
+	char dataset_dir[CHAR_SIZE] = "../evaluation/kitti/data/sequences/";
+
 	char res_dir[CHAR_SIZE]; 
 	int seq_no = atoi(argv[1]);
 
-	sprintf(dataset_dir, "%s%.02d.txt", dataset_dir, seq_no);
-	sprintf(res_dir, "./evaluation/results/%.02d.txt", seq_no);
+	sprintf(dataset_dir, "%s%.02d/", dataset_dir, seq_no);
+	sprintf(res_dir, "../evaluation/results/%.02d.txt", seq_no);
 	
-    //test_stereo(dataset_dir, res_dir);
-    printf("%s\n", res_dir);
-  	printf("%s\n", dataset_dir);	
+    test_stereo(dataset_dir, res_dir);
 
     return 0;
 }
