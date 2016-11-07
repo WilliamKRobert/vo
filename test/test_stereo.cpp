@@ -20,12 +20,12 @@
 using namespace std;
 using namespace cv;
 
-#define MAX_FRAME 1000//4540 
+#define MAX_FRAME 4540 
 #define MIN_NUM_FEATURES 2000
 #define CHAR_SIZE 200
 
 
-int test_stereo()
+int test_stereo(char *dataset_dir, char *res_file)
 {
     Mat img1_l, img1_r, img2_l, img2_r;
     Mat R_res, t_res;
@@ -159,10 +159,23 @@ int test_stereo()
 }
 
 
-int main()
+int main(int argc, char *argv[])
 {
-    test_stereo();
-    
+	if ( argc != 2 ){
+		cerr << "Usage: ./test_stereo test_sequence_no" << endl;
+		return -1;
+	}	
+	char dataset_dir[CHAR_SIZE] = "/Users/Muyuan/Downloads/dataset/sequences/";
+	char res_dir[CHAR_SIZE]; 
+	int seq_no = atoi(argv[1]);
+
+	sprintf(dataset_dir, "%s%.02d.txt", dataset_dir, seq_no);
+	sprintf(res_dir, "./evaluation/results/%.02d.txt", seq_no);
+	
+    //test_stereo(dataset_dir, res_dir);
+    printf("%s\n", res_dir);
+  	printf("%s\n", dataset_dir);	
+
     return 0;
 }
 
