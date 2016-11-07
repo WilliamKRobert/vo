@@ -1,9 +1,10 @@
 # OS junk files
 *.DS_Store
+**/.DS_Store
 
 # build directory
 build/*
 
 # KITTI dataset
-/evaluation/kitti/*
+evaluation/kitti/*
 
