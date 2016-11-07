@@ -2,4 +2,4 @@
 *.DS_Store
 
 # KITTI dataset
-./evaluation/kitti/
+/evaluation/kitti/
