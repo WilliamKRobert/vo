@@ -18,7 +18,7 @@ using namespace Eigen;
  * bucketing feature
  *************************************************************
 */
-struct ResponseComparator
+struct featureDetector::ResponseComparator
 {
     bool operator() (const KeyPoint& a, const KeyPoint& b)
     {
@@ -26,7 +26,7 @@ struct ResponseComparator
     }
 };
 
-static void keepStrongest( int N, vector<KeyPoint>& keypoints )
+void featureDetector::keepStrongest( int N, vector<KeyPoint>& keypoints )
 {
     if( (int)keypoints.size() > N )
     {
@@ -36,21 +36,23 @@ static void keepStrongest( int N, vector<KeyPoint>& keypoints )
     }
 }
 
-int bucket_features(Mat I, vector<KeyPoint> &keypoints, int h, int b, int h_break, int b_break, int maxPerCell)
+void featureDetector::bucketingDetect(Mat I, vector<Point2f> &points)
 {
-    VectorXd y = VectorXd::LinSpaced(h_break, 0, h-h_break);
-    VectorXd x = VectorXd::LinSpaced(b_break, 0, b-b_break);
+    vector<KeyPoint> keypoints;
     
-    Ptr<FastFeatureDetector> fast = FastFeatureDetector::create();
+    VectorXd y = VectorXd::LinSpaced(row_break, 0, img_row-row_break);
+    VectorXd x = VectorXd::LinSpaced(col_break, 0, img_col-col_break);
+    
+    Ptr<FastFeatureDetector> fast = FastFeatureDetector::create(threshold);
     
     for (int i=0; i<y.size(); i++){
         for (int j=0; j<x.size(); j++){
-            Mat subImage = I(Range(y[i], y[i]+h_break), Range(x[j], x[j]+b_break));
+            Mat subImage = I(Range(y[i], y[i]+row_break), Range(x[j], x[j]+col_break));
             vector<KeyPoint> sub_keypoints;
-            sub_keypoints.reserve(maxPerCell);
+            sub_keypoints.reserve(max_per_cell);
             
             fast->detect(subImage, sub_keypoints);
-            keepStrongest(maxPerCell, sub_keypoints);
+            keepStrongest(max_per_cell, sub_keypoints);
             
             vector<KeyPoint>::iterator it = sub_keypoints.begin(), end = sub_keypoints.end();
             for( ; it != end; ++it){
@@ -62,21 +64,20 @@ int bucket_features(Mat I, vector<KeyPoint> &keypoints, int h, int b, int h_brea
         }
     }
     
+    KeyPoint::convert(keypoints, points, vector<int>());
+
     
-    return 0;
 }
 
 /*************************************************************
- * feature detection
+ * feature detection without bucketing
  *************************************************************
  */
-void featureDetection(Mat img_1, vector<Point2f>& points1, int threshold)	{
+void featureDetector::directDetect(Mat img, vector<Point2f>& points)	{
     //uses FAST as of now, modify parameters as necessary
-    vector<KeyPoint> keypoints_1;
-    int fast_threshold = threshold;
+    vector<KeyPoint> keypoints;
     bool nonmaxSuppression = true;
-    FAST(img_1, keypoints_1, fast_threshold, nonmaxSuppression);
-    KeyPoint::convert(keypoints_1, points1, vector<int>());
+    
+    FAST(img, keypoints, threshold, nonmaxSuppression);
+    KeyPoint::convert(keypoints, points, vector<int>());
 }
-
-

@@ -11,6 +11,7 @@
 
 
 using namespace std;
+using namespace cv;
 
 
 class showRes
@@ -41,7 +42,7 @@ public:
 			file.close();
 	}
     
-    void updateTraj(Mat translation)
+    void updateTraj(const Mat translation)
     {
 		if ( translation.type() == CV_32F ){ 
 	        x = int(translation.at<float>(0)) + 300;
@@ -77,7 +78,7 @@ public:
         waitKey(1);
     }
 
-	void writeRes(Mat rotation, Mat translation)
+	void writeRes(const Mat rotation, const Mat translation)
 	{
 		if ( translation.type() == CV_32F ){ 
 			file << rotation.at<float>(0,0) << " " << 

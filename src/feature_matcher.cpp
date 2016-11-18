@@ -1,15 +1,73 @@
-#include "feature_matching.h"
+#include "feature_matcher.h"
 #include "tool.h"
 
 #include <time.h>
 #include "opencv2/xfeatures2d.hpp"
 #include "opencv2/features2d/features2d.hpp"
+//#include "types.hpp"
 
 
 using namespace cv;
 using namespace std;
 
-void featureMatching(Mat leftImageGrey, Mat rightImageGrey, vector<Point2f> &k1, vector<Point2f> &k2)
+void Matcher::initFirstFrame(const Mat frame)
+{
+    if (first_kpt.size() != 0){
+        good_matches.clear();
+        
+        first_kpt.clear();
+        first_desc = Mat();
+       
+    }
+    
+    if (second_kpt.size() != 0){
+        first_match_kpt.clear();
+        first_match_desc = Mat();
+
+        
+        second_kpt.clear();
+        second_match_kpt.clear();
+        
+        second_desc = Mat();
+        second_match_desc = Mat();
+    }
+    
+    first_frame = frame.clone();
+    detector->detectAndCompute(first_frame, noArray(), first_kpt, first_desc);
+
+}
+
+void Matcher::findMatch(const Mat frame)
+{
+    second_frame = frame.clone();
+    detector->detectAndCompute(frame, noArray(), second_kpt, second_desc);
+    
+    vector< vector<DMatch> > matches;
+    
+    matcher->knnMatch(first_desc, second_desc, matches, 2);
+
+    for(unsigned i = 0; i < matches.size(); i++) {
+        if(matches[i][0].distance < nn_match_ratio * matches[i][1].distance) {
+            good_matches.push_back( matches[i][0] );
+            first_match_kpt.push_back( first_kpt[matches[i][0].queryIdx] );
+            second_match_kpt.push_back( second_kpt[matches[i][0].trainIdx] );
+        }
+    }
+
+	Mat desc_1(good_matches.size(), first_desc.cols, first_desc.type());
+    Mat desc_2(good_matches.size(), first_desc.cols, first_desc.type());
+	for (unsigned i=0; i<good_matches.size(); i++){
+		desc_1.row(i).copyTo( first_desc.row(good_matches[i].queryIdx) );
+        desc_2.row(i).copyTo( second_desc.row(good_matches[i].trainIdx) );
+	}
+    first_match_desc = desc_1.clone();
+    second_match_desc = desc_2.clone();
+
+    return;
+}
+
+
+void bruteForceMatching(Mat leftImageGrey, Mat rightImageGrey, vector<Point2f> &k1, vector<Point2f> &k2)
 {
     clock_t begin = clock();
     clock_t end = clock();
@@ -107,8 +165,8 @@ int stereo_sparse_matching(Mat img1_l, Mat img1_r, Mat img2_l, Mat img2_r, vecto
 {
     //featureTracking(img1_l, img1_r, img2_l, img2_r, keypoints1_l, keypoints1_r, keypoints2_l, keypoints2_r);
     
-    featureMatching( img1_l, img1_r, keypoints1_l, keypoints1_r);
-    featureMatching( img2_l, img2_r, keypoints2_l, keypoints2_r);
+    bruteForceMatching( img1_l, img1_r, keypoints1_l, keypoints1_r);
+    bruteForceMatching( img2_l, img2_r, keypoints2_l, keypoints2_r);
     
     return 0;
 }

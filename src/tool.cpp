@@ -31,7 +31,7 @@ double getAbsoluteScale(int frame_id, int sequence_id, double z_cal)	{
     
     string line;
     int i = 0;
-    ifstream myfile ("/Users/Muyuan/Downloads/dataset/sequences/00/00.txt", ifstream::in);
+    ifstream myfile ("/Users/Muyuan/Documents/vo/evaluation/kitti/data/sequences/00/00.txt", ifstream::in);
     double x =0, y=0, z = 0;
     double x_prev, y_prev, z_prev;
     if (myfile.is_open())

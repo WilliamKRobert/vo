@@ -1,8 +1,3 @@
-/*
- * @file SURF_FlannMatcher
- * @brief SURF detector + descriptor + FLANN Matcher
- * @author A. Huaman
- */
 #include <stdio.h>
 #include <iostream>
 #include <stdio.h>
@@ -15,21 +10,21 @@
 
 #include "tool.h"
 #include "feature_detector.h"
-#include "feature_tracking.h"
+#include "feature_tracker.h"
 
 using namespace std;
 using namespace cv;
 using namespace cv::xfeatures2d;
 
-/*
- * @function main
- * @brief Main function
- */
+
 int main( int argc, char** argv )
 {
     clock_t begin = clock();
     clock_t end;
     double elapsed_secs;
+    
+    featureTracker optical_flow_tracker;
+    optical_flow_tracker.initTracker();
     
     if( argc != 3 )
     { cout <<"Wrong parameters!" <<endl; return -1; }
@@ -42,13 +37,14 @@ int main( int argc, char** argv )
     vector<Point2f> points1, points2;
     vector<uchar> status;
     
-    featureDetection(img_1, points1);
+    featureDetector detector;
+    detector.directDetect(img_1, points1);
     
-    featureTracking(img_1, img_2, points1, points2, status);
+    optical_flow_tracker.featureTrack(img_1, img_2, points1, points2);
     
     end = clock();
     elapsed_secs = double( end - begin) / CLOCKS_PER_SEC;
-    cout << " featureMatching :" << elapsed_secs << "s" <<endl;
+    cout << " feature tracking :" << elapsed_secs << "s" <<endl;
     
     // visualize the results of optical flow tracking
     for (int i=0; i<points1.size(); i++){

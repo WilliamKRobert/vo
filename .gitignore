@@ -7,4 +7,8 @@ build/*
 
 # KITTI dataset
 evaluation/**/kitti/
+evaluation/results/**/errors/
+evaluation/results/**/plot_error/
+evaluation/results/**/plot_path/
+
 

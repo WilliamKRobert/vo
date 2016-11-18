@@ -18,12 +18,15 @@ set(CMAKE_BUILD_TYPE Debug)
 
 # set the default path for built executables to the "bin" directory
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
+set(KITTI_PATH evaluation/kitti/devkit/cpp)
 
 OPTION(BUILD_TESTS "Build tests" ON)
+OPTION(BUILD_KITTI_EVALUATION "Build KITTI evaluation" ON)
 
 include_directories( include )
 include_directories( evaluation )
 include_directories( ${OpenCV_INCLUDE_DIRS} )
+include_directories( ${KITTI_PATH} )
 	
 # ==========================================================
 # OpenGV library
@@ -43,28 +46,28 @@ file(GLOB SOURCES
     "src/*.cpp"
 )
 
-add_executable(vo ${SOURCES})
-target_link_libraries(vo ${OpenCV_LIBS})
-target_link_libraries( vo ${OpenGV_LINK_LIBS} )
+#add_executable(vo ${SOURCES})
+#target_link_libraries(vo ${OpenCV_LIBS})
+#target_link_libraries( vo ${OpenGV_LINK_LIBS} )
 
 IF (BUILD_TESTS)
 	enable_testing()
 
-	add_executable( test_triangulation test/test_triangulation.cpp src/triangulation.cpp )
+	add_executable( test_triangulation test/test_triangulation.cpp src/triangulation.cpp src/tool.cpp )
 	target_link_libraries( test_triangulation ${OpenCV_LIBS} )
 	target_link_libraries( test_triangulation ${OpenGV_LINK_LIBS} )
 	add_test(NAME test_triangulation
 		WORKING_DIRECTORY ${EXECUTALBE_OUTPUT_PATH}
 		COMMAND test_triangulation)
 
-	add_executable( test_monocular test/test_monocular.cpp src/monocular_pose.cpp src/tool.cpp src/feature_detector.cpp src/feature_tracking.cpp )
+	add_executable( test_monocular test/test_monocular.cpp src/tool.cpp src/feature_detector.cpp src/feature_tracker.cpp src/feature_matcher.cpp src/motion_from_image.cpp )
 	target_link_libraries( test_monocular ${OpenCV_LIBS} )
 	target_link_libraries( test_monocular ${OpenGV_LINK_LIBS} )
 	add_test(NAME test_monocular
 		WORKING_DIRECTORY ${EXECUTALBE_OUTPUT_PATH}
 		COMMAND test_monocular)
 
-	add_executable( test_stereo test/test_stereo.cpp src/stereo_pose.cpp src/tool.cpp src/triangulation.cpp src/feature_detector.cpp src/feature_tracking.cpp )
+	add_executable( test_stereo test/test_stereo.cpp src/motion_from_structure_and_image.cpp src/tool.cpp src/triangulation.cpp src/feature_detector.cpp src/feature_tracker.cpp )
 	target_link_libraries( test_stereo ${OpenCV_LIBS} )
 	target_link_libraries( test_stereo ${OpenGV_LINK_LIBS} )
 	add_test(NAME test_stereo
@@ -77,13 +80,27 @@ IF (BUILD_TESTS)
 		WORKING_DIRECTORY ${EXECUTALBE_OUTPUT_PATH}
 		COMMAND test_flann)
 
-	add_executable( test_opticalFlow test/test_opticalFlow.cpp src/triangulation.cpp src/feature_detector.cpp src/feature_tracking.cpp ) 
-	target_link_libraries( test_opticalFlow ${OpenCV_LIBS} )
-	add_test(NAME test_opticalFlow
+	add_executable( test_tracker test/test_tracker.cpp src/feature_detector.cpp src/feature_tracker.cpp ) 
+	target_link_libraries( test_tracker ${OpenCV_LIBS} )
+	add_test(NAME test_tracker
 		WORKING_DIRECTORY ${EXECUTALBE_OUTPUT_PATH}
-		COMMAND test_opticalFlow)
+		COMMAND test_tracker)
+
+	add_executable( test_matcher test/test_matcher.cpp src/feature_matcher.cpp ) 
+	target_link_libraries( test_matcher ${OpenCV_LIBS} )
+	add_test(NAME test_matcher
+		WORKING_DIRECTORY ${EXECUTALBE_OUTPUT_PATH}
+		COMMAND test_matcher)
+
+
 
 ENDIF()
 
-#target_link_libraries(vo ${OpenGV_})
+# ----------------------------------------------------------
+# Build KITTI dataset evaluation test
+# ----------------------------------------------------------
+IF (BUILD_KITTI_EVALUATION)
+	add_executable( kitti_evaluation ${KITTI_PATH}/evaluate_odometry.cpp ${KITTI_PATH}/matrix.cpp )
+
+ENDIF()
 

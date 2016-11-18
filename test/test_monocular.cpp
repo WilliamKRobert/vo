@@ -11,16 +11,17 @@
 #include "opencv2/xfeatures2d.hpp"
 #include "opencv2/core/eigen.hpp"
 
-#include "cal_pose.h"
 #include "tool.h"
 #include "show_res.h"
 #include "feature_detector.h"
-#include "feature_tracking.h"
+#include "feature_tracker.h"
+#include "motion_estimator.h"
+
 
 using namespace std;
 using namespace cv;
 
-#define MAX_FRAME 4540 
+#define MAX_FRAME 1000 //4540 
 #define MIN_NUM_FEATURES 2000
 const int FAST_THRESHOLD = 3;
 
@@ -34,7 +35,6 @@ int test_monocular()
 	clock_t end;
 	double elapsed_secs;
 
-    // Code for test sequences
     char filename1[200], filename2[200];
     sprintf( filename1, "%simage_0/%06d.png", DATASET_PATH, 0);
     sprintf( filename2, "%simage_0/%06d.png", DATASET_PATH, 1);
@@ -50,42 +50,48 @@ int test_monocular()
     
     Eigen::MatrixXf P(3, 4);
     P << 718.8560,        0, 607.1928,         0,
-    0, 718.8560, 185.2157,         0,
-    0,        0,   1.0000,         0;
+      0, 718.8560, 185.2157,         0,
+    			0,        0,   1.0000,         0;
     
-    /////////////////////////////////////////////////////////////////////
-    // Code for test cal_pose(...)
-    //int64 time = getTickCount();
-    
-    //cal_pose( img1_l, img1_r, img2_l, img2_r, P1, P2, R, t, method );
-    
-    //time = getTickCount() - time;
-    //printf( "Time elapsed: %fms\n", time*1000/getTickFrequency() );
-    /////////////////////////////////////////////////////////////////////
+	int img_row = img1.rows, img_col = img1.cols;
+
     vector<Point2f> features_prev, features_next;
-    
+
+	featureDetector detector(img_row, img_col, 100);
+	//detector.bucketingDetect(img1, features_prev);
+	detector.directDetect(img1, features_prev);
+    cout <<features_prev.size() <<endl;	
+	featureTracker tracker;
+	tracker.initTracker();
+	tracker.featureTrack(img1, img2, features_prev, features_next);
+
     Mat R = Mat(3, 3, CV_32F, cvScalar(0.));
     Mat t = Mat(3, 1, CV_32F, cvScalar(0.));
     
-    features_prev = monocular_pose(img1, img2, P, R, t);
+	double focal = P(0,0);
+	Point2d offset(P(0,2), P(1,2));
+	motionEstimator::motionFromImage pose_estimator(P(0,0), offset);
+	pose_estimator.updatePose(features_prev, features_next, R, t);	
+   	cout <<R <<endl <<t <<endl; 
     R_res = R.clone();
     t_res = t.clone();
     Mat previousImg = img2.clone();
-    Mat currentImg;
-    
+	features_prev = features_next;
+
+	Mat currentImg;
     Mat traj = Mat::zeros(600, 600, CV_8UC3);
-    
     char filename[200];
-    
+   	double scale; 
+
     showRes showTraj(traj);
-    
+    detector.setThreshold(3); 
     for (int iframe=2; iframe<MAX_FRAME; iframe++){
         sprintf(filename, "%simage_0/%06d.png", DATASET_PATH, iframe);
-        currentImg = imread( filename, CV_LOAD_IMAGE_GRAYSCALE);
-        
-        monocular_pose( previousImg, currentImg, features_prev, features_next, P, R, t);
-        
-        double scale = getAbsoluteScale(iframe, 0, t.at<double>(2));
+        currentImg = imread( filename, CV_LOAD_IMAGE_GRAYSCALE );
+		tracker.featureTrack(previousImg, currentImg, features_prev, features_next);
+
+		pose_estimator.updatePose(features_prev, features_next, R, t);
+        scale = getAbsoluteScale(iframe, 0, t.at<double>(2));
         
         if ( (scale>0.1) && t.at<double>(2) > t.at<double>(1) && t.at<double>(2) > t.at<double>(0) ){
             t_res = t_res + scale * (R_res * t);
@@ -93,9 +99,10 @@ int test_monocular()
         }
         
         if ( features_prev.size() < MIN_NUM_FEATURES ){
-            vector<uchar> status;
-            featureDetection(previousImg, features_prev, FAST_THRESHOLD);
-            featureTracking( previousImg, currentImg, features_prev, features_next, status);
+			//detector.bucketingDetect(previousImg, features_prev);
+			detector.directDetect(previousImg, features_prev);
+
+			tracker.featureTrack(previousImg, currentImg, features_prev, features_next);
         }
         
         imshow("Camera", currentImg);
@@ -103,6 +110,7 @@ int test_monocular()
         
         previousImg = currentImg.clone();
         features_prev = features_next;
+
     }
     
 	end = clock();
@@ -110,8 +118,7 @@ int test_monocular()
 	cout <<"Total duration for " <<MAX_FRAME << " frames: " <<elapsed_secs <<" s" <<endl;
 	cout << "Frame rate: " <<MAX_FRAME / elapsed_secs <<" fps" <<endl;
 
-    cout <<endl;
-    cout <<endl;
+    cout <<endl <<endl;
     cout <<"Rotation Matrix: " <<endl <<R_res <<endl;
     cout <<endl;
     cout <<"Translation vector: " <<endl <<t_res <<endl;
@@ -120,8 +127,6 @@ int test_monocular()
    	waitKey(0);
 
     return 0;
-    
-    
 }
 
 

@@ -3,6 +3,7 @@
 #include </usr/local/Cellar/eigen/3.2.8/include/eigen3/Eigen/Dense>
 #include </usr/local/Cellar/eigen/3.2.8/include/eigen3/Eigen/Eigen>
 
+#include "tool.h"
 #include "triangulation.h"
 
 using namespace std;
@@ -21,7 +22,8 @@ int main( int argc, char** argv )
                  0,        0,   1.0000,         0;
 	
 	Point2i p1(10, 5), p2(8, 5);
-	Eigen::Vector4f a = triangulation(p1, p2, P1, P2);
+    triangulation tri(P1, P2);
+	Eigen::Vector4f a = tri.triangulate(p1, p2);
 	cout << a << endl;
 
 	return 0;
