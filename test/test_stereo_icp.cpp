@@ -97,7 +97,7 @@ int test_stereo(char *dataset_dir, char *resFile)
 	detector.directDetect(img1_l, keypoints1_l);
 	
 	featureTracker tracker;
-	tracker.initTracker();
+	
 	tracker.featureTrack(img1_l, img1_r, img2_l, keypoints1_l, keypoints1_r, keypoints2_l);
 
 	triangulation tri(P1, P2);

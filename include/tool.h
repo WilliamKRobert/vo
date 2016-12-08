@@ -8,12 +8,10 @@
 #include <opencv2/xfeatures2d.hpp>
 #include <opencv2/video/video.hpp>
 
-#include </usr/local/Cellar/eigen/3.2.8/include/eigen3/Eigen/Dense>
-#include </usr/local/Cellar/eigen/3.2.8/include/eigen3/Eigen/Eigen>
+#include <Eigen/Dense>
+#include <Eigen/Eigen>
 
 
-
-using namespace std;
 using namespace cv;
 using namespace cv::xfeatures2d;
 
@@ -22,6 +20,7 @@ void removeRow(Eigen::MatrixXf& matrix, unsigned int rowToRemove);
 void removeColumn(Eigen::MatrixXf& matrix, unsigned int colToRemove);
 
 double getAbsoluteScale(int frame_id, int sequence_id, double z_cal);
+
 
 #endif
 

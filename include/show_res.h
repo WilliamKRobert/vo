@@ -9,6 +9,8 @@
 #include <opencv2/xfeatures2d.hpp>
 #include <opencv2/video/video.hpp>
 
+#include "ceres/rotation.h"
+
 
 using namespace std;
 using namespace cv;
@@ -35,6 +37,14 @@ public:
 			cerr<< "Could not open result file." <<endl;
 		}
 	}
+    
+    showRes( char *_resFile=NULL): resFile(_resFile)
+    {
+        file.open(resFile);
+        if (!file.is_open()){
+            cerr<< "Could not open result file." <<endl;
+        }
+    }
 
 	~showRes()
 	{
@@ -78,41 +88,70 @@ public:
         waitKey(1);
     }
 
-	void writeRes(const Mat rotation, const Mat translation)
-	{
-		if ( translation.type() == CV_32F ){ 
-			file << rotation.at<float>(0,0) << " " << 
-					rotation.at<float>(0,1) << " " << 
-					rotation.at<float>(0,2) << " " << 
-					translation.at<float>(0) << " ";
-			file << rotation.at<float>(1,0) << " " << 
-					rotation.at<float>(1,1) << " " << 
-					rotation.at<float>(1,2) << " " << 
-					translation.at<float>(1) << " ";
-			file << rotation.at<float>(2,0) << " " << 
-					rotation.at<float>(2,1) << " " << 
-					rotation.at<float>(2,2) << " " << 
-					translation.at<float>(2) << " ";
-			file << "\n";
-		}
-		else if( translation.type() == CV_64F ){
-			file << rotation.at<double>(0,0) << " " << 
-					rotation.at<double>(0,1) << " " << 
-					rotation.at<double>(0,2) << " " << 
-					translation.at<double>(0) << " ";
-			file << rotation.at<double>(1,0) << " " << 
-					rotation.at<double>(1,1) << " " << 
-					rotation.at<double>(1,2) << " " << 
-					translation.at<double>(1) << " ";
-			file << rotation.at<double>(2,0) << " " << 
-					rotation.at<double>(2,1) << " " << 
-					rotation.at<double>(2,2) << " " << 
-					translation.at<double>(2) << " ";
-			file << "\n";
+    void writeRes(const Mat rotation, const Mat translation)
+    {
+        if ( translation.type() == CV_32F ){
+            file << rotation.at<float>(0,0) << " " <<
+                    rotation.at<float>(0,1) << " " <<
+                    rotation.at<float>(0,2) << " " <<
+                    translation.at<float>(0) << " ";
+            file << rotation.at<float>(1,0) << " " <<
+                    rotation.at<float>(1,1) << " " <<
+                    rotation.at<float>(1,2) << " " <<
+                    translation.at<float>(1) << " ";
+            file << rotation.at<float>(2,0) << " " <<
+                    rotation.at<float>(2,1) << " " <<
+                    rotation.at<float>(2,2) << " " <<
+                    translation.at<float>(2) << " ";
+            file << "\n";
+        }
+        else if( translation.type() == CV_64F ){
+            file << rotation.at<double>(0,0) << " " <<
+                    rotation.at<double>(0,1) << " " <<
+                    rotation.at<double>(0,2) << " " <<
+                    translation.at<double>(0) << " ";
+            file << rotation.at<double>(1,0) << " " <<
+                    rotation.at<double>(1,1) << " " <<
+                    rotation.at<double>(1,2) << " " <<
+                    translation.at<double>(1) << " ";
+                    file << rotation.at<double>(2,0) << " " <<
+                    rotation.at<double>(2,1) << " " <<
+                    rotation.at<double>(2,2) << " " <<
+                    translation.at<double>(2) << " ";
+            file << "\n";
+            
+        }
+        else 
+            cerr << "Unknown result data type." <<endl;
+    }
 
-		}
-		else 
-			cerr << "Unknown result data type." <<endl;
+    
+	void writeRes(const double *const pose_array)
+	{
+        double rotation_matrix[6];
+        double rotation_array[3] = {pose_array[0], pose_array[1], pose_array[2]};
+        cout <<"Shit" <<endl;
+        ceres::AngleAxisToRotationMatrix(rotation_array, rotation_matrix);
+        
+        file << rotation_matrix[0] <<" ";
+        file << rotation_matrix[3] <<" ";
+        file << rotation_matrix[6] <<" ";
+        file << pose_array[3]        <<" ";
+        
+        file << rotation_matrix[1] <<" ";
+        file << rotation_matrix[4] <<" ";
+        file << rotation_matrix[7] <<" ";
+        file << pose_array[4]        <<" ";
+        
+        file << rotation_matrix[2] <<" ";
+        file << rotation_matrix[5] <<" ";
+        file << rotation_matrix[8] <<" ";
+        file << pose_array[5]             ;
+        
+        file << "\n";
+        
+        cout <<"Haha!" <<endl;
+
 	}
     
 };

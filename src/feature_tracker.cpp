@@ -9,7 +9,7 @@
 using namespace std;
 using namespace cv;
 
-void featureTracker::initTracker(){
+featureTracker::featureTracker(){
     winSize  = cv::Size(21, 21);
     termcrit = TermCriteria(TermCriteria::COUNT+TermCriteria::EPS, 30, 0.01);
 }
@@ -39,7 +39,6 @@ void featureTracker::featureTrack(Mat img_1, Mat img_2, vector<Point2f>& points1
 
 void featureTracker::featureTrack(Mat img1_l, Mat img1_r, Mat img2_l, vector<Point2f>& points1_l, vector<Point2f>& points1_r, vector<Point2f>& points2_l)	{
     //this function automatically gets rid of points for which tracking fails
-    
     calcOpticalFlowPyrLK(img1_l, img1_r, points1_l, points1_r, status_1, err, winSize, 3, termcrit, 0, 0.001);
     
     //getting rid of points for which the KLT tracking failed or those who have gone outside the frame
@@ -62,6 +61,7 @@ void featureTracker::featureTrack(Mat img1_l, Mat img1_r, Mat img2_l, vector<Poi
     
     calcOpticalFlowPyrLK(img1_l, img2_l, points1_l, points2_l, status_2, err, winSize, 3, termcrit, 0, 0.001);
     
+    
     indexCorrection = 0;
     for( int i=0; i<status_2.size(); i++)
     {
@@ -74,7 +74,8 @@ void featureTracker::featureTrack(Mat img1_l, Mat img1_r, Mat img2_l, vector<Poi
         
     }
 
-    
+	feature_num = points2_l.size();
+
 }
 
 void featureTracker::featureTrack(Mat img1_l, Mat img1_r, Mat img2_l, Mat img2_r, vector<Point2f>& points1_l, vector<Point2f>& points1_r, vector<Point2f>& points2_l, vector<Point2f> &points2_r)
@@ -87,22 +88,64 @@ void featureTracker::featureTrack(Mat img1_l, Mat img1_r, Mat img2_l, Mat img2_r
     //getting rid of points for which the KLT tracking failed or those who have gone outside the frame
     int indexCorrection = 0;
     for( int i=0; i<status_1.size(); i++){
-		Point2f pt1 = points1_r.at(i);
-		Point2f pt2 = points2_r.at(i);
-        Point2f pt1_l = points1_l.at(i);
-        Point2f pt2_l = points2_l.at(i);
+		Point2f pt1 = points1_r.at(i-indexCorrection);
+		Point2f pt2 = points2_r.at(i-indexCorrection);
+        Point2f pt1_l = points1_l.at(i-indexCorrection);
+        Point2f pt2_l = points2_l.at(i-indexCorrection);
         if ( (status_1[i] == 0) || (pt1.x<0) || (pt1.y<0) || (abs(pt1.y-pt1_l.y)>5)
 		  || (status_2[i] == 0) || (pt2.x<0) || (pt2.y<0) || (abs(pt2.y-pt2_l.y)>5))			{
-            points1_l.erase ( points1_l.begin() + i ); 
-			points1_r.erase ( points1_r.begin() + i ); 
-			points2_l.erase ( points2_l.begin() + i ); 
-			points2_r.erase ( points2_r.begin() + i ); 
-			status_1.erase ( status_1.begin() + i );
-			status_2.erase ( status_2.begin() + i );
-			i--;	
+            points1_l.erase ( points1_l.begin() + i-indexCorrection ); 
+			points1_r.erase ( points1_r.begin() + i-indexCorrection ); 
+			points2_l.erase ( points2_l.begin() + i-indexCorrection ); 
+			points2_r.erase ( points2_r.begin() + i-indexCorrection ); 
+			status_1[i] = 0;
+			status_2[i] = 0;
+		    indexCorrection++;	
 
         }
     }
     
 }
 
+void featureTracker::getInitIndex(vector<int> &init_index)
+{
+    if (status_1.size() == 0){
+        cerr<< "Track keypoints before getting the point index!" <<endl;
+        return;
+    }
+    
+    if (init_index.size() != 0) init_index.clear();
+    for (int i=0; i<feature_num; i++){
+        init_index.push_back(i);
+    }
+    
+    return;
+}
+
+void featureTracker::getPointIndex(vector<int> &old_index, vector<int> &new_index)
+{
+    
+	if (status_1.size() == 0){
+		cerr<< "Track keypoints before getting the point index!" <<endl;
+		return;
+	}
+
+    vector<int> point_index;
+    
+	for (int i=0; i<status_1.size(); i++){
+		if (status_1[i] == 1){
+			point_index.push_back( old_index[i] );
+		}	
+	}
+    
+    if (new_index.size() != 0) new_index.clear();
+    
+	for (int i=0; i<status_2.size(); i++){
+		if (status_2[i] == 1){
+			new_index.push_back ( point_index[i] );
+		}
+	}
+   
+    return;
+
+}

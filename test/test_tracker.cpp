@@ -24,7 +24,6 @@ int main( int argc, char** argv )
     double elapsed_secs;
     
     featureTracker optical_flow_tracker;
-    optical_flow_tracker.initTracker();
     
     if( argc != 3 )
     { cout <<"Wrong parameters!" <<endl; return -1; }

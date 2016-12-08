@@ -2,8 +2,8 @@
 #include <stdio.h>
 #include <fstream>
 
-#include </usr/local/Cellar/eigen/3.2.8/include/eigen3/Eigen/Dense>
-#include </usr/local/Cellar/eigen/3.2.8/include/eigen3/Eigen/Eigen>
+#include <Eigen/Dense>
+#include <Eigen/Eigen>
 
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
@@ -50,7 +50,7 @@ int test_monocular()
     
     Eigen::MatrixXf P(3, 4);
     P << 718.8560,        0, 607.1928,         0,
-      0, 718.8560, 185.2157,         0,
+                0, 718.8560, 185.2157,         0,
     			0,        0,   1.0000,         0;
     
 	int img_row = img1.rows, img_col = img1.cols;
@@ -62,7 +62,6 @@ int test_monocular()
 	detector.directDetect(img1, features_prev);
     cout <<features_prev.size() <<endl;	
 	featureTracker tracker;
-	tracker.initTracker();
 	tracker.featureTrack(img1, img2, features_prev, features_next);
 
     Mat R = Mat(3, 3, CV_32F, cvScalar(0.));

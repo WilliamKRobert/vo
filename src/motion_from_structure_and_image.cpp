@@ -10,10 +10,10 @@ using namespace Eigen;
 #include <opencv2/core/eigen.hpp>
 
 
-void motionEstimator::motionFromStructureAndImage::updatePose(const vector<Point3f> &point_cloud, const vector<Point2f> &points, Mat &R, Mat &t)
+void motionEstimator::motionFromStructureAndImage::updatePose(const std::vector<Point3f> &point_cloud, const std::vector<Point2f> &points, Mat &R, Mat &t)
 {
-	Mat rvec = cv::Mat::zeros(3, 1, CV_64FC1);
-    t = cv::Mat::zeros(3, 1, CV_64FC1);
+	Mat rvec = cv::Mat::zeros(3, 1, CV_64F);
+    t = cv::Mat::zeros(3, 1, CV_64F);
     
     cv::Mat distCoeffs = cv::Mat::zeros(4, 1, CV_64FC1);
     

@@ -1,10 +1,8 @@
 #ifndef POINT_CLOUD_ALIGNMENT_H
 #define POINT_CLOUD_ALIGNMENT_H
 
-//#include <eigen3/Eigen/Dense>
-//#include <eigen3/Eigen/Eigen>
-#include </usr/local/Cellar/eigen/3.2.8/include/eigen3/Eigen/Dense>
-#include </usr/local/Cellar/eigen/3.2.8/include/eigen3/Eigen/Eigen>
+#include <Eigen/Dense>
+#include <Eigen/Eigen>
 
 #include <opencv2/core/eigen.hpp>
 

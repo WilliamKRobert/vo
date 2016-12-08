@@ -8,10 +8,9 @@
 #include <opencv2/video/video.hpp>
 #include <opencv2/calib3d/calib3d.hpp>
 
-//#include <eigen3/Eigen/Dense>
-//#include <eigen3/Eigen/Eigen>
-#include </usr/local/Cellar/eigen/3.2.8/include/eigen3/Eigen/Dense>
-#include </usr/local/Cellar/eigen/3.2.8/include/eigen3/Eigen/Eigen>
+//#include <Eigen/Sparse>
+#include <Eigen/Dense>
+#include <Eigen/Eigen>
 #include <iostream>
 #include <vector>
 

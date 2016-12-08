@@ -1,7 +1,7 @@
 #include <iostream>
 
-#include </usr/local/Cellar/eigen/3.2.8/include/eigen3/Eigen/Dense>
-#include </usr/local/Cellar/eigen/3.2.8/include/eigen3/Eigen/Eigen>
+#include <Eigen/Dense>
+#include <Eigen/Eigen>
 
 #include "tool.h"
 #include "triangulation.h"
