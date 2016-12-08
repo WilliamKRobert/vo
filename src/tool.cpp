@@ -33,7 +33,7 @@ double getAbsoluteScale(int frame_id, int sequence_id, double z_cal)	{
     int i = 0;
     ifstream myfile ("/Users/Muyuan/Documents/vo/evaluation/kitti/data/sequences/00/00.txt", ifstream::in);
     double x =0, y=0, z = 0;
-    double x_prev, y_prev, z_prev;
+    double x_prev=0, y_prev=0, z_prev=0;
     if (myfile.is_open())
     {
         while (( getline (myfile,line) ) && (i<=frame_id))
@@ -52,14 +52,14 @@ double getAbsoluteScale(int frame_id, int sequence_id, double z_cal)	{
             i++;
         }
         myfile.close();
+        
+        return sqrt((x-x_prev)*(x-x_prev) + (y-y_prev)*(y-y_prev) + (z-z_prev)*(z-z_prev)) ;
     }
     
     else {
         cout << "Unable to open file";
         return 0;
     }
-    
-    return sqrt((x-x_prev)*(x-x_prev) + (y-y_prev)*(y-y_prev) + (z-z_prev)*(z-z_prev)) ;
     
 }
 

@@ -70,7 +70,7 @@ IF (BUILD_TESTS)
 	add_executable( test_stereo_pnp test/test_stereo_pnp.cpp src/motion_from_structure_and_image.cpp src/tool.cpp src/triangulation.cpp src/feature_detector.cpp src/feature_tracker.cpp )
 	target_link_libraries( test_stereo_pnp ${OpenCV_LIBS} )
 	target_link_libraries( test_stereo_pnp ${OpenGV_LINK_LIBS} )
-	add_test(NAME test_stereo
+	add_test(NAME test_stereo_pnp
 		WORKING_DIRECTORY ${EXECUTALBE_OUTPUT_PATH}
 		COMMAND test_stereo_pnp)
 		

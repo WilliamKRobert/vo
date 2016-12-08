@@ -15,29 +15,29 @@ class optimizer
 {
 public:
     optimizer(){}
-    void localBundleAdjustment(const localMapAssociation * init_local_map, localMapAssociation &local_map);
-    void localBundleAdjustment(const localMapAssociation *local_map, double* paramter);
+    void localBundleAdjustment(const localMapAssociation &local_map, double* paramter);
+    
 private:
-    template <typename T>
-    void Reprojection(const T* const camera,
-                      const T* const point,
-                      T &x, T &y)
-    {
-        T p[3];
-        ceres::AngleAxisRotatePoint(camera, point, p);
-        p[0] += camera[3];
-        p[1] += camera[4];
-        p[2] += camera[5];
-        
-        T xp = p[0] / p[2];
-        T yp = p[1] / p[2];
-        
-        T focal = T(718.8560);
-        T cx = T(607.1928);
-        T cy = T(185.2157);
-        x = focal * xp + cx;
-        y = focal * yp + cy;
-    }
+//    template <typename T>
+//    void Reprojection(const T* const camera,
+//                      const T* const point,
+//                      T &x, T &y)
+//    {
+//        T p[3];
+//        ceres::AngleAxisRotatePoint(camera, point, p);
+//        p[0] += camera[3];
+//        p[1] += camera[4];
+//        p[2] += camera[5];
+//        
+//        T xp = p[0] / p[2];
+//        T yp = p[1] / p[2];
+//        
+//        T focal = T(718.8560);
+//        T cx = T(607.1928);
+//        T cy = T(185.2157);
+//        x = focal * xp + cx;
+//        y = focal * yp + cy;
+//    }
 
     
     // Templated pinhole camera model for used with Ceres.  The camera is
@@ -47,12 +47,11 @@ private:
 };
 
 struct SnavelyReprojectionError {
-    SnavelyReprojectionError(double observed_x, double observed_y)
-    : observed_x(observed_x), observed_y(observed_y) {}
+    SnavelyReprojectionError(double observed_x, double observed_y, double point_x, double point_y, double point_z)
+    : observed_x(observed_x), observed_y(observed_y), point_x(point_x), point_y(point_y), point_z(point_z) {}
     
     template <typename T>
     bool operator()(const T* const camera,
-                    const T* const point,
                     T* residuals) const {
         // camera[0,1,2] are the angle-axis rotation.
         // camera[3,4,5] are the translation.
@@ -62,6 +61,10 @@ struct SnavelyReprojectionError {
         // the camera coordinate system has a negative z axis.
         
         T p[3];
+        T point[3];
+        point[0] =  T(point_x);
+        point[1] =  T(point_y);
+        point[2] =  T(point_z);
         ceres::AngleAxisRotatePoint(camera, point, p);
         p[0] += camera[3];
         p[1] += camera[4];
@@ -87,13 +90,17 @@ struct SnavelyReprojectionError {
     // Factory to hide the construction of the CostFunction object from
     // the client code.
     static ceres::CostFunction* Create(const double observed_x,
-                                       const double observed_y) {
-        return (new ceres::AutoDiffCostFunction<SnavelyReprojectionError, 2, 6, 3>(
-                                                                                   new SnavelyReprojectionError(observed_x, observed_y)));
+                                       const double observed_y,
+                                       const double point_x,
+                                       const double point_y,
+                                       const double point_z) {
+        return (new ceres::AutoDiffCostFunction<SnavelyReprojectionError, 5, 6>(
+                                                                                   new SnavelyReprojectionError(observed_x, observed_y, point_x, point_y, point_z)));
     }
     
     double observed_x;
     double observed_y;
+    double point_x, point_y, point_z;
 };
 
 #endif

@@ -19,6 +19,9 @@ using namespace cv;
 class showRes
 {
 public:
+    Mat plot;
+    char *resFile;
+    
     int x, y;
     char text[100];
     int fontFace;
@@ -26,11 +29,9 @@ public:
     int thickness;
     cv::Point textOrg;
     
-    Mat plot;
-	char *resFile;
 	ofstream file;
     
-	showRes( Mat &_plot, char *_resFile=NULL, double _fontFace=FONT_HERSHEY_PLAIN, double _fontScale=1, int _thickness=1, cv::Point _textOrg=Point(10, 50)): resFile(_resFile), plot(_plot), fontFace(_fontFace), fontScale(_fontScale), thickness(_thickness), textOrg(_textOrg) 
+	showRes( Mat &_plot, char *_resFile=NULL, double _fontFace=FONT_HERSHEY_PLAIN, double _fontScale=1, int _thickness=1, cv::Point _textOrg=Point(10, 50)): plot(_plot), resFile(_resFile), fontFace(_fontFace), fontScale(_fontScale), thickness(_thickness), textOrg(_textOrg) 
 	{
 		file.open(resFile);
 		if (!file.is_open()){
@@ -42,7 +43,7 @@ public:
     {
         file.open(resFile);
         if (!file.is_open()){
-            cerr<< "Could not open result file." <<endl;
+            cerr<< "Could not open optimized result file." <<endl;
         }
     }
 
@@ -57,7 +58,6 @@ public:
 		if ( translation.type() == CV_32F ){ 
 	        x = int(translation.at<float>(0)) + 300;
         	y = int(translation.at<float>(2)) + 100;
-		cout << translation.at<float>(0) <<endl;
 		}
 		else if( translation.type() == CV_64F ){
 			x = int(translation.at<double>(0)) + 300;
@@ -92,32 +92,32 @@ public:
     {
         if ( translation.type() == CV_32F ){
             file << rotation.at<float>(0,0) << " " <<
-                    rotation.at<float>(0,1) << " " <<
-                    rotation.at<float>(0,2) << " " <<
-                    translation.at<float>(0) << " ";
+            rotation.at<float>(0,1) << " " <<
+            rotation.at<float>(0,2) << " " <<
+            translation.at<float>(0) << " ";
             file << rotation.at<float>(1,0) << " " <<
-                    rotation.at<float>(1,1) << " " <<
-                    rotation.at<float>(1,2) << " " <<
-                    translation.at<float>(1) << " ";
+            rotation.at<float>(1,1) << " " <<
+            rotation.at<float>(1,2) << " " <<
+            translation.at<float>(1) << " ";
             file << rotation.at<float>(2,0) << " " <<
-                    rotation.at<float>(2,1) << " " <<
-                    rotation.at<float>(2,2) << " " <<
-                    translation.at<float>(2) << " ";
+            rotation.at<float>(2,1) << " " <<
+            rotation.at<float>(2,2) << " " <<
+            translation.at<float>(2) << " ";
             file << "\n";
         }
         else if( translation.type() == CV_64F ){
             file << rotation.at<double>(0,0) << " " <<
-                    rotation.at<double>(0,1) << " " <<
-                    rotation.at<double>(0,2) << " " <<
-                    translation.at<double>(0) << " ";
+            rotation.at<double>(0,1) << " " <<
+            rotation.at<double>(0,2) << " " <<
+            translation.at<double>(0) << " ";
             file << rotation.at<double>(1,0) << " " <<
-                    rotation.at<double>(1,1) << " " <<
-                    rotation.at<double>(1,2) << " " <<
-                    translation.at<double>(1) << " ";
-                    file << rotation.at<double>(2,0) << " " <<
-                    rotation.at<double>(2,1) << " " <<
-                    rotation.at<double>(2,2) << " " <<
-                    translation.at<double>(2) << " ";
+            rotation.at<double>(1,1) << " " <<
+            rotation.at<double>(1,2) << " " <<
+            translation.at<double>(1) << " ";
+            file << rotation.at<double>(2,0) << " " <<
+            rotation.at<double>(2,1) << " " <<
+            rotation.at<double>(2,2) << " " << 
+            translation.at<double>(2) << " ";
             file << "\n";
             
         }
@@ -128,9 +128,8 @@ public:
     
 	void writeRes(const double *const pose_array)
 	{
-        double rotation_matrix[6];
+        double rotation_matrix[9];
         double rotation_array[3] = {pose_array[0], pose_array[1], pose_array[2]};
-        cout <<"Shit" <<endl;
         ceres::AngleAxisToRotationMatrix(rotation_array, rotation_matrix);
         
         file << rotation_matrix[0] <<" ";
@@ -149,9 +148,6 @@ public:
         file << pose_array[5]             ;
         
         file << "\n";
-        
-        cout <<"Haha!" <<endl;
-
 	}
     
 };
