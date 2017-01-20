@@ -1,0 +1,32 @@
+%YAML:1.0
+camera_fx: 7.1885599999999999e+02
+camera_fy: 7.1885599999999999e+02
+camera_cx: 6.0719280000000003e+02
+camera_cy: 1.8521570000000000e+02
+camera_k1: 0.
+camera_k2: 0.
+camera_p1: 0.
+camera_p2: 0.
+camera_width: 1241
+camera_height: 376
+camera_stereo_baseline: 3.8614479999999998e+02
+camera_matrix: !!opencv-matrix
+   rows: 3
+   cols: 3
+   dt: d
+   data: [ 7.1885599999999999e+02, 0., 6.0719280000000003e+02, 0.,
+       7.1885599999999999e+02, 1.8521570000000000e+02, 0., 0., 1. ]
+stereo_left_camera_matrix: !!opencv-matrix
+   rows: 3
+   cols: 4
+   dt: d
+   data: [ 7.1885599999999999e+02, 0., 6.0719280000000003e+02, 0., 0.,
+       7.1885599999999999e+02, 1.8521570000000000e+02, 0., 0., 0., 1.,
+       0. ]
+stereo_right_camera_matrix: !!opencv-matrix
+   rows: 3
+   cols: 4
+   dt: d
+   data: [ 7.1885599999999999e+02, 0., 6.0719280000000003e+02,
+       -3.8614479999999998e+02, 0., 7.1885599999999999e+02,
+       1.8521570000000000e+02, 0., 0., 0., 1., 0. ]

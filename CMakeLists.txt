@@ -43,8 +43,6 @@ file(GLOB SOURCES
     "src/*.cpp"
 )
 
-add_executable(helloworld src/helloworld.cpp)
-target_link_libraries(helloworld ${CERES_LIBRARIES})
 
 #add_executable(vo ${SOURCES})
 #target_link_libraries(vo ${OpenCV_LIBS})
@@ -73,6 +71,14 @@ IF (BUILD_TESTS)
 	add_test(NAME test_stereo_pnp
 		WORKING_DIRECTORY ${EXECUTALBE_OUTPUT_PATH}
 		COMMAND test_stereo_pnp)
+
+	add_executable( test_stereo_icp test/test_stereo_icp.cpp src/motion_from_structure.cpp src/tool.cpp src/triangulation.cpp src/feature_detector.cpp src/feature_tracker.cpp src/point_cloud_alignment.cpp )
+	target_link_libraries( test_stereo_icp ${OpenCV_LIBS} )
+	target_link_libraries( test_stereo_icp ${OpenGV_LINK_LIBS} )
+	add_test(NAME test_stereo_icp
+		WORKING_DIRECTORY ${EXECUTALBE_OUTPUT_PATH}
+		COMMAND test_stereo_icp)
+
 		
 	add_executable( test_flann test/test_flann.cpp ) 
 	target_link_libraries( test_flann ${OpenCV_LIBS} )

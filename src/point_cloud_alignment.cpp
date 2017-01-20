@@ -1,8 +1,8 @@
 //#include <eigen3/Eigen/Dense>
 //#include <eigen3/Eigen/Eigen>
 #include <opencv2/core/core.hpp>
-#include </usr/local/Cellar/eigen/3.2.8/include/eigen3/Eigen/Dense>
-#include </usr/local/Cellar/eigen/3.2.8/include/eigen3/Eigen/Eigen>
+#include <Eigen/Dense>
+#include <Eigen/Eigen>
 
 
 #include <opengv/point_cloud/methods.hpp>
@@ -87,7 +87,7 @@ void pointCloudAlign_sac(MatrixXf pointCloud_1, MatrixXf pointCloud_2, Mat &R, M
 	// run ransac
 	ransac.sac_model_ = relposeproblem_ptr;
 	ransac.threshold_ = 1; //threshold;
-	ransac.max_iterations_ = 5000;//maxIterations;
+	ransac.max_iterations_ = 1000;//maxIterations;
 	ransac.computeModel(0);
 	
 	transformation_t best_transformation =

@@ -20,7 +20,7 @@ using namespace cv::xfeatures2d;
 /*------------------------------------------------------
  * odometry paramters
  * ----------------------------------------------------*/
-const char DATASET_PATH[] = "../evaluation/kitti/data/sequences/00/";
+const char DATASET_PATH[] = "/Users/Muyuan/Documents/vo/evaluation/kitti/data/sequences/00/";
 
 void stereo_pose(Mat img1_l, Mat img1_r, Mat img2_l, std::vector<Point2f> &keypoints1_l, std::vector<Point2f> &keypoints2_l, Eigen::MatrixXf P1, Eigen::MatrixXf P2, Mat P, Mat &R, Mat &t);
 
@@ -58,13 +58,21 @@ public:
     class motionFromStructure
     {
     public:
-        void updatePose();
+        motionFromStructure(int max_iteration_ = 2000000, double tolerance_ = .01):max_iteration(max_iteration_), tolerance(tolerance_) {}
+        
+        void updatePose(const std::vector<cv::Point3f> &point_cloud_1, const std::vector<cv::Point3f> &point_cloud_2, cv::Mat &R, cv::Mat &t);
         
     private:
+        int max_iteration;
+        double tolerance;
+        
         bool useExtrinsicGuess;
         int iterationsCount;
         float reprojectionError;
         float confidence;
+        
+        void pointCloudPose(const std::vector<cv::Point3f> &point_cloud_1, const std::vector<cv::Point3f> &point_cloud_2, std::vector<int> random_index, cv::Mat &R, cv::Mat &t);
+        void alsoInlierSet(const std::vector<cv::Point3f> &point_cloud_1, const std::vector<cv::Point3f> &point_cloud_2, const cv::Mat &R, const cv::Mat &t, std::vector<int> &inlier_index);
     };
     
     // PnP problem

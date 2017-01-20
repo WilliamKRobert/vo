@@ -3,7 +3,7 @@
 
 #include <opencv2/core/core.hpp>
 
-#include "show_res.h"
+#include "visualization.h"
 #include "feature_detector.h"
 #include "feature_tracker.h"
 #include "triangulation.h"
@@ -28,7 +28,7 @@ int test_stereo(char *dataset_dir, char *resFile)
 	double distance = 0;
 
 	Mat traj = Mat::zeros(600, 600, CV_8UC3);
-	showRes showTraj(traj, resFile);
+	Visualization showTraj(traj, resFile);
 	
     // =======================================================
     // Preprocessing

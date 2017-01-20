@@ -1,3 +1,9 @@
+/*
+ Test local bundle adjustment
+ --------------------------------------------------------------------
+ Muyuan Lin, 2016
+ */
+
 #include <cmath>
 #include <cstdio>
 #include <iostream>
@@ -9,12 +15,12 @@
 
 #include "ceres/rotation.h"
 
-#include "show_res.h"
+#include "map.h"
+#include "visualization.h"
 #include "feature_detector.h"
 #include "feature_tracker.h"
 #include "triangulation.h"
 #include "motion_estimator.h"
-#include "map_association.h"
 #include "optimizer.h"
 
 using namespace std;
@@ -27,22 +33,18 @@ using namespace cv;
 
 int test_ba(char *dataset_dir, char *resFile, char *optimized_res_file)
 {
-    Mat img1_l, img1_r, img2_l, img2_r;
     Mat R_res, t_res;
     
-//    clock_t begin = clock();
-//    clock_t end;
-//    double elapsed_secs;
     double distance = 0;
     
     Mat traj = Mat::zeros(600, 600, CV_8UC3);
-    showRes showTraj(traj, resFile);
-    
-    showRes optimized_res(optimized_res_file);
+    Visualization showTraj(traj, resFile);
+    Visualization optimized_res(optimized_res_file);
     
     // =======================================================
-    // Preprocessing
+    // Read image file
     // =======================================================
+    Mat img1_l, img1_r, img2_l, img2_r;
     char filename1_l[CHAR_SIZE], filename1_r[CHAR_SIZE], filename2_l[CHAR_SIZE], filename2_r[CHAR_SIZE];
     
     sprintf(filename1_l, "%simage_0/%06d.png", dataset_dir, 0);
@@ -58,33 +60,46 @@ int test_ba(char *dataset_dir, char *resFile, char *optimized_res_file)
     if(! img1_l.data || ! img1_r.data || !img2_l.data || !img2_r.data)
     {
         cout <<" Could not open or find the image" << endl;
-        return -1;
+        return 1;
     }
     
-    Eigen::MatrixXf P1(3, 4), P2(3, 4);
-    P1 << 718.8560,        0, 607.1928,         0,
-			     0, 718.8560, 185.2157,         0,
-			     0,        0,   1.0000,         0;
-    P2 << 718.8560,        0, 607.1928, -386.1448,
-    			 0, 718.8560, 185.2157,         0,
-			     0,        0,   1.0000,         0;
+    /* 
+     --------------------------------------------------------------------
+     Read setting file
+     Initialize camera parameter
+     --------------------------------------------------------------------
+     */
+    Mat P1, P2, P;
     
-    Mat P = (Mat_<double>(3, 3) <<718.8560, 0, 607.1928, 0, 718.8560, 185.2157, 0, 0, 1);
+    // KITTI 00-02
+    string filename = "setting/KITTI_00-02.yml";
+    FileStorage fs("../../../setting/KITTI_00-02.yml", FileStorage::READ);
+    
+    if (!fs.isOpened())
+    {
+        cerr << "failed to open " << filename << endl;
+        return 1;
+    }
 
+    fs["camera_matrix"] >> P;
+    fs["stereo_left_camera_matrix"] >> P1;
+    fs["stereo_right_camera_matrix"] >> P2;
     
+    int img_row, img_col;
+
+    fs["camera_height"] >> img_row;
+    fs["camera_width"] >>img_col;
+    /*
+     --------------------------------------------------------------------------------
+     First pose estimation
+     --------------------------------------------------------------------------------
+     */
     Mat R = Mat::eye(3, 3, CV_64F);
     Mat t = Mat(3, 1, CV_64F, cvScalar(0.));
     showTraj.writeRes(R, t);
     optimized_res.writeRes(R, t);
     
-    
-    
-    
-    // --------------------------------------------------------------------------------
-    // --------------------------------------------------------------------------------
     vector<Point2f> keypoints1_l, keypoints1_r, keypoints2_l, keypoints2_r;
-    
-    int img_row = img1_l.rows, img_col = img1_l.cols;
     
     featureDetector detector(img_row, img_col, 100);
     detector.directDetect(img1_l, keypoints1_l);
@@ -110,9 +125,7 @@ int test_ba(char *dataset_dir, char *resFile, char *optimized_res_file)
     Mat rvec = cv::Mat::zeros(3, 1, CV_64F);
     Rodrigues(R, rvec);
     
-    localMapAssociation local_map(point_cloud, keypoints2_l, rvec, t_res);
-
-    distance  += sqrt( t.at<double>(0) * t.at<double>(0) + t.at<double>(2) * t.at<double>(2) );
+    Map::MapAssociation local_map(point_cloud, keypoints2_l, Mat::eye(3, 3, CV_64F), Mat(3, 1, CV_64F, cvScalar(0.)));
     
     Mat previousImg_l = img2_l.clone();
     Mat previousImg_r = img2_r.clone();
@@ -124,8 +137,11 @@ int test_ba(char *dataset_dir, char *resFile, char *optimized_res_file)
     char filename_l[100], filename_r[100];
     google::InitGoogleLogging("Local bundle Adjustment");
     
-    // --------------------------------------------------------------------------------
-    // --------------------------------------------------------------------------------
+    /*
+     --------------------------------------------------------------------------------
+     Incremental pose estimation
+     --------------------------------------------------------------------------------
+     */
    	int iframe;
     double *parameter = NULL;
     Mat key_frame_l = img1_l, key_frame_r = img1_r;
@@ -158,7 +174,7 @@ int test_ba(char *dataset_dir, char *resFile, char *optimized_res_file)
         if (abs(t.at<double>(2)) > abs(t.at<double>(1)) && abs(t.at<double>(2)) > abs(t.at<double>(0)) ){
             t_res = t_res + R_res * t;
             R_res = R * R_res;
-            distance  += sqrt( t.at<double>(0) * t.at<double>(0) + t.at<double>(2) * t.at<double>(2) );
+//            distance  += sqrt( t.at<double>(0) * t.at<double>(0) + t.at<double>(2) * t.at<double>(2) );
             
         }
         
@@ -169,6 +185,10 @@ int test_ba(char *dataset_dir, char *resFile, char *optimized_res_file)
 
 
         if ( currentKeypoints.size() < MIN_NUM_FEATURES ){
+            
+            
+            
+            
             int num_cameras = local_map.num_cameras();
             int num_points = local_map.num_points();
             int num_parameters = 6*num_cameras + 3*num_points;
@@ -182,7 +202,7 @@ int test_ba(char *dataset_dir, char *resFile, char *optimized_res_file)
             
             //local_optimizer = optimizer();
             optimizer local_optimizer;
-            local_optimizer.localBundleAdjustment(local_map, parameter);
+            local_optimizer.localBundleAdjustment(local_map, parameter, P1.at<double>(0,0), P1.at<double>(1,1), P1.at<double>(0,2), P1.at<double>(1,2));
         
             imshow("Camera", currentImg_l);
             showTraj.updateTraj(t_res);
@@ -190,6 +210,23 @@ int test_ba(char *dataset_dir, char *resFile, char *optimized_res_file)
             
             for(int j=0; j<local_map.num_cameras(); j++){
                 optimized_res.writeRes(&parameter[6*j]);
+                
+            }
+            
+            int nn = local_map.num_cameras()-1;
+            if (abs(parameter[6*nn+3]-t_res.at<double>(0)) < 2 &&
+                abs(parameter[6*nn+4]-t_res.at<double>(1)) < 2 &&
+                abs(parameter[6*nn+5]-t_res.at<double>(2)) < 2 ){
+                t_res.at<double>(0) = parameter[6*nn+3];
+                t_res.at<double>(1) = parameter[6*nn+4];
+                t_res.at<double>(2) = parameter[6*nn+5];
+                
+                rvec.at<double>(0) = parameter[6*nn+0];
+                rvec.at<double>(1) = parameter[6*nn+1];
+                rvec.at<double>(2) = parameter[6*nn+2];
+                
+                Rodrigues(rvec, R_res);
+                
             }
             
             vector<uchar> status;
@@ -230,8 +267,7 @@ int test_ba(char *dataset_dir, char *resFile, char *optimized_res_file)
                 
             }
             
-            Rodrigues(R_res, rvec);
-            local_map = localMapAssociation(point_cloud, currentKeypoints, rvec, t_res);
+            local_map = Map::MapAssociation(point_cloud, currentKeypoints, R_res, t_res);
         }
         
         imshow("Camera", currentImg_l);
@@ -258,7 +294,6 @@ int main(int argc, char *argv[])
     }
     
     char dataset_dir[CHAR_SIZE] = "/Users/Muyuan/Documents/vo/evaluation/kitti/data/sequences/";
-//    char dataset_dir[CHAR_SIZE] = "../evaluation/kitti/data/sequences/";
     
     char res_file[CHAR_SIZE];
     char optimized_res_file[CHAR_SIZE];
@@ -268,9 +303,6 @@ int main(int argc, char *argv[])
     sprintf(dataset_dir, "%s%.02d/", dataset_dir, seq_no);
     sprintf(res_file, "/Users/Muyuan/vo/evaluation/results/data/%.02d.txt", seq_no);
     sprintf(optimized_res_file, "/Users/Muyuan/vo/evaluation/results/data/optimized_%.02d.txt", seq_no);
-    
-//    printf("%s\n", dataset_dir);
-//    printf("%s", res_dir);
     
     test_ba(dataset_dir, res_file, optimized_res_file);
     

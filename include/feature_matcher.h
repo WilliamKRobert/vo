@@ -23,7 +23,6 @@ public:
     matcher(_matcher)
     {}
     
-    void initFirstFrame(const Mat frame);
     void setFirstFrame(const Mat frame);
     void findMatch(const Mat frame);
     void getMatchKeypoint(std::vector<KeyPoint> &kpt1, std::vector<KeyPoint> &kpt2)

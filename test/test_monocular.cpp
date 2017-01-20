@@ -12,7 +12,7 @@
 #include "opencv2/core/eigen.hpp"
 
 #include "tool.h"
-#include "show_res.h"
+#include "visualization.h"
 #include "feature_detector.h"
 #include "feature_tracker.h"
 #include "motion_estimator.h"
@@ -82,7 +82,7 @@ int test_monocular()
     char filename[200];
    	double scale; 
 
-    showRes showTraj(traj);
+    Visualization showTraj(traj);
     detector.setThreshold(3); 
     for (int iframe=2; iframe<MAX_FRAME; iframe++){
         sprintf(filename, "%simage_0/%06d.png", DATASET_PATH, iframe);

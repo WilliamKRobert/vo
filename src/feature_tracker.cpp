@@ -82,7 +82,14 @@ void featureTracker::featureTrack(Mat img1_l, Mat img1_r, Mat img2_l, Mat img2_r
 {
     
     //this function automatically gets rid of points for which tracking fails
-    calcOpticalFlowPyrLK(img1_l, img1_r, points1_l, points1_r, status_1, err, winSize, 3, termcrit, 0, 0.001);
+    if (points2_r.size() == 0){
+        calcOpticalFlowPyrLK(img1_l, img1_r, points1_l, points1_r, status_1, err, winSize, 3, termcrit, 0, 0.001);
+    }
+    else{
+        status_1.clear();
+        for (int i=0; i<points2_r.size(); i++)
+            status_1.push_back(1);
+    }
 	calcOpticalFlowPyrLK(img2_l, img2_r, points2_l, points2_r, status_2, err, winSize, 3, termcrit, 0, 0.001);
     
     //getting rid of points for which the KLT tracking failed or those who have gone outside the frame
@@ -105,6 +112,7 @@ void featureTracker::featureTrack(Mat img1_l, Mat img1_r, Mat img2_l, Mat img2_r
         }
     }
     
+    cout <<"weired" <<endl;
 }
 
 void featureTracker::getInitIndex(vector<int> &init_index)

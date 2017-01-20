@@ -10,7 +10,7 @@
 using namespace cv;
 using namespace std;
 
-void Matcher::initFirstFrame(const Mat frame)
+void Matcher::setFirstFrame(const Mat frame)
 {
     if (first_kpt.size() != 0){
         good_matches.clear();

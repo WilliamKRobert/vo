@@ -5,20 +5,43 @@
  * For more information see <https://github.com/muyuanlin/vo>
  */
 
-#include "map_association.h"
-
+#include "map.h"
+#include <opencv2/calib3d/calib3d.hpp>
 
 using namespace std;
 using namespace cv;
 
-localMapAssociation::localMapAssociation(const vector<Point3f> point, const vector<Point2f> firstObservation, const Mat rvec, const Mat t)
+Map::MapAssociation::MapAssociation(const vector<Point3f> point, const vector<Point2f> firstObservation, const Mat rmat, const Mat t)
 {
+    Mat rvec = cv::Mat::zeros(3, 1, CV_64F);
+    Rodrigues(rmat, rvec);
+    
+    Mat rmat_inv = Mat::eye(3, 3, CV_64F);
+    rmat_inv = rmat.inv();
+    vector<Point3f> point_0;
+    float x, y, z;
+    for (int i=0; i<point.size(); i++){
+        x =  rmat_inv.at<double>(0,0) * (point[i].x - t.at<double>(0))
+           + rmat_inv.at<double>(0,1) * (point[i].y - t.at<double>(1))
+           + rmat_inv.at<double>(0,2) * (point[i].z - t.at<double>(2));
+        y =  rmat_inv.at<double>(1,0) * (point[i].x - t.at<double>(0))
+           + rmat_inv.at<double>(1,1) * (point[i].y - t.at<double>(1))
+           + rmat_inv.at<double>(1,2) * (point[i].z - t.at<double>(2));
+        z =  rmat_inv.at<double>(2,0) * (point[i].x - t.at<double>(0))
+           + rmat_inv.at<double>(2,1) * (point[i].y - t.at<double>(1))
+           + rmat_inv.at<double>(2,2) * (point[i].z - t.at<double>(2));
+        
+        Point3f tmp(x, y, z);
+        point_0.push_back(tmp);
+    }
+    
+    
     num_cameras_ = 1;
     num_points_ = point.size();
     num_parameters_ = num_cameras_ * 6 + num_points_ * 3;
     num_observations_ = firstObservation.size();
     
-    point_parameters_ = point;
+    point_parameters_ = point_0;
     
     for (int i=0; i<firstObservation.size(); i++){
         camera_index_.push_back(0);
@@ -41,7 +64,7 @@ localMapAssociation::localMapAssociation(const vector<Point3f> point, const vect
     
 }
 
-void localMapAssociation::addObservation(vector<Point2f> observed_points, vector<int> track_index, const Mat rvec, const Mat t){
+void Map::MapAssociation::addObservation(vector<Point2f> observed_points, vector<int> track_index, const Mat rvec, const Mat t){
     
     num_cameras_++;
     num_parameters_ += 6;
@@ -65,3 +88,5 @@ void localMapAssociation::addObservation(vector<Point2f> observed_points, vector
     camera_rotation_parameters_.push_back(rvec_copy);
     camera_translation_parameters_.push_back(t_copy);
 }
+
+//void Map::MapAssociation::

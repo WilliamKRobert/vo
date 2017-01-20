@@ -1,5 +1,5 @@
-#ifndef SHOW_RES_H
-#define SHOW_RES_H
+#ifndef VISUALIZATION_H
+#define VISUALIZATION_H
 
 #include <iostream>
 #include <fstream>
@@ -16,7 +16,7 @@ using namespace std;
 using namespace cv;
 
 
-class showRes
+class Visualization
 {
 public:
     Mat plot;
@@ -31,7 +31,7 @@ public:
     
 	ofstream file;
     
-	showRes( Mat &_plot, char *_resFile=NULL, double _fontFace=FONT_HERSHEY_PLAIN, double _fontScale=1, int _thickness=1, cv::Point _textOrg=Point(10, 50)): plot(_plot), resFile(_resFile), fontFace(_fontFace), fontScale(_fontScale), thickness(_thickness), textOrg(_textOrg) 
+	Visualization( Mat &_plot, char *_resFile=NULL, double _fontFace=FONT_HERSHEY_PLAIN, double _fontScale=1, int _thickness=1, cv::Point _textOrg=Point(10, 50)): plot(_plot), resFile(_resFile), fontFace(_fontFace), fontScale(_fontScale), thickness(_thickness), textOrg(_textOrg)
 	{
 		file.open(resFile);
 		if (!file.is_open()){
@@ -39,7 +39,7 @@ public:
 		}
 	}
     
-    showRes( char *_resFile=NULL): resFile(_resFile)
+    Visualization( char *_resFile=NULL): resFile(_resFile)
     {
         file.open(resFile);
         if (!file.is_open()){
@@ -47,7 +47,7 @@ public:
         }
     }
 
-	~showRes()
+	~Visualization()
 	{
 		if (resFile != NULL)
 			file.close();
